@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.11'
 
 gem 'pg'
+gem 'phony_rails'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
