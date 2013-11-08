@@ -1,7 +1,7 @@
 class ReservationsController < ApplicationController
 
 	def index
-    @reservations = Reservation.all
+    @reservations = Reservation.order(:wait_time)
     @reservation = Reservation.new
 	end
 
@@ -10,15 +10,25 @@ class ReservationsController < ApplicationController
     if @reservation.save
       redirect_to root_path
     else
-      flash[:error] = "nope"
+      flash[:error] = "Try Again."
       redirect_to root_path
     end
 	end
 
-	def update
-	end
+  def update
+  	@reservation = Reservation.find(params[:id])
+  	if @reservation.update_attributes(params[:reservation])
+    	redirect_to root_path
+    else
+      flash[:error] = "Try Updating Again."
+      redirect_to root_path
+    end
+  end
 
-	def destroy
-	end
+  def destroy
+  	@reservation = Reservation.find(params[:id])
+  	@reservation.destroy
+  	redirect_to root_path
+  end
 
 end

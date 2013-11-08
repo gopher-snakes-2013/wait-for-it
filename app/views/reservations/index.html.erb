@@ -5,22 +5,24 @@
 <%= flash[:error] %>
 
 <div class="table">
-	<table>
-		<div class="table_headers">
-			<tr>
-				<th>Name</th>
-				<th>Party Size</th>
-				<th>Phone Number</th>
-				<th>Wait Time</th>
-			</tr>
-		</div>
-		<% @reservations.each do |reservation| %>
-		<tr>
-			<td><%= reservation.name %></td>
-			<td><%= reservation.party_size %></td>
-			<td><%= reservation.phone_number %></td>
-			<td><%= reservation.wait_time %></td>
-		</tr>
-		<% end %>
-	</table>
+  <table>
+    <div class="table-headers">
+      <tr>
+        <th>name</th>
+        <th>party size</th>
+        <th>phone number</th>
+        <th>wait time</th>
+        <th></th>
+      </tr>
+    </div>
+    <% @reservations.each do |reservation| %>
+      <tr>
+      <td><%= reservation.name %></td>
+      <td><%= reservation.party_size %></td>
+      <td><%= reservation.phone_number %></td>
+      <td><%= reservation.wait_time %></td>
+      <td><%= link_to 'delete', reservation_path(reservation), method: 'delete', action: 'destroy' %></td>
+      <tr>
+    <% end %>
+  </table>
 </div>
