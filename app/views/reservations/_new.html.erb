@@ -1,0 +1,8 @@
+<tr class="rezzy" data-id="<%= reservation.id %>">
+<td class="x"><%= link_to 'X', reservation_path(reservation), method: 'delete', action: 'destroy', class: 'delete hidden' %></td>
+<td><%= reservation.name %></td>
+<td><span class="party-size" data-id="<%= reservation.id %>"><%= reservation.party_size %></span></td>
+<td><%= reservation.phone_number.phony_formatted(normalize: :US, format: :national, spaces: '-') %></td>
+<td><span class="wait-time" data-id="<%= reservation.id %>"><%= reservation.wait_time %></span></td>
+<td class="x times-up"></td>
+<tr>

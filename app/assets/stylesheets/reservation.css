@@ -45,7 +45,7 @@ div.table-headers {
 	width: 100%;
 }
 
-table {
+table.reservation-list {
 	margin: 0 auto;
 	width: 100%;
 }
@@ -60,6 +60,10 @@ td {
 	font-weight: bold;
 	height: 2em;
 	font-size: 1.7em;
+}
+
+td.x {
+	width:65px;
 }
 
 .add_guest_form {
