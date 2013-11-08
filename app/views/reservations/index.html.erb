@@ -26,7 +26,7 @@
       <td><%= link_to 'X', reservation_path(reservation), method: 'delete', action: 'destroy', class: 'delete hidden' %></td>
       <td><%= reservation.name %></td>
       <td><span class="party-size" data-id="<%= reservation.id %>"><%= reservation.party_size %></span></td>
-      <td><%= reservation.phone_number %></td>
+      <td><%= reservation.phone_number.phony_formatted(normalize: :US, format: :national, spaces: '-') %></td>
       <td><%= reservation.wait_time %></td>
       <tr>
     <% end %>
