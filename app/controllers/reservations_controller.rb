@@ -1,7 +1,7 @@
 class ReservationsController < ApplicationController
 
 	def index
-    @reservations = Reservation.all
+    @reservations = Reservation.order(:wait_time)
     @reservation = Reservation.new
 	end
 
