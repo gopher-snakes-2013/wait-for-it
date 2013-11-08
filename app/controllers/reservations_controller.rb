@@ -10,7 +10,7 @@ class ReservationsController < ApplicationController
     if @reservation.save
       redirect_to root_path
     else
-      flash[:error] = "nope"
+      flash[:error] = "Try Again."
       redirect_to root_path
     end
 	end
