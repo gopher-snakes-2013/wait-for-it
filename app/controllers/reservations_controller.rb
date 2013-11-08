@@ -17,8 +17,12 @@ class ReservationsController < ApplicationController
 
   def update
   	@reservation = Reservation.find(params[:id])
-  	@reservation.update_attribute(params[:reservation])
-  	redirect_to root_path
+  	if @reservation.update_attributes(params[:reservation])
+    	redirect_to root_path
+    else
+      flash[:error] = "Try Updating Again."
+      redirect_to root_path
+    end
   end
 
   def destroy
