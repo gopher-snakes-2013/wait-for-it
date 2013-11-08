@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe ReservationsController do
 	let!(:reservation) {
-		Reservation.create name: 'George', party_size: 4, phone_number: '555-555-5555'
+		Reservation.create name: 'George', party_size: 4, phone_number: '555-555-5555', wait_time: 10
 	}
 	
 	describe '#update' do
