@@ -11,15 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131107203543) do
+ActiveRecord::Schema.define(:version => 20131108223440) do
 
   create_table "reservations", :force => true do |t|
     t.string   "name"
     t.integer  "party_size"
     t.string   "phone_number"
     t.integer  "wait_time"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.datetime "estimated_seat_time"
   end
 
 end

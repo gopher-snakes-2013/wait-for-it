@@ -8,7 +8,7 @@ class Reservation < ActiveRecord::Base
 	validates_plausible_phone :phone_number, :presence => true
 	validates_plausible_phone :phone_number, :country_code => '1'
 
-  before_save :add_plus_phone_number
+  before_save :add_plus_phone_number, :calculate_seat_time
   after_create :send_text_upon_new_reservation
 
   def add_plus_phone_number
@@ -18,5 +18,9 @@ class Reservation < ActiveRecord::Base
   def send_text_upon_new_reservation
     TwilioHelper.send_on_waitlist(self.phone_number,
       "Hi #{self.name}, you've been added to the waitlist. Your wait is approximately #{self.wait_time} minutes.")
+  end
+
+  def calculate_seat_time
+    
   end
 end
