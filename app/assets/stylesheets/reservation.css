@@ -99,6 +99,19 @@ input.updated-party-size {
 	font-weight: bold;
 }
 
+.delete {
+	text-decoration: none;
+	border: 2px solid; 
+	color: #21A88A;
+  -webkit-border-radius: 78%;
+  padding: 4px;
+  overflow: hidden;
+}
+
+.delete:hover {
+	color: #2EC6A4;
+}
+
 .hidden {
 	display:none;
 }

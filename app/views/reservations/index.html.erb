@@ -23,7 +23,7 @@
     </div>
     <% @reservations.each do |reservation| %>
       <tr class="rezzy" data-id="<%= reservation.id %>">
-      <td><%= link_to 'x', reservation_path(reservation), method: 'delete', action: 'destroy', class: 'delete hidden' %></td>
+      <td><%= link_to 'X', reservation_path(reservation), method: 'delete', action: 'destroy', class: 'delete hidden' %></td>
       <td><%= reservation.name %></td>
       <td><span class="party-size" data-id="<%= reservation.id %>"><%= reservation.party_size %></span></td>
       <td><%= reservation.phone_number %></td>
