@@ -2,7 +2,7 @@ html {
 	background-color: #F5F7F7;
 }
 
-h1 {
+h1#title {
 	display: block;
 	font-size: 50px;
 	text-align: center;
