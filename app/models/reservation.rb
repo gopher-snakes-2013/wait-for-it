@@ -18,6 +18,7 @@ class Reservation < ActiveRecord::Base
   end
 
   def send_added_to_waitlist_message
-    @message = Message.create(:phone_number => self.phone_number)
+    @reservation = Reservation.where("phone_number = ?", self.phone_number).last
+    @message = @reservation.messages.create(:phone_number => self.phone_number)
   end
 end

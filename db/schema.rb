@@ -15,9 +15,9 @@ ActiveRecord::Schema.define(:version => 20131108010924) do
 
   create_table "messages", :force => true do |t|
     t.string   "phone_number"
-    t.integer  "restaurant_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.integer  "reservation_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "reservations", :force => true do |t|

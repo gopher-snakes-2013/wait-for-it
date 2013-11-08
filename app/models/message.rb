@@ -1,6 +1,6 @@
 class Message < ActiveRecord::Base
   after_create :send_on_waitlist
-  attr_accessible :phone_number, :reservation_id
+  attr_accessible :phone_number
   belongs_to :reservation
 
 
