@@ -1,0 +1,11 @@
+html {
+	background-color: #FFFEEE;
+}
+
+h1 {
+	display: block;
+	font-size: 50px;
+	text-align: center;
+	font-family: 'Crete Round', serif;
+	color: #002B30;
+}
