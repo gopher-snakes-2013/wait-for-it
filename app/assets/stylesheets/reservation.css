@@ -42,18 +42,23 @@ table {
 th {
 	font-weight: bold;
 	height: 2em;
-	font-size: 2em;
+	font-size: 1.3em;
 }
 
 td {
+	font-weight: bold;
 	height: 2em;
-	font-size: 1em;
+	font-size: 1.7em;
 }
 
 .add_guest_form {
 	margin: auto;
 	display: block;
 	text-align: center;
+}
+
+div.error-message {
+	margin:1em;
 }
 
 input {
@@ -81,4 +86,8 @@ input.updated-party-size {
 	border-color: #F74C0A;
 	font-family: Raleway;
 	font-weight: bold;
+}
+
+.hidden {
+	display:none;
 }
