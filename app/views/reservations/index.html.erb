@@ -1,6 +1,21 @@
-<h1>index page</h1>
 
-<%= form_for @reservation, html: { class: "hidden" } do |f| %>
-  <%= f.text_area :content, :rows => 5, :cols => 100 %>
-  <%= f.submit "Submit" %>
+<table border='1'>
+<tr>
+  <th>name</th>
+  <th>party size</th>
+  <th>phone number</th>
+  <th>wait time</th>
+</tr>
+<% @reservations.each do |reservation| %>
+  <tr>
+  <td><%= reservation.name %></td>
+  <td><%= reservation.party_size %></td>
+  <td><%= reservation.phone_number %></td>
+  <td><%= reservation.wait_time %></td>
+  <tr>
 <% end %>
+</table>
+
+<%= render "reservations/form" %>
+
+<%= flash[:error] %>

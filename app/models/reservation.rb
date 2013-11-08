@@ -1,7 +1,6 @@
 class Reservation < ActiveRecord::Base
 
-	attr_accessible :name, :party_size, :phone_number
-
+  attr_accessible :name, :party_size, :phone_number, :wait_time
 
 	validates_presence_of :name, :party_size
 	validates_numericality_of :party_size
