@@ -9,8 +9,15 @@ class Reservation < ActiveRecord::Base
 	validates_plausible_phone :phone_number, :country_code => '1'
 
   before_save :add_plus_phone_number
+  after_create :send_added_to_waitlist_message
+
+  has_many :messages
 
   def add_plus_phone_number
     self.phone_number = "+" + self.phone_number
+  end
+
+  def send_added_to_waitlist_message
+    @message = Message.create(:phone_number => self.phone_number)
   end
 end

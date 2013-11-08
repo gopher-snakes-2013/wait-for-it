@@ -4,6 +4,8 @@ gem 'rails', '3.2.11'
 
 gem 'pg'
 gem 'phony_rails'
+gem 'twilio-ruby'
+gem 'dotenv-rails'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
