@@ -1,19 +1,31 @@
 html {
 	background-color: #F5F7F7;
+	font-size: 16px;
 }
 
-h1#title {
-	display: block;
-	font-size: 50px;
+.main {
+	position: relative;
+}
+
+p#title1 {
+	position: absolute;
+	top: -1em;
+	left: 7.3em;
+	font-family: 'Lobster', cursive;
+	font-size: 2.5em;
 	text-align: center;
+	-webkit-transform: rotate(-20deg);
+	color: #2EC6A4;
+}
+
+p#title2 {
 	font-family: 'Crete Round', serif;
-	color: #142837;
+	font-size: 3.1em;
 }
 
 body {
 	font-family: Raleway;
 	margin: 0 auto;
-	font-size: 16px;
   color: #142837;
 }
 
@@ -23,7 +35,6 @@ body {
 }
 
 div.table {
-	postion: relative;
 	width: 55em;
 	padding-top: 2em;
 	text-align: center;
@@ -67,10 +78,10 @@ input {
 }
 
 .submit_button {
-	background-color: #F74C0A;
+	background-color: #FF4E51;
 	color: #142837;
 	border-radius: 10px;
-	border-color: #F74C0A;
+	border-color: #FF4E51;
 	font-family: Raleway;
 	font-weight: bold;
 }

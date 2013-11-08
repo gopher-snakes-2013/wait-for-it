@@ -1,28 +1,31 @@
-<h1 id="title">Wait For It</h1>
+<div class="main">
+	<p id="title1">don't</p>
+	<p id="title2">Wait For It</p>
+</div>
 
 <%= render "reservations/form" %>
 
 <%= flash[:error] %>
 
 <div class="table">
-  <table>
-    <div class="table-headers">
-      <tr>
-        <th>name</th>
-        <th>party size</th>
-        <th>phone number</th>
-        <th>wait time</th>
-        <th></th>
-      </tr>
-    </div>
-    <% @reservations.each do |reservation| %>
-      <tr>
-      <td><%= reservation.name %></td>
-      <td><%= reservation.party_size %></td>
-      <td><%= reservation.phone_number %></td>
-      <td><%= reservation.wait_time %></td>
-      <td><%= link_to 'delete', reservation_path(reservation), method: 'delete', action: 'destroy' %></td>
-      <tr>
-    <% end %>
-  </table>
-</div>
+	<table>
+		<div class="table-headers">
+			<tr>
+				<th>name</th>
+				<th>party size</th>
+				<th>phone number</th>
+				<th>wait time</th>
+				<th></th>
+			</tr>
+		</div>
+		<% @reservations.each do |reservation| %>
+		<tr>
+			<td><%= reservation.name %></td>
+			<td><%= reservation.party_size %></td>
+			<td><%= reservation.phone_number %></td>
+			<td><%= reservation.wait_time %></td>
+			<td><%= link_to 'delete', reservation_path(reservation), method: 'delete', action: 'destroy' %></td>
+			<tr>
+				<% end %>
+			</table>
+		</div>
