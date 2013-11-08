@@ -4,6 +4,7 @@ WaitForIt::Application.routes.draw do
 
   resources :restaurants, only: [:new, :create, :index]
 
+  resources :sessions, only:[:new, :create, :destroy]
 end
   # The priority is based upon order of creation:
   # first created -> highest priority.
