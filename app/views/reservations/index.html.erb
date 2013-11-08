@@ -2,12 +2,15 @@
 
 <%= render "reservations/form" %>
 
-<%= flash[:error] %>
+<div class="error-message">
+  <%= flash[:error] %>
+</div>
 
 <div class="table">
   <table>
     <div class="table-headers">
       <tr>
+        <th></th>
         <th>name</th>
         <th>party size</th>
         <th>phone number</th>
@@ -16,12 +19,12 @@
       </tr>
     </div>
     <% @reservations.each do |reservation| %>
-      <tr>
+      <tr class="rezzy" data-id="<%= reservation.id %>">
+      <td><%= link_to 'x', reservation_path(reservation), method: 'delete', action: 'destroy', class: 'delete hidden' %></td>
       <td><%= reservation.name %></td>
-      <td><%= reservation.party_size %></td>
+      <td><span class="party-size" data-id="<%= reservation.id %>"><%= reservation.party_size %></span></td>
       <td><%= reservation.phone_number %></td>
       <td><%= reservation.wait_time %></td>
-      <td><%= link_to 'delete', reservation_path(reservation), method: 'delete', action: 'destroy' %></td>
       <tr>
     <% end %>
   </table>

@@ -42,12 +42,13 @@ table {
 th {
 	font-weight: bold;
 	height: 2em;
-	font-size: 2em;
+	font-size: 1.3em;
 }
 
 td {
+	font-weight: bold;
 	height: 2em;
-	font-size: 1em;
+	font-size: 1.7em;
 }
 
 .add_guest_form {
@@ -56,9 +57,21 @@ td {
 	text-align: center;
 }
 
+div.error-message {
+	margin:1em;
+}
+
 input {
 	font-family: Raleway;
 	border-radius: 5px;
+	padding:4px;
+	font-size: .8em;
+}
+
+input.updated-party-size {
+	text-align: center;
+	font-size: 1em;
+	width:25%;
 }
 
 .form_fields {
@@ -73,4 +86,8 @@ input {
 	border-color: #F74C0A;
 	font-family: Raleway;
 	font-weight: bold;
+}
+
+.hidden {
+	display:none;
 }
