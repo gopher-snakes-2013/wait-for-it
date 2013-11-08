@@ -1,0 +1,76 @@
+html {
+	background-color: #F5F7F7;
+}
+
+h1#title {
+	display: block;
+	font-size: 50px;
+	text-align: center;
+	font-family: 'Crete Round', serif;
+	color: #142837;
+}
+
+body {
+	font-family: Raleway;
+	margin: 0 auto;
+	font-size: 16px;
+  color: #142837;
+}
+
+#container {
+	text-align: center;
+	margin: 2em;
+}
+
+div.table {
+	postion: relative;
+	width: 55em;
+	padding-top: 2em;
+	text-align: center;
+	margin: 0 auto;
+}
+
+div.table-headers {
+	width: 100%;
+}
+
+table {
+	margin: 0 auto;
+	width: 100%;
+}
+
+th {
+	font-weight: bold;
+	height: 2em;
+	font-size: 2em;
+}
+
+td {
+	height: 2em;
+	font-size: 1em;
+}
+
+.add_guest_form {
+	margin: auto;
+	display: block;
+	text-align: center;
+}
+
+input {
+	font-family: Raleway;
+	border-radius: 5px;
+}
+
+.form_fields {
+	font-family: Raleway;
+	border-radius: 10px;
+}
+
+.submit_button {
+	background-color: #F74C0A;
+	color: #142837;
+	border-radius: 10px;
+	border-color: #F74C0A;
+	font-family: Raleway;
+	font-weight: bold;
+}
