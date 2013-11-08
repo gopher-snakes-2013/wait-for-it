@@ -6,20 +6,18 @@
 
 <div class="table">
   <table>
-    <div class="table-headers">
-      <tr>
-        <th>name</th>
-        <th>party size</th>
-        <th>phone number</th>
-        <th>wait time</th>
-      </tr>
-    </div>
+    <tr>
+      <th>name</th>
+      <th>party size</th>
+      <th>phone number</th>
+      <th>wait time</th>
+    </tr>
     <% @reservations.each do |reservation| %>
       <tr>
-      <td><%= reservation.name %></td>
-      <td><%= reservation.party_size %></td>
-      <td><%= reservation.phone_number %></td>
-      <td><%= reservation.wait_time %></td>
+        <td><%= reservation.name %></td>
+        <td class="focus"><span class="party-size" data-id="<%= reservation.id %>"><%= reservation.party_size %></span></td>
+        <td><%= reservation.phone_number %></td>
+        <td><%= reservation.wait_time %></td>
       <tr>
     <% end %>
   </table>
