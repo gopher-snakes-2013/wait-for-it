@@ -67,9 +67,10 @@ input {
 }
 
 .submit_button {
-	background-color: #2EC6A4;
+	background-color: #F74C0A;
 	color: #142837;
-	border-radius: 15px;
-	border-color: #2EC6A4;
+	border-radius: 10px;
+	border-color: #F74C0A;
 	font-family: Raleway;
+	font-weight: bold;
 }
