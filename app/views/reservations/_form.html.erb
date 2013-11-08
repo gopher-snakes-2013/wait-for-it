@@ -1,7 +1,9 @@
+<div class="add_guest_form">
 <%= form_for @reservation do |f| %>
-  <%= f.text_field :name, placeholder: "name" %>
-  <%= f.text_field :party_size, placeholder: "party size" %>
-  <%= f.text_field :phone_number, placeholder: "phone number" %>
-  <%= f.text_field :wait_time, placeholder: "wait time" %>
-  <%= f.submit %>
+  <%= f.text_field :name, placeholder: "Name"%>
+  <%= f.text_field :party_size, placeholder: "Party Size"%>
+  <%= f.text_field :phone_number, placeholder: "Phone Number"%>
+  <%= f.text_field :wait_time, placeholder: "Wait Time"	%>
+  <%= f.submit :class => 'submit_button'%>
 <% end %>
+</div>

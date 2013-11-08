@@ -1,4 +1,4 @@
-<h1>Wait For It</h1>
+<h1 id="title">Wait For It</h1>
 
 <%= render "reservations/form" %>
 
@@ -6,18 +6,22 @@
 
 <div class="table">
   <table>
-    <tr>
-      <th>name</th>
-      <th>party size</th>
-      <th>phone number</th>
-      <th>wait time</th>
-    </tr>
+    <div class="table-headers">
+      <tr>
+        <th>name</th>
+        <th>party size</th>
+        <th>phone number</th>
+        <th>wait time</th>
+        <th></th>
+      </tr>
+    </div>
     <% @reservations.each do |reservation| %>
       <tr>
-        <td><%= reservation.name %></td>
-        <td class="focus"><span class="party-size" data-id="<%= reservation.id %>"><%= reservation.party_size %></span></td>
-        <td><%= reservation.phone_number %></td>
-        <td><%= reservation.wait_time %></td>
+      <td><%= reservation.name %></td>
+      <td><span class="party-size" data-id="<%= reservation.id %>"><%= reservation.party_size %></span></td>
+      <td><%= reservation.phone_number %></td>
+      <td><%= reservation.wait_time %></td>
+      <td><%= link_to 'delete', reservation_path(reservation), method: 'delete', action: 'destroy' %></td>
       <tr>
     <% end %>
   </table>
