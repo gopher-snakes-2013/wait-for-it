@@ -4,12 +4,12 @@ var reservationActions = {
     $("#new_reservation").on("ajax:error", this.errorMessage);
 
     $(".party-size").on("click", this.update);
-    $(".rezzy").on("mouseenter", this.showDelete);
-    $(".rezzy").on("mouseleave", this.hideDelete);
+    $(".reservation").on("mouseenter", this.showDelete);
+    $(".reservation").on("mouseleave", this.hideDelete);
   },
 
   addReservation: function(e, reservationPartial) {
-    $(".reservation-list").append(reservationPartial);
+    $("table").append(reservationPartial);
 
     $("#reservation_name").val("");
     $("#reservation_party_size").val("");
@@ -48,27 +48,24 @@ var timeToWait = {
   countdown: function() {
     if (waitTime > 1) {
       waitTime = waitTime -1;
-      $(".rezzy").last().find(".wait-time").html(waitTime);
+      $(".reservation").last().find(".wait-time").html(waitTime);
     } else {
+      waitTime = waitTime -1;
+      $(".reservation").last().find(".wait-time").html(waitTime);
       clearInterval(interval);
-      $(".rezzy").last().find(".times-up").html("done");
+      $(".reservation").last().find(".times-up").html("x");
     }
   },
 
-  startInterval: function() {
-    waitTime = $("#reservation_wait_time").val();
-    $(".wait-time").html(waitTime);
+  getWaitTime: function() {
+    var waitTime = $("#reservation_wait_time").val();
+    return waitTime;
+  },
 
+  startInterval: function() {
+    waitTime = timeToWait.getWaitTime();
     interval = setInterval(function(){ timeToWait.countdown() }, 60000);
   }
-
-    // want to get the wait time... $("#reservation_wait_time").val()
-    // initialize countdown and have it update the wait time on the screen
-
-    // how to tie into the database...
-    // get a json object from ajax that poops the reservation on the screen without reload,
-    // tie in the javascript function to the wait_time held in the database?
-    // have it update on the screen?
 };
 
 $(document).ready(function(){
