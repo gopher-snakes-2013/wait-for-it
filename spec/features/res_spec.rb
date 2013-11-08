@@ -13,8 +13,8 @@ feature "Homepage" do
   context "user submits a valid reservation" do
     before(:each) do
       fill_in("reservation[name]", with: "Paul")
-      fill_in("reservation[party_size]", with: 2)
-      fill_in("reservation[phone_number]", with: "8581000000")
+      fill_in("reservation_party_size", with: 2)
+      fill_in("reservation[phone_number]", with: "555-555-5555")
       fill_in("reservation[wait_time]", with: 10)
       click_on("Create Reservation")
     end
@@ -42,17 +42,19 @@ feature "Homepage" do
     end
   end
 
-  context "user attempts to delete a reservation" do
+  context "user deletes a reservation" do
     before(:each) do
       fill_in("reservation[name]", with: "Paul")
-      fill_in("reservation[party_size]", with: 2)
-      fill_in("reservation[phone_number]", with: "8581000000")
+      fill_in("reservation_party_size", with: 4)
+      fill_in("reservation[phone_number]", with: "555-555-5555")
       fill_in("reservation[wait_time]", with: 10)
       click_on("Create Reservation")
-      click_on('delete')
     end
-    scenario "user deletes an existing reservation" do
+
+    scenario "it's removed from the page" do
+      click_on('delete')
       page.should_not have_content("Paul")
     end
   end
+
 end

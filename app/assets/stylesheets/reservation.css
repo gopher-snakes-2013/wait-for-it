@@ -59,6 +59,14 @@ td {
 input {
 	font-family: Raleway;
 	border-radius: 5px;
+	padding:4px;
+	font-size: .8em;
+}
+
+input.updated-party-size {
+	text-align: center;
+	font-size: 1em;
+	width:25%;
 }
 
 .form_fields {
