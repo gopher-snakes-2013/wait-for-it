@@ -5,23 +5,40 @@ feature "Homepage" do
     visit root_path
   end
 
-  scenario "user can see visit home page" do
+  scenario "user visits home page" do
     expect(current_path).to eq(root_path)
+    expect(page).to have_content("Wait For It")
   end
 
-  scenario "user can create a new reservation" do
-    fill_in("reservation[name]", with: "Paul")
-    fill_in("reservation[party_size]", with: 2)
-    fill_in("reservation[phone_number]", with: "8581000000")
-    fill_in("reservation[wait_time]", with: 10)
-    click_on("Create Reservation")
+  context "user submits a valid reservation" do
+    before(:each) do
+      fill_in("reservation[name]", with: "Paul")
+      fill_in("reservation[party_size]", with: 2)
+      fill_in("reservation[phone_number]", with: "8581000000")
+      fill_in("reservation[wait_time]", with: 10)
+      click_on("Create Reservation")
+    end
 
-    expect(page).to have_content("Paul")
+    scenario "the new reservation is created" do
+      expect(page).to have_content("Paul")
+    end
+
+    scenario "page redirects to home" do
+      expect(current_path).to eq(root_path)
+    end
   end
 
-  scenario "user sees an error message when reservation was not created" do
-    click_on("Create Reservation")
+  context "user submits an invalid reservation" do
+    before(:each) do
+      click_on("Create Reservation")
+    end
 
-    expect(page).to have_content("Try Again.")
+    scenario "user sees an error message" do
+      expect(page).to have_content("Try Again.")
+    end
+
+    scenario "is redirected to home" do
+      expect(current_path).to eq(root_path)
+    end
   end
 end
