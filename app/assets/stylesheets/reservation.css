@@ -24,7 +24,7 @@ body {
 
 #title1 {
 	color: #2EC6A4;
-	display: block;
+	display: inline-block;
 	font-family: 'Lobster', cursive;
 	font-size: 2.5em;
 	position: relative;
