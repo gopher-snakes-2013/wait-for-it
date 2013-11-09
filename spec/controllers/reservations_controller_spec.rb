@@ -2,29 +2,31 @@ require 'spec_helper'
 
 describe ReservationsController do
   before(:each) do
-    @test_restaurant = Restaurant.create(name: "Sourdough Kitchen", email: "sour@kitchen.com", password: "password", password_confirmation: "password")
+    @restaurant = Restaurant.create(name: "Sourdough Kitchen", email: "sour@kitchen.com", password: "password", password_confirmation: "password")
+    @reservation = @restaurant.reservations.new
+    @reservation.name = "George"
+    @reservation.party_size = 4
+    @reservation.phone_number = "555-555-5555"
+    @reservation.wait_time = 10
+    @reservation.save
   end
 
-	let!(:reservation) {
-		Reservation.create name: 'George', party_size: 4, phone_number: '555-555-5555', wait_time: 10
-	}
-
-	context '#update' do
-		it 'should result in an updated name field' do
-			put :update, id: reservation.id, reservation: {name: 'john'}
-			expect(Reservation.find(reservation.id).name).to eq('john')
-		end
-	end
-
-	context '#destroy' do
-		it 'should delete specified record' do
-			expect { delete :destroy, id: reservation.id }.to change { Reservation.count }.by(-1)
-		end
-	end
-
   it "#index" do
-    get :index
-    response.status.should eq(200)
+    get :index, { restaurant_id: @restaurant.id }
+    response.status.should render_template(:index)
+  end
+
+  context "#update" do
+    it "should result in an updated name field" do
+      put :update, id: reservation.id, reservation: {name: "john"}
+      expect(Reservation.find(reservation.id).name).to eq("john")
+    end
+  end
+
+  context "#destroy" do
+    it "should delete specified record" do
+      expect { delete :destroy, id: reservation.id }.to change { Reservation.count }.by(-1)
+    end
   end
 
   context "#create" do

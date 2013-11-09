@@ -9,9 +9,9 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    @restaurant = Restaurant.new(params[:restaurant])
-    if @restaurant.save
-      session[:restaurant_id] = @restaurant.id
+    restaurant = Restaurant.new(params[:restaurant])
+    if restaurant.save
+      session[:restaurant_id] = restaurant.id
       redirect_to restaurant_reservations_path(session[:restaurant_id])
     else
       flash[:error] = "Try Again!"

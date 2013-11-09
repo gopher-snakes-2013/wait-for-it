@@ -5,6 +5,7 @@ class ReservationsController < ApplicationController
       @restaurant = Restaurant.find(current_restaurant.id)
       @reservations = Reservation.where(restaurant_id: @restaurant.id)
       @reservation = @restaurant.reservations.new
+      render :index
     else
       redirect_to root_path
     end
