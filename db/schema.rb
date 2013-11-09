@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20131109002619) do
     t.integer  "wait_time"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
+    t.datetime "estimated_seat_time"
     t.boolean  "notified_table_ready"
   end
 

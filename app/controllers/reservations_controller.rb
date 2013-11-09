@@ -8,10 +8,9 @@ class ReservationsController < ApplicationController
 	def create
     @reservation = Reservation.new(params[:reservation])
     if @reservation.save
-      redirect_to root_path
+      render text: render_to_string(partial: 'reservations/new', layout: false, locals: { reservation: @reservation })
     else
-      flash[:error] = "Try Again."
-      redirect_to root_path
+      render status: :unprocessable_entity, json: { error_message: "Try Again." }.to_json
     end
 	end
 

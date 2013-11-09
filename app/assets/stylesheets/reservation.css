@@ -1,4 +1,5 @@
 /******** Basic Elements ********/
+
 html {
 	background-color: #F5F7F7;
 	font-size: 16px;
@@ -20,6 +21,7 @@ body {
 }
 
 /******** Title *******/
+
 #title1 {
 	color: #2EC6A4;
 	font-family: 'Lobster', cursive;
@@ -37,6 +39,7 @@ body {
 }
 
 /****** Reservation Form *******/
+
 .add_guest_form {
 	display: block;
 	margin: auto;
@@ -110,6 +113,27 @@ td {
 	font-size: 1.7em;
 	font-weight: bold;
 	height: 2em;
+}
+
+td.x {
+	width:65px;
+}
+
+.add_guest_form {
+	margin: auto;
+	display: block;
+	text-align: center;
+}
+
+div.error-message {
+	margin:1em;
+}
+
+input {
+	font-family: Raleway;
+	border-radius: 5px;
+	padding:4px;
+	font-size: .8em;
 }
 
 tbody tr:hover {
