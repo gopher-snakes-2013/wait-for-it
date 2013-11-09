@@ -8,11 +8,15 @@ class Reservation < ActiveRecord::Base
 	validates_plausible_phone :phone_number, :presence => true
 	validates_plausible_phone :phone_number, :country_code => '1'
 
-  before_save :add_plus_phone_number
+  before_save :add_plus_phone_number, :set_notified_table_ready
   after_create :send_text_upon_new_reservation
 
   def add_plus_phone_number
     self.phone_number = "+" + self.phone_number
+  end
+
+  def set_notified_table_ready
+    self.notified_table_ready = false
   end
 
   def send_text_upon_new_reservation
