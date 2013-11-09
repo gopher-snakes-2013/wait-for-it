@@ -5,6 +5,6 @@ WaitForIt::Application.routes.draw do
 
   resources :restaurants, only: [:new, :create, :index]
 
-  resources :sessions, only:[:new, :create, :destroy]
+  resources :sessions, only:[:create, :destroy]
 
 end

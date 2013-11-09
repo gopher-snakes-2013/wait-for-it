@@ -1,8 +1,5 @@
 class SessionsController < ApplicationController
 
-	def new
-	end
-
 	def create
 		restaurant = Restaurant.find_by_email(params[:email])
 		if restaurant && restaurant.authenticate(params[:password]) 
@@ -15,7 +12,7 @@ class SessionsController < ApplicationController
 	end
 
 	def destroy
-		session[:restaurant_id] = nil
+		session.clear
 		redirect_to restaurants_path
 	end
 
