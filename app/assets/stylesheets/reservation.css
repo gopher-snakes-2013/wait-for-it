@@ -1,65 +1,122 @@
+/******** Basic Elements ********/
+
 html {
 	background-color: #F5F7F7;
 	font-size: 16px;
 }
 
-.main {
+#container {
+	margin: 2em;
+	text-align: center;
+}
+
+body {
+  color: #142837;
+	font-family: Raleway;
+	margin: 0 auto;
+}
+
+#main {
 	position: relative;
 }
 
-p#title1 {
-	position: absolute;
-	top: -1em;
-	left: 7.3em;
+/******** Title *******/
+
+#title1 {
+	color: #2EC6A4;
 	font-family: 'Lobster', cursive;
 	font-size: 2.5em;
+	position: relative;
+	right: 4.7em;
 	text-align: center;
+	top: 2em;
 	-webkit-transform: rotate(-20deg);
-	color: #2EC6A4;
 }
 
-p#title2 {
+#title2 {
 	font-family: 'Crete Round', serif;
 	font-size: 3.1em;
 }
 
-body {
-	font-family: Raleway;
-	margin: 0 auto;
-  color: #142837;
+/****** Reservation Form *******/
+
+.add_guest_form {
+	display: block;
+	margin: auto;
+	text-align: center;
 }
 
-#container {
-	text-align: center;
-	margin: 2em;
+
+input {
+	border-radius: 5px;
+	font-family: Raleway;
+	font-size: .8em;
+	padding:4px;
 }
+
+input.updated-party-size {
+	font-size: 1em;
+	text-align: center;
+	width:25%;
+}
+
+.form_fields {
+	border-radius: 10px;
+	font-family: Raleway;
+}
+
+.submit_button {
+	background-color: #FF4E51;
+	border-color: #FF4E51;
+	border-radius: 10px;
+	color: #142837;
+	font-family: Raleway;
+	font-weight: bold;
+}
+
+div.error-message {
+	margin:1em;
+}
+
+/******* Reservation Table *****/
 
 div.table {
-	width: 55em;
+	margin: 0 auto;
 	padding-top: 2em;
 	text-align: center;
-	margin: 0 auto;
+	width: 75em;
 }
 
-div.table-headers {
+.table-headers {
 	width: 100%;
 }
 
 table {
-	margin: 0 auto;
+	border: 1px solid #eee;
+	border-collapse: collapse;
+	border-bottom: 2px solid #00cccc;
+	box-shadow: 0px 0px 20px rgba(0,0,0,0.10),
+		0px 10px 20px rgba(0,0,0,0.05),
+		0px 20px 20px rgba(0,0,0,0.05),
+		0px 30px 30px rgba(0,0,0,0.05);
+	margin: 25px auto;
 	width: 100%;
 }
 
 th {
+	font-size: 1.3em;
 	font-weight: bold;
 	height: 2em;
-	font-size: 1.3em;
 }
 
 td {
+	font-size: 1.7em;
 	font-weight: bold;
 	height: 2em;
-	font-size: 1.7em;
+}
+
+td.x {
+	width:65px;
 }
 
 .add_guest_form {
@@ -79,33 +136,19 @@ input {
 	font-size: .8em;
 }
 
-input.updated-party-size {
-	text-align: center;
-	font-size: 1em;
-	width:25%;
-}
-
-.form_fields {
-	font-family: Raleway;
-	border-radius: 10px;
-}
-
-.submit_button {
-	background-color: #FF4E51;
-	color: #142837;
-	border-radius: 10px;
-	border-color: #FF4E51;
-	font-family: Raleway;
-	font-weight: bold;
+tbody tr:hover {
+  background-color: #A4E1FF;
+  outline-color: #223442;
+  /*transition: 0.5s;*/
 }
 
 .delete {
-	text-decoration: none;
-	border: 2px solid; 
+	border: 2px solid;
 	color: #21A88A;
-  -webkit-border-radius: 78%;
-  padding: 4px;
   overflow: hidden;
+  padding: 4px;
+	text-decoration: none;
+  -webkit-border-radius: 78%;
 }
 
 .delete:hover {
@@ -114,4 +157,20 @@ input.updated-party-size {
 
 .hidden {
 	display:none;
+}
+
+button.message-ready {
+  display: inline-block;
+  border-radius: 4px;
+  width: 48px;
+  height: 48px;
+  background: url(messages-icon.png) no-repeat;
+}
+
+button.ready-message-sent{
+   display: inline-block;
+  border-radius: 4px;
+  width: 48px;
+  height: 48px;
+  background: url(Button-Ok-icon.png) no-repeat; 
 }

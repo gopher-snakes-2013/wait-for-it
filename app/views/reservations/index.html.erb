@@ -6,25 +6,20 @@
 </div>
 
 <div class="table">
-  <table>
-    <div class="table-headers">
-      <tr>
-        <th></th>
-        <th>name</th>
-        <th>party size</th>
-        <th>phone number</th>
-        <th>wait time</th>
-        <th></th>
-      </tr>
-    </div>
+<table>
+  <thead class="table-headers">
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Party Size</th>
+      <th>Phone Number</th>
+      <th>Wait Time</th>
+    </tr>
+  </thead>
+  <tbody>
     <% @reservations.each do |reservation| %>
-      <tr class="rezzy" data-id="<%= reservation.id %>">
-      <td><%= link_to 'X', reservation_path(reservation), method: 'delete', action: 'destroy', class: 'delete hidden' %></td>
-      <td><%= reservation.name %></td>
-      <td><span class="party-size" data-id="<%= reservation.id %>"><%= reservation.party_size %></span></td>
-      <td><%= reservation.phone_number %></td>
-      <td><%= reservation.wait_time %></td>
-      <tr>
+      <%= render partial: "reservations/new", locals: { reservation: reservation } %>
     <% end %>
-  </table>
+  </tbody>
+</table>
 </div>

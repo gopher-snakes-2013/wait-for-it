@@ -1,5 +1,5 @@
 <div class="add_guest_form">
-<%= form_for @reservation do |f| %>
+<%= form_for @reservation, remote: true do |f| %>
   <%= f.text_field :name, placeholder: "Name"%>
   <%= f.text_field :party_size, placeholder: "Party Size"%>
   <%= f.text_field :phone_number, placeholder: "Phone Number"%>
