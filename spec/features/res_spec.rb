@@ -22,10 +22,6 @@ feature "Homepage" do
     scenario "the new reservation is created" do
       expect(page).to have_content("Paul")
     end
-
-    scenario "page redirects to home" do
-      expect(current_path).to eq(root_path)
-    end
   end
 
   context "user submits an invalid reservation" do
@@ -35,10 +31,6 @@ feature "Homepage" do
 
     scenario "user sees an error message" do
       expect(page).to have_content("Try Again.")
-    end
-
-    scenario "is redirected to home" do
-      expect(current_path).to eq(root_path)
     end
   end
 end

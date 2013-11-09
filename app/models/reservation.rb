@@ -1,5 +1,5 @@
 class Reservation < ActiveRecord::Base
-  attr_accessible :name, :party_size, :phone_number, :wait_time
+  attr_accessible :name, :party_size, :phone_number, :wait_time, :estimated_seat_time
 
 	validates_presence_of :name, :party_size
 	validates_numericality_of :party_size, :wait_time
@@ -10,11 +10,11 @@ class Reservation < ActiveRecord::Base
 
   before_save :add_plus_phone_number
   after_create :send_text_upon_new_reservation
+  belongs_to :restaurant
 
   def add_plus_phone_number
     self.phone_number = "+" + self.phone_number
   end
-
 
   def send_text_upon_new_reservation
     TwilioHelper.send_on_waitlist(self.phone_number,

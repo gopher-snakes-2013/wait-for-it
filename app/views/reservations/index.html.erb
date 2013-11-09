@@ -1,8 +1,4 @@
-<div id="main">
-	<span id="title1">don't</span>
-	<h1 id="title2">Wait For It</h1>
-</div>
-
+<%= render "restaurants/logout" %>
 <%= render "reservations/form" %>
 
 <div class="error-message">
@@ -13,31 +9,17 @@
   <table>
     <thead class="table-headers">
       <tr>
+        <th></th>
         <th>Name</th>
         <th>Party Size</th>
         <th>Phone Number</th>
         <th>Wait Time</th>
-        <th class="button_column"></th>
       </tr>
     </thead>
     <tbody>
-      <% trash_img = image_tag('trash-bin.png', :class => 'trash') %>
-        <% @reservations.each do |reservation| %>
-        <tr class="rezzy" data-id="<%= reservation.id %>">
-          <td><%= reservation.name %></td>
-          <td><span class="party-size" data-id="<%= reservation.id %>"><%= reservation.party_size %></span></td>
-          <td><%= reservation.phone_number %></td>
-          <td><%= reservation.wait_time %></td>
-          <td><%= link_to trash_img, reservation_path(reservation), method: 'delete', action: 'destroy', class: 'delete hidden' %></td>
-          <td><% if reservation.notified_table_ready %>
-            <button class="ready-message-sent">
-              <% else %>
-              <button class="message-ready">
-                <% end %>
-              </button>
-          </td>
-        <% end %>
-        </tr>
+      <% @reservations.each do |reservation| %>
+      <%= render partial: "reservations/new", locals: { reservation: reservation } %>
+      <% end %>
     </tbody>
   </table>
 </div>

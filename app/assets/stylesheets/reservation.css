@@ -1,4 +1,5 @@
 /******** Basic Elements ********/
+
 html {
 	background-color: #F5F7F7;
 	font-size: 16px;
@@ -20,6 +21,7 @@ body {
 }
 
 /******** Title *******/
+
 #title1 {
 	color: #2EC6A4;
 	display: block;
@@ -38,6 +40,7 @@ body {
 }
 
 /****** Reservation Form *******/
+
 .add_guest_form {
 	display: block;
 	margin: auto;
@@ -112,9 +115,62 @@ td {
 	height: 2.5em;
 }
 
+td.x {
+	width:65px;
+}
+
+.add_guest_form {
+	margin: auto;
+	display: block;
+	text-align: center;
+}
+
+div.error-message {
+	margin:1em;
+}
+
+input {
+	font-family: Raleway;
+	border-radius: 5px;
+	padding:4px;
+	font-size: .8em;
+}
+
 tbody tr:hover {
   background-color: #A4E1FF;
+<<<<<<< HEAD
   -webkit-transition: 1s;
+=======
+  outline-color: #223442;
+  /*transition: 0.5s;*/
+}
+
+input.update {
+	width:3em;
+	text-align: center;
+	font-size:1em;
+}
+
+input.update-name {
+	width:5em;
+}
+
+input.update-phone-number {
+	width:7em;
+}
+
+.delete {
+	border: 2px solid;
+	color: #21A88A;
+  overflow: hidden;
+  padding: 4px;
+	text-decoration: none;
+  -webkit-border-radius: 78%;
+}
+
+.delete:hover {
+	color: #2EC6A4;
+>>>>>>> master
 }
 
 /****** Button Columns ******/
@@ -135,6 +191,7 @@ button.ready-message-sent{
   border: none;
   display: inline-block;
   height: 48px;
+<<<<<<< HEAD
   width: 48px;
 }
 
@@ -145,3 +202,7 @@ button.ready-message-sent{
 	height: 48px;
 	weight: 48px;
 }
+=======
+  background: url(Button-Ok-icon.png) no-repeat; 
+}
+>>>>>>> master
