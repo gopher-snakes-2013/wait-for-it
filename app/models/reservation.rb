@@ -20,4 +20,28 @@ class Reservation < ActiveRecord::Base
     TwilioHelper.send_on_waitlist(self.phone_number,
       "Hi #{self.name}, you've been added to the waitlist. Your wait is approximately #{self.wait_time} minutes.")
   end
+
+  def initial
+    self.name[0].upcase
+  end
+
+  def phone_number_obscured
+    "XXX-X" + self.phone_number.slice(-3,3)
+  end
+
+  def estimated_seating
+    t = self.updated_at.localtime
+    t += self.wait_time * 60
+    if (Time.now <=> t)==-1
+      t.strftime("%I:%Mp")
+    else
+      "soon"
+    end
+  end
+
+  def as_json(options={})
+    {initial: initial,
+    phone_number: phone_number_obscured,
+    estimated_seating: estimated_seating}
+  end
 end
