@@ -1,5 +1,5 @@
 class Reservation < ActiveRecord::Base
-  attr_accessible :name, :party_size, :phone_number, :wait_time
+  attr_accessible :name, :party_size, :phone_number, :wait_time, :estimated_seat_time
 
 	validates_presence_of :name, :party_size
 	validates_numericality_of :party_size, :wait_time
@@ -21,6 +21,14 @@ class Reservation < ActiveRecord::Base
   end
 
   def calculate_seat_time
-    
+    comparison_time = Time.now.to_s
+    seat_time = Time.now.to_s
+
+    comparison_time_minutes = comparison_time[14..15].to_i
+    seat_time_minutes = comparison_time_minutes + self.wait_time
+    seat_time_minutes = seat_time_minutes.to_s
+
+    seat_time[14..15] = seat_time_minutes
+    self.estimated_seat_time = seat_time.to_time
   end
 end
