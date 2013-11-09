@@ -21,17 +21,21 @@
       </tr>
     </thead>
     <tbody>
-      <div class="select_row">
-      <% @reservations.each do |reservation| %>
+        <% @reservations.each do |reservation| %>
         <tr class="rezzy" data-id="<%= reservation.id %>">
           <td><%= reservation.name %></td>
           <td><span class="party-size" data-id="<%= reservation.id %>"><%= reservation.party_size %></span></td>
           <td><%= reservation.phone_number %></td>
           <td><%= reservation.wait_time %></td>
           <td><%= link_to 'X', reservation_path(reservation), method: 'delete', action: 'destroy', class: 'delete hidden' %></td>
-        <% end %>
-        </tr>
-      </div>
-    </tbody>
-  </table>
-</div>
+          <td>  <% if reservation.notified_table_ready %>
+            <button class="ready-message-sent">
+              <% else %>
+              <button class="message-ready">
+                <% end %>
+              </button></td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+
