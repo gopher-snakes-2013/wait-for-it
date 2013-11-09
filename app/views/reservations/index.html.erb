@@ -8,13 +8,6 @@
 </div>
 
 <div class="table">
-  <div class="table-headers">
-    <span class="th">Name</span>
-    <span class="th">Party</span>
-    <span class="th phone">Phone Number</span>
-    <span class="th">Wait Time</span>
-  </div>
-
   <div class="table-body">
     <% @reservations.each do |reservation| %>
         <%= render partial: "reservations/new", locals: { reservation: reservation } %>
