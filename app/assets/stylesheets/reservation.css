@@ -138,13 +138,11 @@ input {
 
 tbody tr:hover {
   background-color: #A4E1FF;
-<<<<<<< HEAD
   -webkit-transition: 1s;
-=======
   outline-color: #223442;
-  /*transition: 0.5s;*/
 }
 
+/******Update Form Fields*****/
 input.update {
 	width:3em;
 	text-align: center;
@@ -157,20 +155,6 @@ input.update-name {
 
 input.update-phone-number {
 	width:7em;
-}
-
-.delete {
-	border: 2px solid;
-	color: #21A88A;
-  overflow: hidden;
-  padding: 4px;
-	text-decoration: none;
-  -webkit-border-radius: 78%;
-}
-
-.delete:hover {
-	color: #2EC6A4;
->>>>>>> master
 }
 
 /****** Button Columns ******/
@@ -191,7 +175,6 @@ button.ready-message-sent{
   border: none;
   display: inline-block;
   height: 48px;
-<<<<<<< HEAD
   width: 48px;
 }
 
@@ -202,7 +185,3 @@ button.ready-message-sent{
 	height: 48px;
 	weight: 48px;
 }
-=======
-  background: url(Button-Ok-icon.png) no-repeat; 
-}
->>>>>>> master
