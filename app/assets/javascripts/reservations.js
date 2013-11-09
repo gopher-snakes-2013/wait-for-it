@@ -1,11 +1,11 @@
 var reservationActions = {
   init: function() {
-    $("#new_reservation").on("ajax:success", this.addReservation);
-    $("#new_reservation").on("ajax:error", this.errorMessage);
+    $(".add_guest_form").on("ajax:success", "#new_reservation", this.addReservation);
+    $(".add_guest_form").on("ajax:error", "#new_reservation", this.errorMessage);
 
-    $(".party-size").on("click", this.update);
-    $(".reservation").on("mouseenter", this.showDelete);
-    $(".reservation").on("mouseleave", this.hideDelete);
+    $(".reservation").on("click", ".party-size", this.update);
+    $(".table").on("mouseenter", ".reservation", this.showDelete);
+    $(".table").on("mouseleave", ".reservation", this.hideDelete);
   },
 
   addReservation: function(e, reservationPartial) {
@@ -15,6 +15,7 @@ var reservationActions = {
     $("#reservation_party_size").val("");
     $("#reservation_phone_number").val("");
     $("#reservation_wait_time").val("");
+    $(".error-message").html("");
   },
 
   errorMessage: function(e, xhr) {
@@ -23,11 +24,11 @@ var reservationActions = {
   },
 
   update: function() {
-    var id = $(this).data("id");
+    var id = $(this).closest(".reservation").data("id")
     var text = $(this).text();
     var formTemplate = '<form action="/reservations/'+id+'" class="update" method="post"><input name="_method" type="hidden" value="put"><input class="updated-party-size" name="reservation[party_size]" value="'+text+'"></form>';
     $(this).html(formTemplate);
-    $(".party-size").unbind();
+    $(".reservation").undelegate(".party-size", "click");
   },
 
   showDelete: function() {
