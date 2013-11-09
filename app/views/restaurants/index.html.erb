@@ -21,3 +21,9 @@
 <div class="error">
   <%= flash[:error] %>
 </div>
+
+<br/><br/>
+hey
+<% if logged_in? %>
+<%= @current_restaurant.name %>
+<% end %>

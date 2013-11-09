@@ -2,6 +2,9 @@ class RestaurantsController < ApplicationController
 
   def index
     @restaurants = Restaurant.all
+    if session[:restaurant_id]
+      @current_restaurant = Restaurant.find(session[:restaurant_id])
+    end
   end
 
   def new
