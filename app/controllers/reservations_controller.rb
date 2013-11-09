@@ -5,14 +5,15 @@ class ReservationsController < ApplicationController
       @restaurant = Restaurant.find(current_restaurant.id)
       @reservations = Reservation.where(restaurant_id: @restaurant.id)
       @reservation = @restaurant.reservations.new
+      render :index
     else
       redirect_to root_path
     end
 	end
 
 	def create
-    @restaurant = Restaurant.find(params[:restaurant_id])
-    @reservation = @restaurant.reservations.new
+    # @restaurant = Restaurant.find(params[:restaurant_id])
+    # @reservation = @restaurant.reservations.new
     if @reservation.save
       render text: render_to_string(partial: 'reservations/show', layout: false, locals: { reservation: @reservation })
     else
@@ -31,7 +32,6 @@ class ReservationsController < ApplicationController
   end
 
   def destroy
-    restaurant = Restaurant.find(params[:restaurant_id])
   	reservation = Reservation.find(params[:id])
   	reservation.destroy
   	redirect_to restaurant_reservations_path(restaurant.id)
