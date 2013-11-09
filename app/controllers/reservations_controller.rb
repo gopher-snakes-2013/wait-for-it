@@ -29,5 +29,4 @@ class ReservationsController < ApplicationController
   	@reservation.destroy
   	redirect_to root_path
   end
-
 end

@@ -24,6 +24,7 @@ body {
 
 #title1 {
 	color: #2EC6A4;
+	display: block;
 	font-family: 'Lobster', cursive;
 	font-size: 2.5em;
 	position: relative;
@@ -84,7 +85,7 @@ div.table {
 	margin: 0 auto;
 	padding-top: 2em;
 	text-align: center;
-	width: 75em;
+	width: 85%;
 }
 
 .table-headers {
@@ -94,7 +95,6 @@ div.table {
 table {
 	border: 1px solid #eee;
 	border-collapse: collapse;
-	border-bottom: 2px solid #00cccc;
 	box-shadow: 0px 0px 20px rgba(0,0,0,0.10),
 		0px 10px 20px rgba(0,0,0,0.05),
 		0px 20px 20px rgba(0,0,0,0.05),
@@ -112,7 +112,7 @@ th {
 td {
 	font-size: 1.7em;
 	font-weight: bold;
-	height: 2em;
+	height: 2.5em;
 }
 
 td.x {
@@ -138,10 +138,11 @@ input {
 
 tbody tr:hover {
   background-color: #A4E1FF;
+  -webkit-transition: 1s;
   outline-color: #223442;
-  /*transition: 0.5s;*/
 }
 
+/******Update Form Fields*****/
 input.update {
 	width:3em;
 	text-align: center;
@@ -156,35 +157,31 @@ input.update-phone-number {
 	width:7em;
 }
 
-.delete {
-	border: 2px solid;
-	color: #21A88A;
-  overflow: hidden;
-  padding: 4px;
-	text-decoration: none;
-  -webkit-border-radius: 78%;
-}
-
-.delete:hover {
-	color: #2EC6A4;
-}
-
-.hidden {
-	display:none;
+/****** Button Columns ******/
+.button_column {
+	width: 40px;
 }
 
 button.message-ready {
+  background: url('sms.png') no-repeat;
+	border: none;
   display: inline-block;
-  border-radius: 4px;
-  width: 48px;
   height: 48px;
-  background: url(messages-icon.png) no-repeat;
+  width: 48px;
 }
 
 button.ready-message-sent{
-   display: inline-block;
-  border-radius: 4px;
-  width: 48px;
+  background: url('checked-box.png') no-repeat;
+  border: none;
+  display: inline-block;
   height: 48px;
-  background: url(Button-Ok-icon.png) no-repeat; 
+  width: 48px;
+}
+
+.trash {
+	background: url('trash-bin.png') no-repeat;
+	border: none;
+	display: inline-block;
+	height: 48px;
+	weight: 48px;
 }
