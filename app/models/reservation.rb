@@ -15,6 +15,7 @@ class Reservation < ActiveRecord::Base
     self.phone_number = "+" + self.phone_number
   end
 
+
   def send_text_upon_new_reservation
     TwilioHelper.send_on_waitlist(self.phone_number,
       "Hi #{self.name}, you've been added to the waitlist. Your wait is approximately #{self.wait_time} minutes.")
