@@ -17,7 +17,7 @@
     </thead>
     <tbody>
       <% @reservations.each do |reservation| %>
-      <%= render partial: "reservations/show", locals: { reservation: reservation } %>
+      <%= render partial: "reservations/show", locals: { restaurant: @restaurant, reservation: reservation } %>
       <% end %>
     </tbody>
   </table>
