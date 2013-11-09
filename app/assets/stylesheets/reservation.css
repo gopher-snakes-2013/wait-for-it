@@ -116,44 +116,31 @@ tbody tr:hover {
   -webkit-transition: 1s;
 }
 
-/****** Button Column ******/
+/****** Button Columns ******/
 .button_column {
 	width: 40px;
 }
 
-.delete {
-	border: 2px solid;
-  border-radius: 100%;
-	color: #21A88A;
-	display: block;
-	height: 1em;
-  overflow: hidden;
-  padding: 0 0 0.2em 0;
-  text-align: center;
-	text-decoration: none;
-	width: 1em;
-}
-
-.delete:hover {
-	color: #2EC6A4;
-}
-
-.hidden {
-	display:none;
-}
-
 button.message-ready {
+  background: url('sms.png') no-repeat;
+	border: none;
   display: inline-block;
-  border-radius: 4px;
-  width: 48px;
   height: 48px;
-  background: url(messages-icon.png) no-repeat;
+  width: 48px;
 }
 
 button.ready-message-sent{
-   display: inline-block;
-  border-radius: 4px;
-  width: 48px;
+  background: url('checked-box.png') no-repeat;
+  border: none;
+  display: inline-block;
   height: 48px;
-  background: url(Button-Ok-icon.png) no-repeat;
+  width: 48px;
+}
+
+.trash {
+	background: url('trash-bin.png') no-repeat;
+	border: none;
+	display: inline-block;
+	height: 48px;
+	weight: 48px;
 }
