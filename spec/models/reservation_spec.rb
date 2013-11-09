@@ -25,5 +25,10 @@ describe Reservation do
         expect(reservation.phone_number).to eq("+15555555555")
       end
     end
+
+    it 'should default notified_table_ready to nil' do 
+      @reservation = Reservation.create(name:"Jeff", phone_number:"14154154000",wait_time:40)
+      @reservation.notified_table_ready.should be nil
+    end
   end
 end
