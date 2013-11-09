@@ -49,7 +49,7 @@ describe Reservation do
       end
 
       it "should update the wait times of reservations after the updated one" do
-        @reservation.update_attribute(wait_time: 15)
+        @reservation.update_attributes(wait_time: 40)
         expect(@next_reservation.wait_time).to eq(30)
       end
     end

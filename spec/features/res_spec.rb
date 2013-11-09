@@ -1,6 +1,24 @@
 require 'spec_helper'
 
-feature "Homepage" do
+feature "Home Page" do
+  before(:each) do
+    visit root_path
+  end
+
+  context "restaurant can sign up" do
+    scenario "restaurant signs up" do
+      click_on "register"
+      fill_in("restaurant[name]", with: "Hops")
+      fill_in("restaurant[email]", with: "hops@me.com")
+      fill_in("restaurant[password]", with: "password")
+      fill_in("restaurant[password_confirmation]", with: "password")
+      click_on "Create Account"
+      expect(page).to have_content("Hops")
+    end
+  end
+end
+
+feature "Restaurant Page" do
   before(:each) do
     visit root_path
   end

@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe ReservationsController do
+  before(:each) do
+    @test_restaurant = Restaurant.create(name: "Sourdough Kitchen", email: "sour@kitchen.com", password: "password", password_confirmation: "password")
+  end
+
 	let!(:reservation) {
 		Reservation.create name: 'George', party_size: 4, phone_number: '555-555-5555', wait_time: 10
 	}
@@ -26,7 +30,7 @@ describe ReservationsController do
   context "#create" do
     it "should add a valid reservation to the db" do
       expect {
-        post :create, reservation: {name: "Nat", party_size: 4, phone_number: '555-555-5555', wait_time: 15 }
+        post :create, reservation: {name: "Nat", party_size: 4, phone_number: '555-555-5555', wait_time: 15, restaurant_id: 1 }
       }.to change { Reservation.count }.by 1
     end
 

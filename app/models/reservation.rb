@@ -10,7 +10,7 @@ class Reservation < ActiveRecord::Base
   validates_plausible_phone :phone_number, :country_code => '1'
 
   before_save :add_plus_phone_number
-  before_update :update_all_wait_times
+  after_update :update_all_wait_times
   after_create :send_text_upon_new_reservation
 
   def add_plus_phone_number
@@ -23,12 +23,13 @@ class Reservation < ActiveRecord::Base
   end
 
   def update_all_wait_times
-    updated_wait = self.wait_time
+    additional_wait = self.wait_time
     Reservation.all.each do |reservation|
       if reservation.id > self.id
-        reservation.update_attribute(wait_time: reservation.wait_time + updated_wait)
+        reservation.update_attributes(wait_time: (reservation.wait_time + additional_wait))
       end
     end
+    additional_wait
   end
 
 end
