@@ -1,9 +1,5 @@
 class MessagesController < ApplicationController
   respond_to :json
-  def new
-    "stuff"
-  end
-
 
   def create
     reservation = Reservation.find(params[:guest_id])
