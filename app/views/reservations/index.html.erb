@@ -10,27 +10,28 @@
 </div>
 
 <div class="table">
-<table>
-  <thead class="table-headers">
-    <tr>
-      <th></th>
-      <th>Name</th>
-      <th>Party Size</th>
-      <th>Phone Number</th>
-      <th>Wait Time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @reservations.each do |reservation| %>
-    <tr class="rezzy" data-id="<%= reservation.id %>">
-      <td><%= link_to 'X', reservation_path(reservation), method: 'delete', action: 'destroy', class: 'delete hidden' %>
-      </td>
-      <td><%= reservation.name %></td>
-      <td><span class="party-size" data-id="<%= reservation.id %>"><%= reservation.party_size %></span></td>
-      <td><%= reservation.phone_number %></td>
-      <td><%= reservation.wait_time %></td>
+  <table>
+    <thead class="table-headers">
       <tr>
+        <th>Name</th>
+        <th>Party Size</th>
+        <th>Phone Number</th>
+        <th>Wait Time</th>
+        <th class="button_column"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <div class="select_row">
+      <% @reservations.each do |reservation| %>
+        <tr class="rezzy" data-id="<%= reservation.id %>">
+          <td><%= reservation.name %></td>
+          <td><span class="party-size" data-id="<%= reservation.id %>"><%= reservation.party_size %></span></td>
+          <td><%= reservation.phone_number %></td>
+          <td><%= reservation.wait_time %></td>
+          <td><%= link_to 'X', reservation_path(reservation), method: 'delete', action: 'destroy', class: 'delete hidden' %></td>
         <% end %>
-      </tbody>
-    </table>
+        </tr>
+      </div>
+    </tbody>
+  </table>
 </div>

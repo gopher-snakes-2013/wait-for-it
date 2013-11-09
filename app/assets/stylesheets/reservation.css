@@ -1,4 +1,4 @@
-/******** Basic Elements ********/
+******* Basic Elements ********/
 html {
 	background-color: #F5F7F7;
 	font-size: 16px;
@@ -81,7 +81,7 @@ div.table {
 	margin: 0 auto;
 	padding-top: 2em;
 	text-align: center;
-	width: 75em;
+	width: 85%;
 }
 
 .table-headers {
@@ -91,7 +91,6 @@ div.table {
 table {
 	border: 1px solid #eee;
 	border-collapse: collapse;
-	border-bottom: 2px solid #00cccc;
 	box-shadow: 0px 0px 20px rgba(0,0,0,0.10),
 		0px 10px 20px rgba(0,0,0,0.05),
 		0px 20px 20px rgba(0,0,0,0.05),
@@ -109,22 +108,30 @@ th {
 td {
 	font-size: 1.7em;
 	font-weight: bold;
-	height: 2em;
+	height: 2.5em;
 }
 
 tbody tr:hover {
   background-color: #A4E1FF;
-  outline-color: #223442;
-  /*transition: 0.5s;*/
+  -webkit-transition: 1s;
+}
+
+/****** Button Column ******/
+.button_column {
+	width: 40px;
 }
 
 .delete {
 	border: 2px solid;
+  border-radius: 100%;
 	color: #21A88A;
+	display: block;
+	height: 1em;
   overflow: hidden;
-  padding: 4px;
+  padding: 0 0 0.2em 0;
+  text-align: center;
 	text-decoration: none;
-  -webkit-border-radius: 78%;
+	width: 1em;
 }
 
 .delete:hover {
