@@ -52,7 +52,7 @@ var reservationActions = {
   },
 
   addReservation: function(e, reservationPartial) {
-    $("table").append(reservationPartial);
+    $(".table-body").append(reservationPartial);
 
     $("#reservation_name").val("");
     $("#reservation_party_size").val("");
