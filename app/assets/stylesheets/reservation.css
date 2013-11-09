@@ -142,6 +142,20 @@ tbody tr:hover {
   /*transition: 0.5s;*/
 }
 
+input.update {
+	width:3em;
+	text-align: center;
+	font-size:1em;
+}
+
+input.update-name {
+	width:5em;
+}
+
+input.update-phone-number {
+	width:7em;
+}
+
 .delete {
 	border: 2px solid;
 	color: #21A88A;
