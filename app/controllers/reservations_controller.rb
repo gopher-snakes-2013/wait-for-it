@@ -15,6 +15,12 @@ class ReservationsController < ApplicationController
     end
 	end
 
+  def show
+    if session[:restaurant_id].nil?
+      redirect_to restaurants_path
+    end
+  end
+
   def update
   	@reservation = Reservation.find(params[:id])
   	if @reservation.update_attributes(params[:reservation])
