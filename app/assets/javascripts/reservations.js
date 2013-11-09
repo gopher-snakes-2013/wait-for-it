@@ -1,9 +1,54 @@
+var update = {
+
+  partySize: function() {
+    var id = $(this).closest(".reservation").data("id");
+    var formTemplate = '<form action="/reservations/'+id+'" class="update" method="post"><input name="_method" type="hidden" value="put"></form>';
+    var text = $(this).text();
+    $(this).html(formTemplate);
+    $(this).find("form").append('<input class="update update-party-size" name="reservation[party_size]" value="'+text+'">');
+    $(".reservation").undelegate(".party-size", "click");
+  },
+
+  guestName: function() {
+    var id = $(this).closest(".reservation").data("id");
+    var formTemplate = '<form action="/reservations/'+id+'" class="update" method="post"><input name="_method" type="hidden" value="put"></form>';
+    var text = $(this).text();
+    $(this).html(formTemplate);
+    $(this).find("form").append('<input class="update update-name" name="reservation[name]" value="'+text+'">');
+    $(".reservation").undelegate(".name", "click");
+  },
+
+  phoneNumber: function() {
+    var id = $(this).closest(".reservation").data("id");
+    var formTemplate = '<form action="/reservations/'+id+'" class="update" method="post"><input name="_method" type="hidden" value="put"></form>';
+    var text = $(this).text();
+    $(this).html(formTemplate);
+    $(this).find("form").append('<input class="update update-phone-number" name="reservation[phone_number]" value="'+text+'">');
+    $(".reservation").undelegate(".phone-number", "click");
+  },
+
+  waitTime: function() {
+    var id = $(this).closest(".reservation").data("id");
+    var formTemplate = '<form action="/reservations/'+id+'" class="update" method="post"><input name="_method" type="hidden" value="put"></form>';
+    var text = $(this).text();
+    $(this).html(formTemplate);
+    $(this).find("form").append('<input class="update update-wait-time" name="reservation[wait_time]" value="'+text+'">');
+    $(".reservation").undelegate(".wait-time", "click");
+  }
+
+}
+
 var reservationActions = {
+
   init: function() {
     $(".add_guest_form").on("ajax:success", "#new_reservation", this.addReservation);
     $(".add_guest_form").on("ajax:error", "#new_reservation", this.errorMessage);
 
-    $(".reservation").on("click", ".party-size", this.update);
+    $(".reservation").on("click", ".party-size", update.partySize);
+    $(".reservation").on("click", ".name", update.guestName);
+    $(".reservation").on("click", ".phone-number", update.phoneNumber);
+    $(".reservation").on("click", ".wait-time", update.waitTime);
+
     $(".table").on("mouseenter", ".reservation", this.showDelete);
     $(".table").on("mouseleave", ".reservation", this.hideDelete);
   },
@@ -23,14 +68,6 @@ var reservationActions = {
     $(".error-message").html(error);
   },
 
-  update: function() {
-    var id = $(this).closest(".reservation").data("id")
-    var text = $(this).text();
-    var formTemplate = '<form action="/reservations/'+id+'" class="update" method="post"><input name="_method" type="hidden" value="put"><input class="updated-party-size" name="reservation[party_size]" value="'+text+'"></form>';
-    $(this).html(formTemplate);
-    $(".reservation").undelegate(".party-size", "click");
-  },
-
   showDelete: function() {
     $(this).find(".delete").removeClass("hidden");
   },
@@ -40,36 +77,6 @@ var reservationActions = {
   }
 };
 
-var timeToWait = {
-
-  init: function() {
-    $(".submit_button").on("click", this.startInterval);
-  },
-
-  countdown: function() {
-    if (waitTime > 1) {
-      waitTime = waitTime -1;
-      $(".reservation").last().find(".wait-time").html(waitTime);
-    } else {
-      waitTime = waitTime -1;
-      $(".reservation").last().find(".wait-time").html(waitTime);
-      clearInterval(interval);
-      $(".reservation").last().find(".times-up").html("x");
-    }
-  },
-
-  getWaitTime: function() {
-    var waitTime = $("#reservation_wait_time").val();
-    return waitTime;
-  },
-
-  startInterval: function() {
-    waitTime = timeToWait.getWaitTime();
-    interval = setInterval(function(){ timeToWait.countdown() }, 60000);
-  }
-};
-
 $(document).ready(function(){
   reservationActions.init();
-  timeToWait.init();
 });

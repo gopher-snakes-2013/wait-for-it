@@ -14,9 +14,6 @@ class ReservationsController < ApplicationController
     end
 	end
 
-  def show
-  end
-
   def update
   	@reservation = Reservation.find(params[:id])
   	if @reservation.update_attributes(params[:reservation])

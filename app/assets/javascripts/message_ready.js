@@ -1,14 +1,12 @@
 $(document).ready(function(){
 
   $('.reservation').on("click",".message-ready", function(){
-    var guest_id = $(this).closest('tr').data("id")
-    var bound_message_guest_ready = message_guest_ready.bind(this)
-    bound_message_guest_ready(guest_id);
+    var guestId = $(this).closest('tr').data("id")
+    var boundMessageGuestReady = messageGuestReady.bind(this)
+    boundMessageGuestReady(guestId)
   })
 
-
 })
-
 
 var message_guest_ready = function(guest_id){
   var that = this
