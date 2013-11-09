@@ -1,26 +1,23 @@
 <%= render "restaurants/logout" %>
-<%= render "reservations/form" %>
+<div class="create-form">
+  <%= render "reservations/form" %>
+</div>
 
 <div class="error-message">
   <%= flash[:error] %>
 </div>
 
 <div class="table">
-  <table>
-    <thead class="table-headers">
-      <tr>
-        <th></th>
-        <th>Name</th>
-        <th>Party Size</th>
-        <th>Phone Number</th>
-        <th>Wait Time</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @reservations.each do |reservation| %>
-      <%= render partial: "reservations/new", locals: { reservation: reservation } %>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+  <div class="table-headers">
+    <span class="th">Name</span>
+    <span class="th">Party</span>
+    <span class="th phone">Phone Number</span>
+    <span class="th">Wait Time</span>
+  </div>
 
+  <div class="table-body">
+    <% @reservations.each do |reservation| %>
+        <%= render partial: "reservations/new", locals: { reservation: reservation } %>
+    <% end %>
+  </div>
+</div>

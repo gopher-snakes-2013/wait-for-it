@@ -1,0 +1,31 @@
+
+.add_guest_form {
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
+input {
+  border-radius: 5px;
+  font-family: Raleway;
+  font-size: .8em;
+  padding:4px;
+}
+
+.form_fields {
+  border-radius: 10px;
+  font-family: Raleway;
+}
+
+.submit_button {
+  background-color: #FF4E51;
+  border-color: #FF4E51;
+  border-radius: 10px;
+  color: #142837;
+  font-family: Raleway;
+  font-weight: bold;
+}
+
+.hidden {
+  display:none;
+}
