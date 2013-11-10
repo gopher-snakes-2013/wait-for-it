@@ -4,6 +4,7 @@ describe Reservation do
   it { should validate_presence_of :name }
   it { should validate_presence_of :party_size }
   it { should validate_presence_of :phone_number }
+  it { should validate_presence_of :wait_time }
 
   it { should validate_numericality_of :party_size }
   it { should validate_numericality_of :wait_time }
@@ -48,7 +49,7 @@ describe Reservation do
                            wait_time: 30 )
       end
 
-      xit "should update the wait times of reservations after the updated one" do
+      it "should update the wait times of reservations after the updated one" do
         @reservation.update_attributes(wait_time: 40)
         expect(@next_reservation.wait_time).to eq(30)
       end
