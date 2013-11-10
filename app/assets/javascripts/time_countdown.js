@@ -20,10 +20,25 @@ var timeToWait = {
 
   startInterval: function() {
     waitTime = timeToWait.getWaitTime();
-    interval = setInterval(function(){ timeToWait.countdown() }, 60000);
+    interval = setInterval(function(){
+      timeToWait.countdown()
+    }, 1000);
   }
 };
 
 $(document).ready(function(){
-  timeToWait.init();
+  setInterval(function(){
+    updateWaitTime();
+  }, 60000);
 });
+
+function updateWaitTime() {
+  $.ajax({
+    url: "/reservations/updatetime",
+    type: 'post',
+    dataType: "json"
+  }).done(function(waitTimes){
+    console.log(waitTimes)
+    // $("span.wait-time").first().html(waitTimes);
+  })
+};

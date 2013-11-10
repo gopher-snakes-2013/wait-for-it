@@ -1,6 +1,6 @@
 <% trash_img = image_tag('trash-bin.png', :class =>"trash") %>
 
-<form class="tr reservation" data-id="<%= reservation.id %>" method="post" action="/restaurants/<%= restaurant.id %>/reservations/<%= reservation.id %>">
+<form class="tr reservation" data-id="<%= reservation.id %>" data-restaurant-id="<%= restaurant.id %>" method="post" action="/restaurants/<%= restaurant.id %>/reservations/<%= reservation.id %>">
   <input name="_method" type="hidden" value="put">
   <input name="authenticity_token" type="hidden" value="057qED4hislMTPA+DFKK4JiFJNhwmR+rp6VULbVMQMQ=">
   <input type="hidden" name="reservation[before_wait_time]" value="<%= reservation.wait_time %>">
