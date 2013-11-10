@@ -2,7 +2,7 @@ class Reservation < ActiveRecord::Base
   attr_accessible :name, :party_size, :phone_number, :wait_time, :estimated_seat_time, :before_wait_time
   belongs_to :restaurant
 
-  validates_presence_of :name, :party_size, :phone_number, :wait_time, :before_wait_time
+  validates_presence_of :name, :party_size, :wait_time, :before_wait_time
   validates_numericality_of :party_size, :wait_time, :before_wait_time
 
   phony_normalize :phone_number, :default_country_code => 'US'
