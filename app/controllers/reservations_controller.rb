@@ -5,9 +5,8 @@ class ReservationsController < ApplicationController
       @restaurant = Restaurant.find(current_restaurant.id)
       @reservations = Reservation.where(restaurant_id: @restaurant.id)
       @reservation = @restaurant.reservations.new
-      render :index
     else
-      redirect_to root_path
+      redirect_to restaurant_reservations_path(@restaurant.id)
     end
   end
 
@@ -26,9 +25,10 @@ class ReservationsController < ApplicationController
 	end
 
   def update
+    restaurant = Restaurant.find(params[:restaurant_id])
   	reservation = Reservation.find(params[:id])
   	if reservation.update_attributes(params[:reservation])
-    	redirect_to restaurant_reservations_path(restaurant.id)
+      redirect_to restaurant_reservations_path(restaurant.id)
     else
       flash[:error] = "Try Updating Again."
       redirect_to restaurant_reservations_path(restaurant.id)

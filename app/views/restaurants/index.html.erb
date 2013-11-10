@@ -21,3 +21,9 @@
 <div class="error">
   <%= flash[:error] %>
 </div>
+
+<br/><br/>
+hey
+<% if logged_in? %>
+<%= link_to @current_restaurant.name, restaurant_reservations_path(@current_restaurant.id) %>
+<% end %>

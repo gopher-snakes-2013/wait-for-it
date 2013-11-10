@@ -1,12 +1,13 @@
 class ApplicationController < ActionController::Base
 	protect_from_forgery
+	helper_method :current_restaurant, :logged_in?
 
-	private
+  def current_restaurant
+    @current_restaurant ||= Restaurant.find(session[:restaurant_id]) if session[:restaurant_id]
+  end
 
-	def current_restaurant
-		@current_restaurant ||= Restaurant.find(session[:restaurant_id]) if session[:restaurant_id]
-	end
-
-	helper_method :current_restaurant
+  def logged_in?
+    !!current_restaurant
+  end
 
 end
