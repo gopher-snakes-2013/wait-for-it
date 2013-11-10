@@ -13,7 +13,7 @@ describe ReservationsController do
 
   context "#update" do
     it "should result in an updated name field" do
-      put :update, { restaurant_id: @restaurant.id, id: @reservation.id }, reservation: { name: "john" }
+      put :update, restaurant_id: @restaurant.id, id: @reservation.id, reservation: { name: "john"}
       expect(Reservation.find(@reservation.id).name).to eq("john")
     end
   end
