@@ -1,23 +1,41 @@
 <h1>Sign In</h1>
 
 <%= form_tag sessions_path do %>
-	<div class='email-field'>
-		<%= text_field_tag :email, params[:email], placeholder: :email %>
-	</div>
-	<div class='password-field'>
-		<%= password_field_tag :password, nil, placeholder: :password %>
-	</div>
-	<div class='submit' ><%= submit_tag 'Login' %></div>
+<div class='email-field'>
+	<%= text_field_tag :email, params[:email], placeholder: :email %>
+</div>
+<div class='password-field'>
+	<%= password_field_tag :password, nil, placeholder: :password %>
+</div>
+<div class='submit' ><%= submit_tag 'Login' %></div>
 <% end %>
 
 <div class="register-link">
-  <%= link_to "register", new_restaurant_path %>
+	<%= link_to "register", new_restaurant_path %>
 </div>
 
-<% @restaurants.each do |restaurant| %>
-  <%= render partial: "restaurants/list", locals: { restaurant: restaurant } %>
-<% end %>
+<div class="table">
+	<table>
+		<thead class="table-headers">
+			<tr>
+				<th>Restaurant</th>
+				<th>Current Max Wait Time</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @restaurants.each do |restaurant| %>
+
+			<tr class="restaurant" data-id="<%= restaurant.id %>">
+				<td><span class="name"><%= restaurant.name %></span></td>
+				<td><span class="max_wait_time"><%= restaurant.max_wait_time %></span></td>
+			</tr>
+
+			<% end %>
+		</tbody>
+	</table>
+</div>
+
 
 <div class="error">
-  <%= flash[:error] %>
+	<%= flash[:error] %>
 </div>
