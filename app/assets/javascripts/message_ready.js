@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-  $('.reservation').on("click",".message-ready", function(){
+  $('.table').on("click","button.message-ready", function(){
     var guestId = $(this).closest('tr').data("id")
     var boundMessageGuestReady = messageGuestReady.bind(this)
     boundMessageGuestReady(guestId)
@@ -8,7 +8,7 @@ $(document).ready(function(){
 
 })
 
-var message_guest_ready = function(guest_id){
+var messageGuestReady = function(guest_id){
   var that = this
   $.ajax({
     url: '/messages',
