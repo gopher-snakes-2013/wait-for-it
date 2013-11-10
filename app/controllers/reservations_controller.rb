@@ -28,7 +28,7 @@ class ReservationsController < ApplicationController
     restaurant = Restaurant.find(params[:restaurant_id])
   	reservation = Reservation.find(params[:id])
   	if reservation.update_attributes(params[:reservation])
-    	redirect_to restaurant_reservations_path(restaurant.id)
+      redirect_to restaurant_reservations_path(restaurant.id)
     else
       flash[:error] = "Try Updating Again."
       redirect_to restaurant_reservations_path(restaurant.id)
