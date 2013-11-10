@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature "Restaurant's Reservation Page", js: true do
+feature "Restaurant's Reservation Page" do
   before(:each) do
     @test_restaurant = Restaurant.create(name: "What the Duck", email: "duck@what.com", password: "password", password_confirmation: "password")
     visit root_path

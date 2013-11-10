@@ -12,7 +12,7 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
 end
 
-group :development, :test do
+group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
 end

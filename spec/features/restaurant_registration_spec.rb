@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature "Restaurant Registration Page", js: true do
+feature "Restaurant Registration Page" do
   context "restaurant registration" do
     before(:each) do
       visit new_restaurant_path
