@@ -1,10 +1,6 @@
 require 'spec_helper'
 
 describe RestaurantsController do
-  let!(:restaurant) {
-    Restaurant.create name: 'Kitchen', email: 'kitchen@mail.com', password: 'password', password_confirmation: 'password'
-  }
-
   it "#index" do
     get :index
     response.status.should eq(200)
@@ -18,8 +14,8 @@ describe RestaurantsController do
   context "#create" do
     it "should add a valid restaurant to the db" do
       expect {
-        post :create, restaurant: {name: "Kitchen", email: "kitchen@mail.com", password: "password", password_confirmation: "password" }
-      }.to change { Restaurant.count }.by 1
+        post :create, restaurant: {name: "Bakery", email: "bake@mail.com", password: "password", password_confirmation: "password" }
+      }.to change { Restaurant.count }.by(1)
     end
 
     it "should NOT add an invalid restaurant to the db" do

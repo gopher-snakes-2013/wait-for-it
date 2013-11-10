@@ -1,39 +1,47 @@
 var update = {
 
-  partySize: function() {
-    var id = $(this).closest(".reservation").data("id");
-    var formTemplate = '<form action="/reservations/'+id+'" class="update" method="post"><input name="_method" type="hidden" value="put"></form>';
-    var text = $(this).text();
-    $(this).html(formTemplate);
-    $(this).find("form").append('<input class="update update-party-size" name="reservation[party_size]" value="'+text+'">');
-    $(".reservation").undelegate(".party-size", "click");
+  init: function() {
+    var reservation = $(this).closest(".reservation");
+    var id = reservation.data("id");
+
+    update.partySize(reservation);
+    update.guestName(reservation);
+    update.phoneNumber(reservation);
+    update.waitTime(reservation);
+
+    $(this).html('<input class="save-button" data-remote="true" name="commit" type="submit" value="save">');
   },
 
-  guestName: function() {
-    var id = $(this).closest(".reservation").data("id");
-    var formTemplate = '<form action="/reservations/'+id+'" class="update" method="post"><input name="_method" type="hidden" value="put"></form>';
-    var text = $(this).text();
-    $(this).html(formTemplate);
-    $(this).find("form").append('<input class="update update-name" name="reservation[name]" value="'+text+'">');
-    $(".reservation").undelegate(".name", "click");
+  partySize: function(reservation) {
+    var element = reservation.find(".party-size");
+    var text = element.text();
+    element.html('<input class="update update-party-size" name="reservation[party_size]" value="'+text+'">');
+    $(".reservation").undelegate(".update-button", "click");
   },
 
-  phoneNumber: function() {
-    var id = $(this).closest(".reservation").data("id");
-    var formTemplate = '<form action="/reservations/'+id+'" class="update" method="post"><input name="_method" type="hidden" value="put"></form>';
-    var text = $(this).text();
-    $(this).html(formTemplate);
-    $(this).find("form").append('<input class="update update-phone-number" name="reservation[phone_number]" value="'+text+'">');
-    $(".reservation").undelegate(".phone-number", "click");
+  guestName: function(reservation) {
+    var element = reservation.find(".name");
+    var text = element.text();
+    element.html('<input class="update update-name" name="reservation[name]" value="'+text+'">');
+    $(".reservation").undelegate(".update-button", "click");
   },
 
-  waitTime: function() {
-    var id = $(this).closest(".reservation").data("id");
-    var formTemplate = '<form action="/reservations/'+id+'" class="update" method="post"><input name="_method" type="hidden" value="put"></form>';
-    var text = $(this).text();
-    $(this).html(formTemplate);
-    $(this).find("form").append('<input class="update update-wait-time" name="reservation[wait_time]" value="'+text+'">');
-    $(".reservation").undelegate(".wait-time", "click");
+  phoneNumber: function(reservation) {
+    var element = reservation.find(".phone-number");
+    var text = element.text();
+    element.html('<input class="update update-phone-number" name="reservation[phone_number]" value="'+text+'">');
+    $(".reservation").undelegate(".update-button", "click");
+  },
+
+  waitTime: function(reservation) {
+    var element = reservation.find(".wait-time");
+    var text = element.text();
+    element.html('<input class="update update-wait-time" name="reservation[wait_time]" value="'+text+'">');
+    $(".reservation").undelegate(".update-button", "click");
+  },
+
+  show: function() {
+    debugger
   }
 
 }
@@ -44,17 +52,12 @@ var reservationActions = {
     $(".add_guest_form").on("ajax:success", "#new_reservation", this.addReservation);
     $(".add_guest_form").on("ajax:error", "#new_reservation", this.errorMessage);
 
-    $(".reservation").on("click", ".party-size", update.partySize);
-    $(".reservation").on("click", ".name", update.guestName);
-    $(".reservation").on("click", ".phone-number", update.phoneNumber);
-    $(".reservation").on("click", ".wait-time", update.waitTime);
-
-    $(".table").on("mouseenter", ".reservation", this.showDelete);
-    $(".table").on("mouseleave", ".reservation", this.hideDelete);
+    $(".reservation").on("click", ".update-button", update.init);
+    $(".reservation").on("ajax:success", ".save-button", update.show);
   },
 
   addReservation: function(e, reservationPartial) {
-    $("table").append(reservationPartial);
+    $(".table-body").append(reservationPartial);
 
     $("#reservation_name").val("");
     $("#reservation_party_size").val("");
@@ -66,14 +69,6 @@ var reservationActions = {
   errorMessage: function(e, xhr) {
     var error = xhr.responseJSON.error_message;
     $(".error-message").html(error);
-  },
-
-  showDelete: function() {
-    $(this).find(".delete").removeClass("hidden");
-  },
-
-  hideDelete: function() {
-    $(this).find(".delete").addClass("hidden");
   }
 };
 

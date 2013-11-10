@@ -1,0 +1,102 @@
+/******Table Rows*****/
+
+.td {
+  font-size: 1.7em;
+  font-weight: bold;
+  height: 2.5em;
+  margin-left: 1.2em;
+  margin-right: 1em;
+}
+
+.td.name {
+  float:left;
+  width:5.3em;
+}
+
+.td.party-size {
+  float:left;
+  width:2em;
+  margin-left:1.5em;
+}
+
+.td.phone-number {
+  float:left;
+  width:7em;
+}
+
+.td.wait-time {
+  float:left;
+  width:2em;
+}
+
+.td.update-button {
+  float:left;
+  width:2em;
+}
+
+.td .x {
+  width:65px;
+}
+
+.add_guest_form {
+  margin: auto;
+  display: block;
+  text-align: center;
+}
+
+.tr {
+  padding:1em;
+}
+
+.tr:hover {
+  background-color: #A4E1FF;
+  -webkit-transition: 1s;
+  outline-color: #223442;
+}
+
+/******Update Form Fields*****/
+
+input.update {
+  width:3em;
+  text-align: center;
+  font-size:1em;
+}
+
+input.update-name {
+  width:5em;
+}
+
+input.update-phone-number {
+  width:7em;
+}
+
+/****** Button Columns ******/
+
+.button_column {
+  width: 40px;
+}
+
+.trash {
+  background: url('trash-bin.png') no-repeat;
+  border: none;
+  display: inline-block;
+  height: 48px;
+  width: 48px;
+}
+
+button.message-ready {
+  background: url('sms.png') no-repeat;
+  border: none;
+  display: inline-block;
+  height: 48px;
+  width: 48px;
+}
+
+button.ready-message-sent{
+  background: url('checked-box.png') no-repeat;
+  border: none;
+  display: inline-block;
+  height: 48px;
+  width: 48px;
+}
+
