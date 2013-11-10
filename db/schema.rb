@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131109002619) do
+ActiveRecord::Schema.define(:version => 20131110014614) do
 
   create_table "reservations", :force => true do |t|
     t.string   "name"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20131109002619) do
     t.integer  "restaurant_id"
     t.datetime "estimated_seat_time"
     t.boolean  "notified_table_ready"
+    t.integer  "before_wait_time"
   end
 
   create_table "restaurants", :force => true do |t|
