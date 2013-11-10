@@ -57,7 +57,7 @@ class ReservationsController < ApplicationController
         wait_times[reservation.id] = {}
         wait_times[reservation.id][:minutes] = reservation.wait_time
         wait_times[reservation.id][:done] = false
-      else
+      elsif reservation.wait_time <= 0
         wait_times[reservation.id] = {}
         wait_times[reservation.id][:minutes] = reservation.wait_time
         wait_times[reservation.id][:done] = true

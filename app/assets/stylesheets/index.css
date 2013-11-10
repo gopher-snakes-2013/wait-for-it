@@ -9,17 +9,16 @@ div.create-form {
 
 div.table {
   margin: 0 auto;
-  padding-top: 2em;
   text-align: left;
   width: 70em;
 
-  border: 1px solid #eee;
+/*  border: 1px solid #eee;
   border-collapse: collapse;
   box-shadow: 0px 0px 20px rgba(0,0,0,0.10),
     0px 10px 20px rgba(0,0,0,0.05),
     0px 20px 20px rgba(0,0,0,0.05),
     0px 30px 30px rgba(0,0,0,0.05);
-  margin: 25px auto;
+  margin: 25px auto;*/
 }
 
 .table-headers {
