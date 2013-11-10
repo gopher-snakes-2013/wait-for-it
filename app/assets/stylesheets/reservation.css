@@ -185,3 +185,7 @@ button.ready-message-sent{
 	height: 48px;
 	weight: 48px;
 }
+
+.hidden {
+  display: none;
+}

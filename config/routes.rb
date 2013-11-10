@@ -10,5 +10,5 @@ WaitForIt::Application.routes.draw do
   resources :messages, only: [:create]
 
   get '/reservations/:restaurant_id/list.:format', to: 'reservations#api', as: :reservations_api, constraints: {format: /json/}
-
+  get '/guest/:restaurant_name', to: 'reservations#guest', as: :guest_waitlist
 end

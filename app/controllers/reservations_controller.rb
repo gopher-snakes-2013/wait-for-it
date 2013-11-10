@@ -39,8 +39,14 @@ class ReservationsController < ApplicationController
 
   respond_to :json
   def api
-    reservations = Reservation.find_by_restaurant_id(params[:restaurant_id])
+    restaurant = Restaurant.find_by_name(params[:restaurant_id])
+    # reservations = Reservation.find_by_restaurant_id(params[:restaurant_id])
+    reservations = Reservation.where("restaurant_id = ?",restaurant.id)
     render json: {reservations: reservations}.to_json 
+  end
+
+  def guest
+
   end
 
 end

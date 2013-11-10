@@ -41,6 +41,7 @@ class Reservation < ActiveRecord::Base
 
   def as_json(options={})
     {initial: initial,
+      party_size: self.party_size,
     phone_number: phone_number_obscured,
     estimated_seating: estimated_seating}
   end
