@@ -5,9 +5,11 @@ describe Reservation do
   it { should validate_presence_of :party_size }
   it { should validate_presence_of :phone_number }
   it { should validate_presence_of :wait_time }
+  it { should validate_presence_of :before_wait_time }
 
   it { should validate_numericality_of :party_size }
   it { should validate_numericality_of :wait_time }
+  it { should validate_numericality_of :before_wait_time }
 
   it { should belong_to(:restaurant) }
 
@@ -30,13 +32,10 @@ describe Reservation do
     end
 
     context "#update_all_wait_times" do
-      before(:each) do
+      it "should update all subsequent wait times in the db" do
         next_reservation = Reservation.create(name: "Jeff", party_size: 1, phone_number: "14154154000", wait_time: 20, before_wait_time: 20)
         reservation.wait_time = 20
         reservation.save
-      end
-
-      it "should update all subsequent wait times in the db" do
         expect(Reservation.find_by_name("Jeff").wait_time).to eq(30)
       end
     end
