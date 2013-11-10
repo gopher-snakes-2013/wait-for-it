@@ -9,7 +9,7 @@ var update = {
     update.phoneNumber(reservation);
     update.waitTime(reservation);
 
-    $(".update-button").html('<input name="commit" type="submit" value="edit">');
+    $(this).html('<input name="commit" type="submit" value="save">');
   },
 
   partySize: function(reservation) {
