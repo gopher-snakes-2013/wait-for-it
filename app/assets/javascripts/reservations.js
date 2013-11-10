@@ -9,7 +9,7 @@ var update = {
     update.phoneNumber(reservation);
     update.waitTime(reservation);
 
-    $(this).html('<input name="commit" type="submit" value="save">');
+    $(this).html('<input class="save-button" data-remote="true" name="commit" type="submit" value="save">');
   },
 
   partySize: function(reservation) {
@@ -38,6 +38,10 @@ var update = {
     var text = element.text();
     element.html('<input class="update update-wait-time" name="reservation[wait_time]" value="'+text+'">');
     $(".reservation").undelegate(".update-button", "click");
+  },
+
+  show: function() {
+    debugger
   }
 
 }
@@ -49,6 +53,7 @@ var reservationActions = {
     $(".add_guest_form").on("ajax:error", "#new_reservation", this.errorMessage);
 
     $(".reservation").on("click", ".update-button", update.init);
+    $(".reservation").on("ajax:success", ".save-button", update.show);
   },
 
   addReservation: function(e, reservationPartial) {
