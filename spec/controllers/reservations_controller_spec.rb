@@ -8,6 +8,7 @@ describe ReservationsController do
     @reservation.party_size = 4
     @reservation.phone_number = "555-555-5555"
     @reservation.wait_time = 10
+    @reservation.before_wait_time = 10
     @reservation.save
   end
 

@@ -12,7 +12,7 @@ describe Reservation do
   it { should belong_to(:restaurant) }
 
   it 'should default notified_table_ready to nil' do
-    @reservation = Reservation.create(name:"Jeff", phone_number:"14154154000",wait_time:40)
+    @reservation = Reservation.create(name:"Jeff", phone_number:"14154154000", wait_time: 40, before_wait_time: 40)
     @reservation.notified_table_ready.should be nil
   end
 
@@ -20,7 +20,8 @@ describe Reservation do
     let(:reservation) { Reservation.create name: "George",
                                            party_size: 4,
                                            phone_number: "555-555-5555",
-                                           wait_time: 10 }
+                                           wait_time: 10,
+                                           before_wait_time: 10 }
 
     context "#add_plus_phone_number and #phony_normalize" do
       it "should add a plus to normalized phone numbers" do
