@@ -10,6 +10,7 @@ class Reservation < ActiveRecord::Base
   validates_plausible_phone :phone_number, :country_code => '1'
 
   before_save :add_plus_phone_number
+  before_create :add_estimated_seat_time
   after_save :update_all_wait_times
   after_create :send_text_upon_new_reservation
 
@@ -56,6 +57,10 @@ class Reservation < ActiveRecord::Base
       phone_number: phone_number_obscured,
       estimated_seating: estimated_seating
     }
+  end
+
+  def add_estimated_seat_time
+    self.estimated_seat_time = Time.now.localtime + self.wait_time*60
   end
 
 end
