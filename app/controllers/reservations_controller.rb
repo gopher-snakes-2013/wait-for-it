@@ -50,6 +50,12 @@ class ReservationsController < ApplicationController
 
   def update_wait_time
     wait_times = {}
+
+    restaurant = Restaurant.find(params[:restaurant_id])
+    reservations = restaurant.reservations
+    number_of_reservations = reservations.length
+    wait_times[:total] = number_of_reservations
+
     Reservation.order("wait_time").each do |reservation|
       if reservation.wait_time > 0
         reservation.wait_time = reservation.wait_time - 1

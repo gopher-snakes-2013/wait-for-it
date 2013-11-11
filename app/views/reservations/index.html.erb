@@ -1,3 +1,5 @@
+<% if current_restaurant %>
+
 <div class="nav">
 <%= render "restaurants/logout" %>
 </div>
@@ -10,13 +12,12 @@
   <%= flash[:error] %>
 </div>
 
-<div class="table">
+<div class="table" data-restaurant-id="<%= @restaurant.id %>">
   <div class="table-body">
     <% @reservations.each do |reservation| %>
-      <div class="each-reservation">
-        <%= render partial: "reservations/show", locals: { restaurant: @restaurant, reservation: reservation } %>
-      </div>
+      <%= render partial: "reservations/show", locals: { restaurant: @restaurant, reservation: reservation } %>
     <% end %>
   </div>
 </div>
 
+<% end %>
