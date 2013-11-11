@@ -5,4 +5,6 @@ WaitForIt::Application.routes.draw do
   end
 
   resources :sessions, only:[:create, :destroy]
+
+  resources :messages, only: [:create]
 end
