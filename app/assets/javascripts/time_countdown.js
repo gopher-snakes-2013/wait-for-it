@@ -18,7 +18,9 @@ function updateWaitTime() {
 };
 
 $(document).ready(function(){
-  setInterval(function(){
-    updateWaitTime();
-  }, 60000);
+  if($(".reservation").length > 0) {
+    setInterval(function(){
+      updateWaitTime();
+    }, 60000);
+  }
 });
