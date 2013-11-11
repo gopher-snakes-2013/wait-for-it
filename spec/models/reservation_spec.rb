@@ -61,11 +61,13 @@ describe Reservation do
         @reservation = Reservation.create(name: "Laura",
                            party_size: 3,
                            phone_number: "555-555-5555",
-                           wait_time: 0 )
+                           wait_time: 0,
+                           before_wait_time: 0 )
         @next_reservation = Reservation.create(name: "Nat",
                            party_size: 1,
                            phone_number: "555-555-5555",
-                           wait_time: 20 )
+                           wait_time: 20,
+                           before_wait_time: 20)
       end
       
       it "should return 'soon' for reservations that are at current time" do 
