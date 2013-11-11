@@ -82,8 +82,13 @@ describe Reservation do
                            phone_number: "555-555-5555",
                            wait_time: 20 )
       end
+      
       it "should return 'soon' for reservations that are at current time" do 
         expect(@reservation.estimated_seating).to eq "soon"
+      end
+
+      it "should return a local time for reservations more than current time" do
+        expect(@next_reservation.estimated_seating).to eq (Time.now()+20*60).localtime.strftime("%I:%Mp")
       end
     end
 
