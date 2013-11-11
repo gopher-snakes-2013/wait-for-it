@@ -10,9 +10,9 @@ class Reservation < ActiveRecord::Base
   validates_plausible_phone :phone_number, :country_code => '1'
 
   before_save :add_plus_phone_number
+  before_create :generate_unique_key
   after_save :update_all_wait_times
   after_create :send_text_upon_new_reservation
-  before_create :generate_unique_key
 
   def add_plus_phone_number
     self.phone_number = "+" + self.phone_number
