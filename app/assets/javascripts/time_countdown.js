@@ -17,15 +17,15 @@
 //   })
 // };
 
-// $(document).ready(function(){
-//   if($(".reservation").length > 0) {
-//     setInterval(function(){
-//       updateWaitTime();
-//     }, 60000);
-//   }
-// });
-var timeStuff = []
-updateWaitTime = function(){
+$(document).ready(function(){
+  if($(".reservation").length > 0) {
+    setInterval(function(){
+      updateReservations.updateWaitTime();
+    }, 6000);
+  }
+});
+var updateReservations = {
+updateWaitTime: function(){
   var reservations_on_page = $('.reservation')
   var timeREGEXP = /(\d+):(\d+)(pm|am)/
   var pmREGEXP = /pm/
@@ -48,5 +48,6 @@ updateWaitTime = function(){
     console.log("wait time: ",Math.round((newTime - Date.now())/60000))
     var newWaitTime  = Math.round((newTime - Date.now())/60000)
     $($(reservations_on_page[i]).find('.wait-time')).html(newWaitTime)   
+}
 }
 }
