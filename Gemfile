@@ -12,13 +12,14 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
 end
 
-group :development, :test do
+group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
 end
 
 group :test do
   gem 'rspec-rails'
+  gem 'selenium-webdriver'
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'database_cleaner'

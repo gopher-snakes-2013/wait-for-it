@@ -20,7 +20,7 @@ var timeToWait = {
 
   startInterval: function() {
     waitTime = timeToWait.getWaitTime();
-    interval = setInterval(function(){ timeToWait.countdown() }, 1000);
+    interval = setInterval(function(){ timeToWait.countdown() }, 60000);
   }
 };
 

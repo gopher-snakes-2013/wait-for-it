@@ -1,0 +1,20 @@
+<% trash_img = image_tag('trash-bin.png', :class =>"trash") %>
+    
+<form class="tr reservation" data-id="<%= reservation.id %>" method="post" action="/restaurants/<%= restaurant.id %>/reservations/<%= reservation.id %>">
+  <input name="_method" type="hidden" value="put">
+  <input name="authenticity_token" type="hidden" value="057qED4hislMTPA+DFKK4JiFJNhwmR+rp6VULbVMQMQ=">
+  <span class="td name"><%= reservation.name %></span>
+  <span class="td party-size"><%= reservation.party_size %></span>
+  <span class="td phone-number"><%= reservation.phone_number.phony_formatted(normalize: :US, format: :national, spaces: '-') %></span>
+  <span class="td wait-time"><%= reservation.wait_time %></span>
+  <span class="td update-button"><input type="submit" value="edit"></span>
+  <span class="td delete-button"><%= link_to trash_img, restaurant_reservation_path(restaurant.id, reservation.id), method: 'delete', action: 'destroy', class: 'delete' %></span>
+  <span class="td message-button">
+    <% if reservation.notified_table_ready %>
+      <button class="ready-message-sent">
+    <% else %>
+      <button class="message-ready">
+    <% end %>
+      </button>
+  </span>
+</form>
