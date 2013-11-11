@@ -15,8 +15,8 @@
 
 .td.party-size {
   float:left;
-  width:2em;
   margin-left:1.5em;
+  width:2em;
 }
 
 .td.phone-number {
@@ -34,18 +34,29 @@
   width:2em;
 }
 
+.td.max-wait-time {
+  width:5.3em;
+}
+
 .td .x {
   width:65px;
 }
 
 .add_guest_form {
-  margin: auto;
   display: block;
+  margin: auto;
   text-align: center;
 }
 
 .tr {
   position:relative;
+  border: 2px solid #142837;
+  border-radius: 15px;
+  margin-top:1em;
+  padding:1em;
+}
+
+.th {
   padding:1em;
   height:4em;
   margin-top:1em;
@@ -54,19 +65,18 @@
 }
 
 .tr:hover {
-  border-radius: 15px;
   background-color: #A4E1FF;
-  -webkit-transition: 1s;
-  /*outline-color: #223442;*/
   border: 2px solid #F5F7F7;
+  border-radius: 15px;
+  -webkit-transition: 1s;
 }
 
 /******Update Form Fields*****/
 
 input.update {
-  width:3em;
-  text-align: center;
   font-size:1em;
+  text-align: center;
+  width:3em;
 }
 
 input.update-name {
@@ -106,4 +116,3 @@ button.ready-message-sent{
   height: 48px;
   width: 48px;
 }
-

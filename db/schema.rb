@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20131111032756) do
     t.string   "password_digest"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.integer  "max_wait_time"
   end
 
 end

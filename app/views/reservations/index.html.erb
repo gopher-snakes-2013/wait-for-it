@@ -1,23 +1,31 @@
 <% if current_restaurant %>
 
 <div class="nav">
-<%= render "restaurants/logout" %>
+	<%= render "restaurants/logout" %>
 </div>
 <br/>
 <div class="create-form">
-  <%= render "reservations/form" %>
+	<%= render "reservations/form" %>
 </div>
 
 <div class="error-message">
-  <%= flash[:error] %>
+	<%= flash[:error] %>
 </div>
 
 <div class="table" data-restaurant-id="<%= @restaurant.id %>">
-  <div class="table-body">
-    <% @reservations.each do |reservation| %>
-      <%= render partial: "reservations/show", locals: { restaurant: @restaurant, reservation: reservation } %>
-    <% end %>
-  </div>
-</div>
+	<div class="table-body">
+		<div class="tr reservation table-head" >
+			<span class="td name">Name</span>
+			<span class="td party-size">Party Size</span>
+			<span class="td phone-number">Phone Number</span>
+			<span class="td wait-time">Wait Time</span>
+			</div>
+			<br>
 
-<% end %>
+			<% @reservations.each do |reservation| %>
+			<%= render partial: "reservations/show", locals: { restaurant: @restaurant, reservation: reservation } %>
+			<% end %>
+		</div>
+	</div>
+
+	<% end %>
