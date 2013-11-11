@@ -13,30 +13,47 @@ describe Reservation do
 
   it { should belong_to(:restaurant) }
 
+  before(:each) do
+    @restaurant = Restaurant.create(name: "Sourdough Kitchen", email: "sour@kitchen.com", password: "password", password_confirmation: "password")
+    @reservation = @restaurant.reservations.new
+    @reservation.name = "Jeff"
+    @reservation.party_size = 1
+    @reservation.phone_number = "555-555-5555"
+    @reservation.wait_time = 10
+    @reservation.before_wait_time = 10
+    @reservation.save
+
+    @reservation_2 = @restaurant.reservations.new
+    @reservation_2.name = "Cindy"
+    @reservation_2.party_size = 2
+    @reservation_2.phone_number = "555-555-5555"
+    @reservation_2.wait_time = 20
+    @reservation_2.before_wait_time = 20
+    @reservation_2.save
+  end
+
   it 'should default notified_table_ready to nil' do
-    reservation = Reservation.create(name: "Jeff", party_size: 1, phone_number: "14154154000", wait_time: 20, before_wait_time: 20)
-    reservation.notified_table_ready.should be nil
+    @reservation.notified_table_ready.should be nil
   end
 
   describe "custom callback methods" do
-    let!(:reservation) { Reservation.create name: "George",
-                                           party_size: 4,
-                                           phone_number: "555-555-5555",
-                                           wait_time: 10,
-                                           before_wait_time: 10 }
-
-    context "#add_plus_phone_number and #phony_normalize" do
+    context "#add_plus_phone_number" do
       it "should add a plus to normalized phone numbers" do
-        expect(reservation.phone_number).to eq("+15555555555")
+        expect(@reservation.phone_number).to eq("+15555555555")
       end
     end
 
     context "#update_all_wait_times" do
       it "should update all subsequent wait times in the db" do
-        next_reservation = Reservation.create(name: "Jeff", party_size: 1, phone_number: "14154154000", wait_time: 20, before_wait_time: 20)
-        reservation.wait_time = 20
-        reservation.save
-        expect(Reservation.find_by_name("Jeff").wait_time).to eq(30)
+        @reservation.wait_time = 20
+        @reservation.save
+        expect(Reservation.find_by_name("Cindy").wait_time).to eq(30)
+      end
+    end
+
+    context "generate_unique_key" do
+      it "should assign unique_key to a random secure hex key" do
+        expect(Reservation.find_by_name("Cindy").unique_key).to be_true
       end
     end
   end

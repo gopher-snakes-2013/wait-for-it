@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   def guest_access
     reservation = Reservation.find(params[:id])
-    true if params[:key] == reservation.unique_key
+    true if params[:guest] == reservation.unique_key
   end
 
 end

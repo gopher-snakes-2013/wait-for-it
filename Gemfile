@@ -7,6 +7,7 @@ gem 'phony_rails'
 gem 'dotenv'
 gem 'twilio-ruby'
 gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bitly'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

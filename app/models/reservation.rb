@@ -19,8 +19,9 @@ class Reservation < ActiveRecord::Base
   end
 
   def send_text_upon_new_reservation
+    url = BitlyHelper.shorten_url(self)
     TwilioHelper.send_on_waitlist(self.phone_number,
-      "Hi #{self.name}, you've been added to the waitlist. Your wait is approximately #{self.wait_time} minutes.")
+      "Hi #{self.name}, you've been added to #{self.restaurant.name}'s waitlist. Your wait is approximately #{self.wait_time} minutes. #{url}")
   end
 
   def update_all_wait_times
