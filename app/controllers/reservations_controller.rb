@@ -41,4 +41,14 @@ class ReservationsController < ApplicationController
   	reservation.destroy
   	redirect_to restaurant_reservations_path(restaurant.id)
   end
+
+  def guest
+  end
+
+  respond_to :json
+  def api
+    restaurant = Restaurant.find_by_name(params[:restaurant_name])
+    reservations = Reservation.where("restaurant_id = ?", restaurant.id)
+    render json: {reservations: reservations}.to_json
+  end
 end
