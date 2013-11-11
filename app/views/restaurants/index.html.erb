@@ -16,20 +16,15 @@
 
 <div class="table">
 	<table>
-		<thead class="table-headers">
-			<tr>
-				<th>Restaurant</th>
-				<th>Current Max Wait Time (mins)</th>
-			</tr>
+		<thead>
+			<div class="th" >
+				<span class='td'>Restaurant</span>
+				<span class='td'>Current Max Wait Time (mins)</span>
+			</div>
 		</thead>
 		<tbody>
 			<% @restaurants.each do |restaurant| %>
-
-			<tr class="tr restaurant" >
-				<td><span class="name"><%= restaurant.name %></span></td>
-				<td><span class="max_wait_time"><%= restaurant.max_wait_time %></span></td>
-			</tr>
-
+				<%= render partial: 'restaurants/show', locals: { restaurant: restaurant } %>
 			<% end %>
 		</tbody>
 	</table>

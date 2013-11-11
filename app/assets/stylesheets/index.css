@@ -13,10 +13,6 @@ div.table {
   width: 70em;
 }
 
-.table-headers {
-  padding-bottom:1.8em;
-}
-
 .th {
   font-size: 1.3em;
   font-weight: bold;
@@ -26,4 +22,8 @@ div.table {
 
 .th.phone {
   margin-left: -0.1em;
+}
+
+.table_head {
+  height: 48px;
 }
