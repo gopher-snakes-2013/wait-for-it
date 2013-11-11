@@ -36,7 +36,8 @@ var update = {
   waitTime: function(reservation) {
     var element = reservation.find(".wait-time");
     var text = element.text();
-    element.html('<input class="update update-wait-time" name="reservation[wait_time]" value="'+text+'">');
+    var potential_wait_times = ["10","15","20","25","30"]
+    element.html('<select class="update update-wait-time" name="reservation[wait_time]"><option value="10">10</option><option value="20">20</option><option value="30">30</option></select>');
   },
 
   save: function(e) {
