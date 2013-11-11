@@ -3,34 +3,75 @@ html {
   font-size: 16px;
 }
 
-#container {
-  margin: 2em;
-  text-align: center;
-}
-
 body {
   color: #142837;
   font-family: Raleway;
   margin: 0 auto;
 }
 
-#main {
-  position: relative;
+#container {
+  padding-top:10em;
+  text-align: center;
+}
+
+.navbar {
+  background-color: #2EC6A4;
+  height:6em;
+  position: fixed;
+  width: 100%;
+  z-index: 3;
 }
 
 #title1 {
-  color: #2EC6A4;
+  bottom:3.5em;
+  color: #F5F7F7;
   display: block;
   font-family: 'Lobster', cursive;
   font-size: 2.5em;
-  position: relative;
-  right: 4.7em;
-  text-align: center;
-  top: 2em;
-  -webkit-transform: rotate(-20deg);
+  left: 9px;
+  margin-left: .2em;
+  position: absolute;
+  top: 19px;
+  -webkit-transform: rotate(-18deg);
+  z-index:3;
 }
 
+
 #title2 {
+  bottom: 0.6em;
+  display:inline-block;
   font-family: 'Crete Round', serif;
   font-size: 3.1em;
+  margin-left:2.5em;
+  position:relative;
+  z-index:2;
+}
+
+a {
+  color:#142837;
+  text-decoration: none;
+}
+
+.logged-in {
+  font-family: 'Lobster', cursive;
+  font-size: xx-large;
+}
+
+.logout {
+  border: 2px solid #2EC6A4;
+  border-radius: 10px;
+  display: block;
+  left: 100em;
+  padding: 7px;
+  position: absolute;
+  top: 2em;
+  z-index: 5;
+}
+
+.logout:hover {
+  background-color: #F5F7F7;
+  border: 2px solid;
+  border-radius: 10px;
+  padding: 7px;
+  -webkit-transition: 1s;
 }
