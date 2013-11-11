@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
   $('.table').on("click","button.message-ready", function(){
-    var guestId = $(this).closest('tr').data("id")
+    var guestId = $(this).closest('form').data("id")
     var boundMessageGuestReady = messageGuestReady.bind(this)
     boundMessageGuestReady(guestId)
   })
