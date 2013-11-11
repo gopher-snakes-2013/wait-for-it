@@ -39,4 +39,27 @@ describe ReservationsController do
     end
   end
 
+  context "#update_wait_time" do
+    before(:each) do
+      @reservation_2 = @restaurant.reservations.new
+      @reservation_2.name = "Jim"
+      @reservation_2.party_size = 2
+      @reservation_2.phone_number = "555-555-5555"
+      @reservation_2.wait_time = 0
+      @reservation_2.before_wait_time = 0
+      @reservation_2.save
+    end
+
+    it "should subtract one from the wait times of all reservations in the db" do
+      post :update_wait_time, restaurant_id: @restaurant.id
+      expect(Reservation.find_by_name("George").wait_time).to eq(9)
+    end
+
+    xit "should not update wait times of 0" do
+      post :update_wait_time
+      expect(Reservation.find_by_name("Jim").wait_time).to eq(0)
+    end
+
+  end
+
 end

@@ -3,8 +3,7 @@ WaitForIt::Application.routes.draw do
   resources :restaurants, only: [:new, :create, :index] do
     resources :reservations, only: [:update, :destroy, :index, :create, :show]
   end
-
   resources :sessions, only:[:create, :destroy]
-
   resources :messages, only: [:create]
+  post 'reservations/updatetime', to: 'reservations#update_wait_time'
 end
