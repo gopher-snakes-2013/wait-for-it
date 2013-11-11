@@ -1,12 +1,3 @@
-$(document).ready(function(){
-
-  $(".table").on("click", "button.message-ready", function(){
-    var guestId = $(this).closest("form.reservation").data("id")
-    var boundMessageGuestReady = messageGuestReady.bind(this)
-    boundMessageGuestReady(guestId)
-  })
-
-})
 
 var messageGuestReady = function(guest_id){
   var that = this
@@ -24,3 +15,13 @@ var messageGuestReady = function(guest_id){
     $("error-message").text("SMS failed :(")
   })
 }
+
+$(document).ready(function(){
+
+  $(".table").on("click", "button.message-ready", function(){
+    var guestId = $(this).closest("form.reservation").data("id")
+    var boundMessageGuestReady = messageGuestReady.bind(this)
+    boundMessageGuestReady(guestId)
+  })
+
+})
