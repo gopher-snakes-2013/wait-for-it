@@ -10,11 +10,11 @@ class Restaurant < ActiveRecord::Base
   has_secure_password
 
   def update_max_wait_time
-		reservations_sorted_by_wait_time = self.reservations.map { |x| x.wait_time }.sort.last
-		if reservations_sorted_by_wait_time.nil?
+		reservation_with_longest_wait_time = self.reservations.map { |x| x.wait_time }.sort.last
+		if reservation_with_longest_wait_time.nil?
 			self.max_wait_time = 0
 		else	
-			self.max_wait_time = reservations_sorted_by_wait_time
+			self.max_wait_time = reservation_with_longest_wait_time
 		end
   end
 
