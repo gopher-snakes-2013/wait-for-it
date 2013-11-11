@@ -8,4 +8,15 @@ class Restaurant < ActiveRecord::Base
   validates_format_of :email, with: /\A([\w\!\#\z\%\&\'\*\+\-\/\=\?\\A\`{\|\}\~]+\.)*[\w\+-]+@((((([a-z0-9]{1}[a-z0-9\-]{0,62}[a-z0-9]{1})|[a-z])\.)+[a-z]{2,6})|(\d{1,3}\.){3}\d{1,3}(\:\d{1,5})?)\z/i, on: :create
 
   has_secure_password
+
+  def update_max_wait_time
+		reservation_with_longest_wait_time = self.reservations.map { |x| x.wait_time }.sort.last
+		if reservation_with_longest_wait_time.nil?
+			self.max_wait_time = 0
+		else	
+			self.max_wait_time = reservation_with_longest_wait_time
+		end
+  end
+
 end
+

@@ -1,7 +1,11 @@
 class RestaurantsController < ApplicationController
 
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.all    
+    @restaurants.each do |restaurant|
+      restaurant.update_max_wait_time
+    end
+
     if session[:restaurant_id]
       @current_restaurant = Restaurant.find(session[:restaurant_id])
     end
