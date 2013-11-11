@@ -4,7 +4,6 @@ var update = {
     var $edit = $(this)
     var reservation = $(this).closest(".reservation");
     var id = reservation.data("id");
-
     update.partySize(reservation);
     update.guestName(reservation);
     update.phoneNumber(reservation);
@@ -43,12 +42,11 @@ var update = {
     var id = $(this).closest(".reservation").data("id").toString();
     var restaurant_id = $(this).closest(".reservation").data("restaurant-id").toString();
     var $that = $(this);
-
     $.ajax({
       url: "/restaurants/"+restaurant_id+"/reservations/"+id+"/",
       type: "put",
       dataType: "json",
-      data: $(this).closest("form.reservation").serialize()
+      data: $(this).closest(".reservation").serialize()
     }).done(function(data){
       $that.closest(".reservation").find("span.name").html(data.name);
       $that.closest(".reservation").find("span.party-size").html(data.party_size);

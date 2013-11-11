@@ -101,7 +101,7 @@ input.update-phone-number {
   width: 48px;
 }
 
-button.message-ready {
+div.message-ready {
   background: url('sms.png') no-repeat;
   border: none;
   display: inline-block;
@@ -109,7 +109,7 @@ button.message-ready {
   width: 48px;
 }
 
-button.ready-message-sent{
+div.ready-message-sent{
   background: url('checked-box.png') no-repeat;
   border: none;
   display: inline-block;
