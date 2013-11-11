@@ -11,6 +11,7 @@ class ReservationsController < ApplicationController
   end
 
   def create
+    puts "reservation#create"
     restaurant = Restaurant.find(params[:restaurant_id])
     reservation = restaurant.reservations.new
     reservation.name = params[:reservation][:name]
@@ -23,6 +24,8 @@ class ReservationsController < ApplicationController
     else
       render status: :unprocessable_entity, json: { error_message: "Try Again." }.to_json
     end
+    puts "reservation#create#end"
+
   end
 
   def update
