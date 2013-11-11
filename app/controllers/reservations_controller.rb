@@ -48,14 +48,23 @@ class ReservationsController < ApplicationController
   	redirect_to restaurant_reservations_path(restaurant.id)
   end
 
+
+  def guest
+  end
+
+  respond_to :json
+  def api
+    restaurant = Restaurant.find_by_name(params[:restaurant_name])
+    reservations = Reservation.where("restaurant_id = ?", restaurant.id)
+    render json: {reservations: reservations}.to_json
+  end
+
   def update_wait_time
     wait_times = {}
-
     restaurant = Restaurant.find(params[:restaurant_id])
     reservations = restaurant.reservations
     number_of_reservations = reservations.length
     wait_times[:total] = number_of_reservations
-
     Reservation.order("wait_time").each do |reservation|
       if reservation.wait_time > 0
         reservation.wait_time = reservation.wait_time - 1
@@ -69,7 +78,6 @@ class ReservationsController < ApplicationController
         wait_times[reservation.id][:done] = true
       end
     end
-
     render json: wait_times.to_json
   end
 end
