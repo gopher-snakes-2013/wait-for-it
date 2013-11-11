@@ -12,7 +12,7 @@ var update = {
     update.waitTime(reservation);
 
     $edit.closest(".update-button").html('<input class="save" name="commit" type="submit" value="save">');
-    $("table").on("click", ".save", update.save);
+    $(".table").on("click", ".save", update.save);
 
     $(".edit").remove();
   },
@@ -58,7 +58,7 @@ var update = {
       $that.closest(".reservation").find("span.phone-number").html(data.phone_number);
       $that.closest(".reservation").find("span.wait-time").html(data.wait_time);
       $that.closest(".table").find(".update-button").html('<input class="edit" type="submit" value="edit">')
-      $("table").on("click", ".edit", update.init);
+      $(".table").on("click", ".edit", update.init);
     })
 
   }
@@ -70,7 +70,7 @@ var reservationActions = {
     $(".add_guest_form").on("ajax:success", "#new_reservation", this.addReservation);
     $(".add_guest_form").on("ajax:error", "#new_reservation", this.errorMessage);
 
-    $("table").on("click", ".edit", update.init);
+    $(".table").on("click", ".edit", update.init);
   },
 
   addReservation: function(e, reservationPartial) {
@@ -82,7 +82,7 @@ var reservationActions = {
     $("#reservation_wait_time").val("");
     $(".error-message").html("");
 
-    $("table").on("click", ".edit", update.init);
+    $(".table").on("click", ".edit", update.init);
   },
 
   errorMessage: function(e, xhr) {
