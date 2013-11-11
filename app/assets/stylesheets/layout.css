@@ -15,11 +15,11 @@ body {
 }
 
 .navbar {
-  background-color:#2EC6A4;
+  background-color: #2EC6A4;
   height:6em;
   position: fixed;
   width: 100%;
-  z-index: 1000;
+  z-index: 3;
 }
 
 #title1 {
@@ -50,4 +50,28 @@ body {
 a {
   color:#142837;
   text-decoration: none;
+}
+
+.logged-in {
+  font-family: 'Lobster', cursive;
+  font-size: xx-large;
+}
+
+.logout {
+  border: 2px solid #2EC6A4;
+  border-radius: 10px;
+  display: block;
+  left: 100em;
+  padding: 7px;
+  position: absolute;
+  top: 2em;
+  z-index: 5;
+}
+
+.logout:hover {
+  background-color: #F5F7F7;
+  border: 2px solid;
+  border-radius: 10px;
+  padding: 7px;
+  -webkit-transition: 1s;
 }
