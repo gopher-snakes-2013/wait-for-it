@@ -35,8 +35,6 @@ body {
   margin-left: .2em;
   bottom:3.5em;
   -webkit-transform: rotate(-16deg);
-  -webkit-text-stroke-width: 1.7px;
-  -webkit-text-stroke-color: #142837;
   z-index:3;
 }
 

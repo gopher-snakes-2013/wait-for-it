@@ -25,6 +25,16 @@ class ReservationsController < ApplicationController
     end
   end
 
+  def show
+    if guest_access
+      @restaurant = Restaurant.find(params[:restaurant_id])
+      @reservation = Reservation.find(params[:id])
+      @reservations = Reservation.where(restaurant_id: @restaurant.id).order("wait_time ASC")
+    else
+      redirect_to root_path
+    end
+  end
+
   def update
     restaurant = Restaurant.find(params[:restaurant_id])
     reservation = Reservation.find(params[:id])
@@ -64,6 +74,8 @@ class ReservationsController < ApplicationController
         wait_times[reservation.id][:minutes] = reservation.wait_time
         wait_times[reservation.id][:done] = false
       elsif reservation.wait_time <= 0
+        reservation.wait_time = 0
+        reservation.save
         wait_times[reservation.id] = {}
         wait_times[reservation.id][:minutes] = reservation.wait_time
         wait_times[reservation.id][:done] = true

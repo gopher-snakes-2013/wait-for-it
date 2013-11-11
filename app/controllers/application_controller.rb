@@ -10,4 +10,9 @@ class ApplicationController < ActionController::Base
     !!current_restaurant
   end
 
+  def guest_access
+    reservation = Reservation.find(params[:id])
+    true if params[:key] == reservation.unique_key
+  end
+
 end
