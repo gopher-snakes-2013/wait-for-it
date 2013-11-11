@@ -1,7 +1,7 @@
 <% if session[:restaurant_id]%>
 	<div class='logged-in'>
 		<% logged_in_restaurant = Restaurant.find(session[:restaurant_id]) %>
-		<%= 'Hello ' + logged_in_restaurant.name %>
+		<%= 'Hello, ' + logged_in_restaurant.name %>
 	</div>
 
 	<div class='logout'>
