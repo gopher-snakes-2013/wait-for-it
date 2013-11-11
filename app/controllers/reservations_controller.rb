@@ -6,7 +6,7 @@ class ReservationsController < ApplicationController
       @reservations = Reservation.where(restaurant_id: @restaurant.id).order("wait_time ASC")
       @reservation = @restaurant.reservations.new
     else
-      redirect_to restaurant_reservations_path(@restaurant.id)
+      redirect_to root_path
     end
   end
 

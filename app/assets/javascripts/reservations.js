@@ -1,6 +1,10 @@
 var update = {
 
   init: function() {
+    // $(this).removeClass("update-button")
+    // $(this).addClass("save-button")
+    $(this).closest(".table").find(".update-button").html("")
+
     var reservation = $(this).closest(".reservation");
     var id = reservation.data("id");
 
@@ -11,7 +15,7 @@ var update = {
 
     $("form.reservation").undelegate(".update-button", "click");
     $(this).html('<input class="save-button" name="commit" type="submit" value="save">');
-    $("form.reservation").on("click", ".save-button", update.show);
+    $("form.reservation").on("click", ".save-button", update.save);
   },
 
   partySize: function(reservation) {
@@ -38,15 +42,11 @@ var update = {
     element.html('<input class="update update-wait-time" name="reservation[wait_time]" value="'+text+'">');
   },
 
-  show: function(e) {
+  save: function(e) {
     e.preventDefault();
     var id = $(this).closest(".reservation").data("id").toString();
     var restaurant_id = $(this).closest(".reservation").data("restaurant-id").toString();
     var $that = $(this);
-
-    $("form.reservation").undelegate(".save-button", "click");
-    // $(this).html('<input type="submit" value="edit">');
-    $("form.reservation").on("click", ".update-button", update.init);
 
     $.ajax({
       url: "/restaurants/"+restaurant_id+"/reservations/"+id+"/",
@@ -59,6 +59,10 @@ var update = {
       $that.closest(".reservation").find("span.phone-number").html(data.phone_number);
       $that.closest(".reservation").find("span.wait-time").html(data.wait_time);
     })
+
+    $("form.reservation").undelegate(".save-button", "click");
+    // $(this).closest(".table").find(".update-button").html('<input type="submit" value="edit">')
+    $("form.reservation").on("click", ".update-button", update.init);
   }
 }
 
@@ -70,10 +74,6 @@ var reservationActions = {
 
     $("form.reservation").on("click", ".update-button", update.init);
   },
-
-  // bindEvents: function() {
-  //   $("form.reservation").on("click", ".update-button", update.init);
-  // },
 
   addReservation: function(e, reservationPartial) {
     $(".table-body").append(reservationPartial);
@@ -93,5 +93,4 @@ var reservationActions = {
 
 $(document).ready(function(){
   reservationActions.init();
-  // $(".add_guest_form").on("click", "#new_reservation", this.bindEvents);
 });
