@@ -5,14 +5,12 @@ var update = {
 
     var reservation = $(this).closest(".reservation");
     var id = reservation.data("id");
-
     update.partySize(reservation);
     update.guestName(reservation);
     update.phoneNumber(reservation);
     update.waitTime(reservation);
 
     $edit.closest(".update-button").html('<input class="save" name="commit" type="submit" value="save">');
-    $(".table").on("click", ".save", update.save);
 
     $(".edit").remove();
   },
@@ -46,19 +44,17 @@ var update = {
     var id = $(this).closest(".reservation").data("id").toString();
     var restaurant_id = $(this).closest(".reservation").data("restaurant-id").toString();
     var $that = $(this);
-
     $.ajax({
       url: "/restaurants/"+restaurant_id+"/reservations/"+id+"/",
       type: "put",
       dataType: "json",
-      data: $(this).closest("form.reservation").serialize()
+      data: $(this).closest(".reservation").serialize()
     }).done(function(data){
       $that.closest(".reservation").find("span.name").html(data.name);
       $that.closest(".reservation").find("span.party-size").html(data.party_size);
       $that.closest(".reservation").find("span.phone-number").html(data.phone_number);
       $that.closest(".reservation").find("span.wait-time").html(data.wait_time);
       $that.closest(".table").find(".update-button").html('<input class="edit" type="submit" value="edit">')
-      $(".table").on("click", ".edit", update.init);
     })
 
   }
@@ -71,6 +67,7 @@ var reservationActions = {
     $(".add_guest_form").on("ajax:error", "#new_reservation", this.errorMessage);
 
     $(".table").on("click", ".edit", update.init);
+    $(".table").on("click", ".save", update.save);
   },
 
   addReservation: function(e, reservationPartial) {
@@ -81,8 +78,6 @@ var reservationActions = {
     $("#reservation_phone_number").val("");
     $("#reservation_wait_time").val("");
     $(".error-message").html("");
-
-    $(".table").on("click", ".edit", update.init);
   },
 
   errorMessage: function(e, xhr) {
