@@ -60,7 +60,11 @@ class Reservation < ActiveRecord::Base
   end
 
   def add_estimated_seat_time
-    self.estimated_seat_time = Time.now.localtime + self.wait_time*60
+    self.estimated_seat_time = Time.now + self.wait_time*60
+  end
+
+  def estimated_seat_time_display
+    self.estimated_seat_time.localtime.strftime("%l:%M%P")
   end
 
 end
