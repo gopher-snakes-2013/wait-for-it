@@ -46,12 +46,17 @@
 
 .tr {
   padding:1em;
+  margin-top:1em;
+  border-radius: 15px;
+  border: 2px solid #142837;
 }
 
 .tr:hover {
+  border-radius: 15px;
   background-color: #A4E1FF;
   -webkit-transition: 1s;
-  outline-color: #223442;
+  /*outline-color: #223442;*/
+  border: 2px solid #F5F7F7;
 }
 
 /******Update Form Fields*****/

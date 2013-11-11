@@ -3,15 +3,23 @@ html {
   font-size: 16px;
 }
 
-#container {
-  margin: 2em;
-  text-align: center;
-}
-
 body {
   color: #142837;
   font-family: Raleway;
   margin: 0 auto;
+}
+
+#navbar {
+  position:fixed;
+  width:100%;
+  height:6em;
+  background-color:#2EC6A4;
+  z-index:1;
+}
+
+#container {
+  padding-top:10em;
+  text-align: center;
 }
 
 #main {
@@ -19,18 +27,31 @@ body {
 }
 
 #title1 {
-  color: #2EC6A4;
+  color: #F5F7F7;
   display: block;
   font-family: 'Lobster', cursive;
   font-size: 2.5em;
   position: relative;
-  right: 4.7em;
-  text-align: center;
-  top: 2em;
-  -webkit-transform: rotate(-20deg);
+  margin-left: .2em;
+  bottom:3.5em;
+  -webkit-transform: rotate(-16deg);
+  -webkit-text-stroke-width: 1.7px;
+  -webkit-text-stroke-color: #142837;
+  z-index:3;
 }
 
+
 #title2 {
+  position:relative;
+  margin-left:2.5em;
+  bottom:1.5em;
+  display:inline-block;
   font-family: 'Crete Round', serif;
   font-size: 3.1em;
+  z-index:2;
+}
+
+a {
+  text-decoration: none;
+  color:#142837;
 }
