@@ -73,6 +73,8 @@ class ReservationsController < ApplicationController
         wait_times[reservation.id][:minutes] = reservation.wait_time
         wait_times[reservation.id][:done] = false
       elsif reservation.wait_time <= 0
+        reservation.wait_time = 0
+        reservation.save
         wait_times[reservation.id] = {}
         wait_times[reservation.id][:minutes] = reservation.wait_time
         wait_times[reservation.id][:done] = true
