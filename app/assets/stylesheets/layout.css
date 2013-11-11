@@ -9,49 +9,45 @@ body {
   margin: 0 auto;
 }
 
-#navbar {
-  position:fixed;
-  width:100%;
-  height:6em;
-  background-color:#2EC6A4;
-  z-index:1;
-}
-
 #container {
   padding-top:10em;
   text-align: center;
 }
 
-#main {
-  position: relative;
+.navbar {
+  background-color:#2EC6A4;
+  height:6em;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
 }
 
 #title1 {
+  bottom:3.5em;
   color: #F5F7F7;
   display: block;
   font-family: 'Lobster', cursive;
   font-size: 2.5em;
-  position: relative;
+  left: 9px;
   margin-left: .2em;
-  bottom:3.5em;
-  -webkit-transform: rotate(-16deg);
-  -webkit-text-stroke-width: 1.7px;
-  -webkit-text-stroke-color: #142837;
+  position: absolute;
+  top: 19px;
+  -webkit-transform: rotate(-18deg);
   z-index:3;
 }
 
 
 #title2 {
-  position:relative;
-  margin-left:2.5em;
-  bottom:1.5em;
+  bottom: 0.6em;
   display:inline-block;
   font-family: 'Crete Round', serif;
   font-size: 3.1em;
+  margin-left:2.5em;
+  position:relative;
   z-index:2;
 }
 
 a {
-  text-decoration: none;
   color:#142837;
+  text-decoration: none;
 }
