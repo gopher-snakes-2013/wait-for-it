@@ -1,5 +1,7 @@
 $(document).ready(function(){
-getReservations.callServer()
+if($('#guest-container').length > 0){
+  getReservations.callServer()
+}
 })
 
 
@@ -27,6 +29,7 @@ var waitlist = {
 var getReservations = {  
 
     callServer: function(){
+
     var restaurantName = $(location).attr('pathname').slice(7)
       $.ajax({
     url: '/reservations/'+restaurantName+'/list.json',
