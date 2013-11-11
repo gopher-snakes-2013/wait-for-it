@@ -26,7 +26,7 @@ class Reservation < ActiveRecord::Base
 
   def update_all_wait_times
     wait_difference = self.wait_time - self.before_wait_time
-    Reservation.all.each do |reservation|
+    self.restaurant.reservations.each do |reservation|
       if reservation.id > self.id
         reservation.update_attributes(wait_time: (reservation.wait_time + wait_difference))
         reservation.update_attributes(before_wait_time: reservation.wait_time)
