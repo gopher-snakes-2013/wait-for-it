@@ -68,4 +68,23 @@ describe Reservation do
       expect(@reservation.phone_number_obscured).to eq "XXX-X555"
     end
   end
+  context "#initial" do 
+  end
+
+  context "#estimated_seating" do 
+         before(:each) do
+        @reservation = Reservation.create(name: "Laura",
+                           party_size: 3,
+                           phone_number: "555-555-5555",
+                           wait_time: 0 )
+        @next_reservation = Reservation.create(name: "Nat",
+                           party_size: 1,
+                           phone_number: "555-555-5555",
+                           wait_time: 20 )
+      end
+      it "should return 'soon' for reservations that are at current time" do 
+        expect(@reservation.estimated_seating).to eq "soon"
+      end
+    end
+
 end
