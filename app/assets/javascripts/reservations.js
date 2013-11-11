@@ -1,9 +1,7 @@
 var update = {
 
   init: function() {
-    // $(this).removeClass("update-button")
-    // $(this).addClass("save-button")
-    $(this).closest(".table").find(".update-button").html("")
+    var $edit = $(this)
 
     var reservation = $(this).closest(".reservation");
     var id = reservation.data("id");
@@ -13,9 +11,10 @@ var update = {
     update.phoneNumber(reservation);
     update.waitTime(reservation);
 
-    $("form.reservation").undelegate(".update-button", "click");
-    $(this).html('<input class="save-button" name="commit" type="submit" value="save">');
-    $("form.reservation").on("click", ".save-button", update.save);
+    $edit.closest(".update-button").html('<input class="save" name="commit" type="submit" value="save">');
+    $("form.reservation").on("click", ".save", update.save);
+
+    $(".edit").remove();
   },
 
   partySize: function(reservation) {
@@ -58,11 +57,10 @@ var update = {
       $that.closest(".reservation").find("span.party-size").html(data.party_size);
       $that.closest(".reservation").find("span.phone-number").html(data.phone_number);
       $that.closest(".reservation").find("span.wait-time").html(data.wait_time);
+      $that.closest(".table").find(".update-button").html('<input class="edit" type="submit" value="edit">')
+      $("form.reservation").on("click", ".edit", update.init);
     })
 
-    $("form.reservation").undelegate(".save-button", "click");
-    // $(this).closest(".table").find(".update-button").html('<input type="submit" value="edit">')
-    $("form.reservation").on("click", ".update-button", update.init);
   }
 }
 
@@ -72,7 +70,7 @@ var reservationActions = {
     $(".add_guest_form").on("ajax:success", "#new_reservation", this.addReservation);
     $(".add_guest_form").on("ajax:error", "#new_reservation", this.errorMessage);
 
-    $("form.reservation").on("click", ".update-button", update.init);
+    $("span.update-button").on("click", ".edit", update.init);
   },
 
   addReservation: function(e, reservationPartial) {
@@ -83,6 +81,8 @@ var reservationActions = {
     $("#reservation_phone_number").val("");
     $("#reservation_wait_time").val("");
     $(".error-message").html("");
+
+    $("span.update-button").on("click", ".edit", update.init);
   },
 
   errorMessage: function(e, xhr) {

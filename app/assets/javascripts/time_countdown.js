@@ -17,8 +17,8 @@ function updateWaitTime() {
   })
 };
 
-$(document).ready(function(){
-  setInterval(function(){
-    updateWaitTime();
-  }, 60000);
-});
+// $(document).ready(function(){
+//   setInterval(function(){
+//     updateWaitTime();
+//   }, 60000);
+// });
