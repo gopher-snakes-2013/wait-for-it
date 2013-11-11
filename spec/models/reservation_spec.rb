@@ -57,4 +57,15 @@ describe Reservation do
     end
   end
 
+  context "#phone_number_obscured" do 
+    before(:each) do
+      @reservation = Reservation.create(name: "Laura",
+                           party_size: 3,
+                           phone_number: "555-555-5555",
+                           wait_time: 10 )
+    end
+    it "should obscure phone number" do 
+      expect(@reservation.phone_number_obscured).to eq "XXX-X555"
+    end
+  end
 end
