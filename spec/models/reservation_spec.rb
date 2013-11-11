@@ -44,7 +44,7 @@ describe Reservation do
     end
 
     context "#update_all_wait_times" do
-      it "should update all subsequent wait times in the db" do
+      it "should update all subsequent wait times for that restaurant in the db" do
         @reservation.wait_time = 20
         @reservation.save
         expect(Reservation.find_by_name("Cindy").wait_time).to eq(30)
