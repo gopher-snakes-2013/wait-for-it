@@ -77,7 +77,7 @@ class ReservationsController < ApplicationController
   def seat_times
     estimated_seat_times = {}
     current_reservations = params[:reservations_on_page].map { |reservation_id| Reservation.find(reservation_id)}
-    current_reservations.each {|reservation| estimated_seat_times[reservation.id] = reservation.estimated_seat_time_display }
+    current_reservations.each {|reservation| estimated_seat_times[reservation.id] = { seat_time: reservation.estimated_seat_time_display,status: reservation.status }}
     render json: {estimated_seat_times: estimated_seat_times}.to_json
   end
 end
