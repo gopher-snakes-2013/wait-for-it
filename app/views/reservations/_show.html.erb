@@ -8,12 +8,12 @@
   <span class="td wait-time"><%= reservation.wait_time_display %></span>
   <span class="td seat-time"><%= reservation.estimated_seat_time_display %></span>
   <span class="td update-button"><input class="edit" type="submit" value="edit"></span>
-  <span class="td delete-button"><%= link_to trash_img, restaurant_reservation_path(restaurant.id, reservation.id), method: 'delete', action: 'destroy', class: 'delete' %></span>
-  <span class="td message-button">
+  <span class="message-button">
     <% if reservation.notified_table_ready %>
       <div class="ready-message-sent"></div>
     <% else %>
       <div class="message-ready"></div>
     <% end %>
+  <span class="delete-button"><%= link_to trash_img, restaurant_reservation_path(restaurant.id, reservation.id), method: 'delete', action: 'destroy', class: 'delete' %></span>
   </span>
 </form>
