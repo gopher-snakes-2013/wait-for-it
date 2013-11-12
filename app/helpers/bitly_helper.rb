@@ -5,7 +5,7 @@ module BitlyHelper
     restaurant_id = reservation.restaurant_id.to_s
     id = reservation.id.to_s
     unique = reservation.unique_key
-    return bitly.shorten('http://waitforit.herokuapp.com/restaurants/'+restaurant_id+'/reservations/'+id+'?guest='+unique)
+    return bitly.shorten('http://stillwaiting.herokuapp.com/restaurants/'+restaurant_id+'/reservations/'+id+'?guest='+unique)
   end
 
 end
