@@ -7,8 +7,8 @@ div.headers {
 }
 
 span.header {
-  margin-left:2.4em;
-  margin-right:1.8em;
+  margin-left:3.4em;
+  margin-right:2.2em;
 }
 
 .th {
@@ -21,7 +21,6 @@ span.header {
 .td {
   text-align: center;
   font-size: 1.7em;
-  font-weight: bold;
   height: 2.5em;
   margin-left: 1em;
 }

@@ -8,6 +8,9 @@ class ReservationsController < ApplicationController
     else
       redirect_to root_path
     end
+
+    @time = DateTime.now.strftime("%e %b %Y %l:%M %p")
+    @time = @time[0..-3] + @time[-2..-1].downcase
   end
 
   def create

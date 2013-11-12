@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
 .add-reservation-form {
   margin-top:3em;
   padding-bottom:1em;
@@ -7,7 +9,7 @@
 
 input {
   border-radius: 5px;
-  font-family: Raleway;
+  font-family:'Open Sans', helvetica-light, sans-serif;
   font-size: .8em;
   padding:4px;
 }

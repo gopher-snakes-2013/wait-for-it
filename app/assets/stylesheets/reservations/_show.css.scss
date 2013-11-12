@@ -7,23 +7,23 @@ div.table {
     font-size:.8em;
 
     span.status-head {
-      margin-right: 3.7em;
+      margin-right: 3.9em;
     }
 
     span.name {
-      margin-right: 3.6em;
+      margin-right: 3.1em;
     }
 
     span.party-size {
-      margin-right: .8em;
+      margin-right: 1em;
     }
 
     span.phone-number {
-      margin-right: 0em;
+      margin-right: 5.4em;
     }
 
     span.wait-time {
-      margin-right: 0em;
+      margin-right: 0.1em;
     }
   }
 
@@ -43,7 +43,7 @@ div.table {
       text-align:center;
       background-color:lightblue;
       border-radius:20px;
-      height:2em;
+      height:2.5em;
       width:12em;
       font-size:.8em;
     }
@@ -82,7 +82,6 @@ div.table {
       .td {
         text-align: center;
         font-size: 1.7em;
-        font-weight: bold;
         height: 2.5em;
         margin-left: 1em;
       }
@@ -90,7 +89,7 @@ div.table {
       .td.name {
         float: left;
         font-size:1.5em;
-        width: 6em;
+        width: 5.5em;
         text-align: left;
       }
 
@@ -111,14 +110,14 @@ div.table {
       .td.wait-time {
         float: left;
         font-size:1.5em;
-        width: 1.5em;
+        width: 2em;
         text-align: left;
       }
 
       .td.seat-time {
         float: left;
         font-size:1.5em;
-        width: 5em;
+        width: 5.5em;
         text-align: left;
       }
 
@@ -149,3 +148,14 @@ input.update-phone-number {
   margin-left:2em;
 }
 
+.ready-message-sent {
+  display: inline-block;
+}
+
+.message-ready {
+  display: inline-block;
+}
+
+.delete-button {
+  display: inline-block;
+}

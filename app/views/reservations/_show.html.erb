@@ -15,8 +15,8 @@
     <% if reservation.notified_table_ready %>
       <div class="ready-message-sent">notified</div>
     <% else %>
-      <div class="message-ready">send message</div>
+      <div class="message-ready">notify</div>
     <% end %>
-  <span class="delete-button"><%= link_to "delete", restaurant_reservation_path(restaurant.id, reservation.id), method: 'delete', action: 'destroy', class: 'delete' %></span>
+  <div class="delete-button"><%= link_to "x", restaurant_reservation_path(restaurant.id, reservation.id), method: 'delete', action: 'destroy', class: 'delete' %></div>
   </span>
 </form>

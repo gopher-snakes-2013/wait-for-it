@@ -1,0 +1,10 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+form#new_restaurant > div > input {
+  border-radius: 5px;
+  font-family:'Open Sans', helvetica-light, sans-serif;
+  font-size: 1em;
+  margin-bottom: 5px;
+  height: 2em;
+  padding:4px;
+}

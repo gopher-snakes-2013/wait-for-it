@@ -22,17 +22,10 @@ div.big-restaurant a:hover {
   color: #35E5BE;
 }
 
-div.big-restaurant a:active {
-  color: #88FFE4;
-}
-
 div.big-guest a:hover {
   color: #35E5BE;
 }
 
-div.big-guest a:active {
-  color: #88FFE4;
-}
 
 div > a {
   color:#2EC6A4;

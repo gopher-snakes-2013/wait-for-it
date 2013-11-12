@@ -9,7 +9,7 @@
 </nav>
 
 <div id="time">
-    <%= DateTime.now.strftime("%e %b %Y %l:%M %p") %>
+    <%= @time %>
 </div>
 
 <div class="add-reservation-form">
@@ -25,9 +25,9 @@
 			<span class="td status-head">Status</span>
 			<span class="td party-size">#</span>
       <span class="td name">Name</span>
-			<span class="td phone-number">Phone Number</span>
+			<span class="td phone-number">Phone</span>
       <span class="td wait-time">Wait</span>
-			<span class="td seat-time">ETD</span>
+			<span class="td seat-time">Seat Time</span>
 		</div>
 
 		<div class="table-body">
