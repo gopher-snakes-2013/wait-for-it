@@ -8,6 +8,7 @@ var update = {
     update.guestName(reservation);
     update.phoneNumber(reservation);
     update.waitTime(reservation);
+    update.status(reservation);
 
     $edit.closest(".update-button").html('<input class="save" name="commit" type="submit" value="save">');
     $(".edit").remove();
@@ -35,6 +36,12 @@ var update = {
     var element = reservation.find(".wait-time");
     var text = element.text();
     element.html('<input class="update update-wait-time" name="reservation[wait_time]" value="'+text+'">');
+  },
+
+  status: function(reservation) {
+    var element = reservation.find(".status");
+    var text = element.text();
+    element.html('<input class="update update-status" name="reservation[status]" value="'+text+'">');
   },
 
   save: function(e) {

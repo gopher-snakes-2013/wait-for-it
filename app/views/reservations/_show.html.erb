@@ -3,7 +3,7 @@
 <form class="tr reservation" data-id="<%= reservation.id %>" data-restaurant-id="<%= restaurant.id %>" method="post" action="/restaurants/<%= restaurant.id %>/reservations/<%= reservation.id %>">
   <input type="hidden" name="reservation[before_wait_time]" value="<%= reservation.wait_time %>">
   <span class="td name"><%= reservation.name %></span>
-  <span class="td status-color"><%= reservation.status %></span>
+  <span class="td status"><%= reservation.status %></span>
   <span class="td party-size"><%= reservation.party_size %></span>
   <span class="td phone-number"><%= reservation.phone_number.phony_formatted(normalize: :US, format: :national, spaces: '-') %></span>
   <span class="td wait-time"><%= reservation.wait_time %></span>
