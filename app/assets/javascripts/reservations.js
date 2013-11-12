@@ -67,9 +67,7 @@ var update = {
         statusId = 'status-seated';
       }
 
-      console.log(statusId)
       $that.closest(".reservation").find("span.status").removeAttr('id').attr('id', statusId);
-
       $that.closest(".reservation").find("span.name").html(data.name);
       $that.closest(".reservation").find("span.status").html(data.status);
       $that.closest(".reservation").find("span.party-size").html(data.party_size);
