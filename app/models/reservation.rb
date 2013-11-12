@@ -2,12 +2,14 @@ class Reservation < ActiveRecord::Base
   attr_accessible :name, :party_size, :phone_number, :wait_time, :estimated_seat_time, :before_wait_time
   belongs_to :restaurant
 
-  validates_presence_of :name, :party_size, :wait_time, :before_wait_time
+  validates_presence_of :name, :party_size, :wait_time, :before_wait_time, :status
   validates_numericality_of :party_size, :wait_time, :before_wait_time
 
   phony_normalize :phone_number, :default_country_code => 'US'
   validates_plausible_phone :phone_number, :presence => true
   validates_plausible_phone :phone_number, :country_code => '1'
+
+  validates :status, inclusion: { in: %w(Open Cancelled No-Show Seated)}
 
   before_save :add_plus_phone_number
   after_save :update_all_wait_times

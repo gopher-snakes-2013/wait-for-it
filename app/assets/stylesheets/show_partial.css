@@ -8,6 +8,17 @@
   margin-right: 1em;
 }
 
+.td.status {
+  float:left;
+  width:5.3em;
+}
+
+.td.status-color {
+  float:left;
+  width:5.3em;
+  color:green;
+}
+
 .td.name {
   float:left;
   width:5.3em;

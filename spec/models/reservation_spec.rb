@@ -6,6 +6,7 @@ describe Reservation do
   it { should validate_presence_of :phone_number }
   it { should validate_presence_of :wait_time }
   it { should validate_presence_of :before_wait_time }
+  it { should validate_presence_of :status }
 
   it { should validate_numericality_of :party_size }
   it { should validate_numericality_of :wait_time }
@@ -78,5 +79,17 @@ describe Reservation do
         expect(@next_reservation.estimated_seating).to eq (Time.now()+20*60).localtime.strftime("%I:%Mp")
       end
     end
+
+  context "#status" do
+    before(:each) do
+      @reservation = Reservation.create(name: "Laura",
+                           party_size: 3,
+                           phone_number: "555-555-5555",
+                           wait_time: 10 )
+    end
+    it "should set to default of Open" do 
+      expect(@reservation.status).to eq "Open"
+    end
+  end
 
 end
