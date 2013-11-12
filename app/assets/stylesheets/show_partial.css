@@ -28,6 +28,10 @@
   float:left;
   width:2em;
 }
+.td.seat-time {
+  float:left;
+  width:2em;
+}
 
 .td.update-button {
   float:left;
@@ -49,6 +53,7 @@
 }
 
 .tr {
+  position:relative;
   border: 2px solid #142837;
   border-radius: 15px;
   margin-top: 1em;
@@ -57,6 +62,7 @@
 
 .th {
   padding:1em;
+  height:4em;
   margin-top:1em;
   border-radius: 15px;
   border: 2px solid #142837;
@@ -99,7 +105,7 @@ input.update-phone-number {
   width: 48px;
 }
 
-button.message-ready {
+div.message-ready {
   background: url('sms.png') no-repeat;
   border: none;
   display: inline-block;
@@ -107,7 +113,7 @@ button.message-ready {
   width: 48px;
 }
 
-button.ready-message-sent{
+div.ready-message-sent{
   background: url('checked-box.png') no-repeat;
   border: none;
   display: inline-block;
