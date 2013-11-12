@@ -33,7 +33,6 @@ updateWaitTime: function(){
   var currentYear = currentTime.getFullYear()
   var currentMonth = currentTime.getMonth()
   var currentDate = currentTime.getDate()
-  console.log(currentYear, currentMonth, currentDate)
 
   for(var i=0;i<reservations_on_page.length;i++){
     currentEstimatedTime = {}
@@ -47,5 +46,28 @@ updateWaitTime: function(){
     var newWaitTime  = Math.round((newTime - Date.now())/60000)
     $($(reservations_on_page[i]).find('.wait-time')).html(newWaitTime)   
 }
+},
+
+getReservationsOnPage: function(){
+  var reservation = { reservations_on_page:[]}
+  $reservations = $('.reservation')
+  for(var i=0; i< $reservations.length; i++){
+    reservation.reservations_on_page.push($($reservations[i]).data("id"))
+  }
+  return reservation;
+},
+
+getEstimatedSeatTimesFromServer: function(){
+  var reservations_on_page = this.getReservationsOnPage()
+  console.log("this",this,"reservations_on_page", reservations_on_page)
+  $.ajax({
+    url: '/reservations/seattimes',
+    type: 'get',
+    data: reservations_on_page
+  }).done(function(e){ 
+    console.log("success", e)
+  }).error(function(){
+    console.log("failure")
+  })
 }
 }
