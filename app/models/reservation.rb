@@ -15,8 +15,6 @@ class Reservation < ActiveRecord::Base
   before_save :add_estimated_seat_time
 
   before_create :generate_unique_key
-  after_save :update_all_wait_times
-
   after_create :send_text_upon_new_reservation
 
   def add_plus_phone_number
@@ -27,16 +25,6 @@ class Reservation < ActiveRecord::Base
     url = BitlyHelper.shorten_url(self)
     TwilioHelper.send_on_waitlist(self.phone_number,
       "Hi #{self.name}, you've been added to #{self.restaurant.name}'s waitlist. Your wait is approximately #{self.wait_time} minutes. #{url}")
-  end
-
-  def update_all_wait_times
-    wait_difference = self.wait_time - self.before_wait_time
-    self.restaurant.reservations.each do |reservation|
-      if reservation.id > self.id
-        reservation.update_attributes(wait_time: (reservation.wait_time + wait_difference))
-        reservation.update_attributes(before_wait_time: reservation.wait_time)
-      end
-    end
   end
 
   def generate_unique_key
@@ -62,10 +50,15 @@ class Reservation < ActiveRecord::Base
   end
 
   def as_json(options={})
-    {initial: initial,
+    {name: self.name,
+      id: self.id,
       party_size: self.party_size,
-      phone_number: phone_number_obscured,
-      estimated_seating: estimated_seating
+      phone_number: self.phone_number.phony_formatted(normalize: :US, format: :national, spaces: '-'),
+      estimated_seating: self.estimated_seat_time_display,
+      wait_time: self.wait_time_display,
+      status: self.status,
+      notified: self.notified_table_ready,
+      restaurant_id: self.restaurant_id
     }
   end
 
