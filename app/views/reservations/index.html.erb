@@ -35,11 +35,6 @@
 			<%= render partial: "reservations/show", locals: { restaurant: @restaurant, reservation: reservation } %>
 			<% end %>
 		</div>
-		<br>
-
-		<% @reservations.each do |reservation| %>
-		<%= render partial: "reservations/show", locals: { restaurant: @restaurant, reservation: reservation } %>
-		<% end %>
 	</div>
 </div>
 
