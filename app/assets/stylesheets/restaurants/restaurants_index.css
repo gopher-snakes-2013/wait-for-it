@@ -17,13 +17,20 @@ div.restaurant {
   padding-bottom: 0em;
 }
 
-span.name {
-  margin-right:0em;
+span.restaurant-name {
+  float:left;
+  width:5.3em;
+  margin-right:2em;
+  margin-left:1.6em;
   color:#F5F7F7;
+  text-align: center;
 }
 
-span.max-wait-time {
+span.restaurant-max-wait-time {
+  margin-left:1em;
   color:#F5F7F7;
+  width:64px;
+  text-align: center;
 }
 
 div.guest-table {
