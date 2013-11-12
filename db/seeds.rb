@@ -1,4 +1,3 @@
-
 20.times do
   restaurant = Restaurant.new
   restaurant.name = Faker::Commerce.color.capitalize
