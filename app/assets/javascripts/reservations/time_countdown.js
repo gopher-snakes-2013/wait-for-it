@@ -5,7 +5,7 @@ $(document).ready(function(){
     }, 60000);
     setInterval(function(){
       updateReservations.getEstimatedSeatTimesFromServer()
-    }, 300000)
+    }, 60000)
     }})
   
 var updateReservations = {
@@ -51,7 +51,8 @@ getEstimatedSeatTimesFromServer: function(){
     $reservations = $('.reservation')
     for(var i=0; i< $reservations.length; i++){
     if(($($reservations[i]).data("id")) in currentEstimatedSeatTimes.estimated_seat_times){
-      $($reservations[i]).find('.seat-time').text(currentEstimatedSeatTimes.estimated_seat_times[$($reservations[i]).data("id")])
+      $($reservations[i]).find('.seat-time').text(currentEstimatedSeatTimes.estimated_seat_times[$($reservations[i]).data("id")].seat_time)
+      $($reservations[i]).find('.status').text(currentEstimatedSeatTimes.estimated_seat_times[$($reservations[i]).data("id")].status)
     }
   }
   })
