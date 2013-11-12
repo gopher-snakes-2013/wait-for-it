@@ -36,7 +36,6 @@ var update = {
   waitTime: function(reservation) {
     var element = reservation.find(".wait-time");
     var text = element.text();
-    console.log("wait time", text)
     var potential_wait_times = ["10","15","20","25","30"]
     element.html('<select class="update update-wait-time" name="reservation[wait_time]"><option value="'+text+'" selected>'+text+'</option><option value="10">10</option><option value="20">20</option><option value="30">30</option></select>');
   },
@@ -52,7 +51,6 @@ var update = {
       dataType: "json",
       data: $(this).closest(".reservation").serialize()
     }).done(function(data){
-      console.log(data)
       $that.closest(".reservation").find("span.name").html(data.name);
       $that.closest(".reservation").find("span.party-size").html(data.party_size);
       $that.closest(".reservation").find("span.phone-number").html(data.phone_number);
