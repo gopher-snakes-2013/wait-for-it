@@ -17,7 +17,7 @@ var update = {
   partySize: function(reservation) {
     var element = reservation.find(".party-size");
     var text = element.text();
-    element.html('<input class="update update-party-size" name="reservation[party_size]" value="'+text+'">');
+    element.html('<select class="update update-party-size" name="reservation[party_size]"><option value="'+text+'" selected>'+text+'</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>');
   },
 
   guestName: function(reservation) {
@@ -35,8 +35,7 @@ var update = {
   waitTime: function(reservation) {
     var element = reservation.find(".wait-time");
     var text = element.text();
-    var potential_wait_times = ["10","15","20","25","30"]
-    element.html('<select class="update update-wait-time" name="reservation[wait_time]"><option value="'+text+'" selected>'+text+'</option><option value="10">10</option><option value="20">20</option><option value="30">30</option></select>');
+    element.html('<select class="update update-wait-time" name="reservation[wait_time]"><option value="'+text+'" selected>'+text+'</option><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="20">20</option><option value="30">30</option><option value="45">45</option><option value="60">60</option><option value="75">75</option><option value="90">90</option></select>');
   },
 
   status: function(reservation) {
