@@ -11,6 +11,7 @@ class ReservationsController < ApplicationController
   end
 
   def create
+    puts "reservation#create"
     restaurant = Restaurant.find(params[:restaurant_id])
     reservation = restaurant.reservations.new
     reservation.name = params[:reservation][:name]
@@ -23,6 +24,8 @@ class ReservationsController < ApplicationController
     else
       render status: :unprocessable_entity, json: { error_message: "Try Again." }.to_json
     end
+    puts "reservation#create#end"
+
   end
 
   def show
@@ -40,8 +43,8 @@ class ReservationsController < ApplicationController
     reservation = Reservation.find(params[:id])
   	if reservation.update_attributes(params[:reservation])
       session[:restaurant_id] = restaurant.id
-      render json: { name: params[:reservation][:name],
-                     party_size: params[:reservation][:party_size],
+      render json: { name: reservation.name,
+                     party_size: reservation.party_size,
                      phone_number: reservation.phone_number.phony_formatted(normalize: :US, format: :national, spaces: '-'),
                      wait_time: reservation.wait_time_display,
                      status: reservation.status,
@@ -71,27 +74,10 @@ class ReservationsController < ApplicationController
     render json: {reservations: reservations}.to_json
   end
 
-  # def update_wait_time
-  #   wait_times = {}
-  #   restaurant = Restaurant.find(params[:restaurant_id])
-  #   reservations = restaurant.reservations
-  #   number_of_reservations = reservations.length
-  #   wait_times[:total] = number_of_reservations
-  #   Reservation.order("wait_time").each do |reservation|
-  #     if reservation.wait_time > 0
-  #       reservation.wait_time = reservation.wait_time - 1
-  #       reservation.save
-  #       wait_times[reservation.id] = {}
-  #       wait_times[reservation.id][:minutes] = reservation.wait_time
-  #       wait_times[reservation.id][:done] = false
-  #     elsif reservation.wait_time <= 0
-  #       reservation.wait_time = 0
-  #       reservation.save
-  #       wait_times[reservation.id] = {}
-  #       wait_times[reservation.id][:minutes] = reservation.wait_time
-  #       wait_times[reservation.id][:done] = true
-  #     end
-  #   end
-  #   render json: wait_times.to_json
-  # end
+  def seat_times
+    estimated_seat_times = {}
+    current_reservations = params[:reservations_on_page].map { |reservation_id| Reservation.find(reservation_id)}
+    current_reservations.each {|reservation| estimated_seat_times[reservation.id] = reservation.estimated_seat_time_display }
+    render json: {estimated_seat_times: estimated_seat_times}.to_json
+  end
 end

@@ -1,16 +1,6 @@
 require 'spec_helper'
 
-feature 'Restaurant Sign-in Page' do
-	before(:each) do
-		visit root_path
-	end
-
-	scenario 'Restaurant user visits Sign-in page' do
-		expect(current_path).to eq(root_path)
-		expect(page).to have_content('Sign In')
-	end
-
-
+feature 'Restaurant Page' do
 	context "new restaurant signs up for account" do
 		before(:each) do
 			visit new_restaurant_path
@@ -24,16 +14,11 @@ feature 'Restaurant Sign-in Page' do
 			fill_in("reservation[phone_number]", with: "1111111111")
 			fill_in("reservation[wait_time]", with: "10")
 			click_on('Create Reservation')
-			visit root_path
 		end
-		
-		scenario 'Registered Restaurant can see their name on the root page' do
 
-			visit root_path
-			expect(current_path).to eq(root_path)
+		scenario 'Registered Restaurant can see their name on their restaurant page' do
+			visit restaurant_reservations_path(1)
 			expect(page).to have_content('Sourdough Kitchen')
 		end
 	end
-
-
 end

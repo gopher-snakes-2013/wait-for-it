@@ -1,10 +1,17 @@
 /******Table Rows*****/
 
+div.table {
+  margin: 0 auto;
+  text-align: left;
+  width: 70em;
+}
+
 .td {
+  text-align: center;
   font-size: 1.7em;
   font-weight: bold;
   height: 2.5em;
-  margin-left: 1.2em;
+  margin-left: 1em;
   margin-right: 1em;
 }
 
@@ -37,7 +44,7 @@ span#status-cancelled {
 
 .td.name {
   float:left;
-  width:5.3em;
+  width: 36%;
 }
 
 .td.party-size {
@@ -57,20 +64,11 @@ span#status-cancelled {
 }
 .td.seat-time {
   float:left;
-  width:2em;
-}
-
-.td.update-button {
-  float:left;
-  width:2em;
+  width:5em;
 }
 
 .td.max-wait-time {
-  width:5.3em;
-}
-
-.td .x {
-  width:65px;
+  width: 64px;
 }
 
 .add_guest_form {
@@ -83,16 +81,16 @@ span#status-cancelled {
   position:relative;
   border: 2px solid #142837;
   border-radius: 15px;
-  margin-top:1em;
-  padding:1em;
+  margin-top: 1em;
+  padding: 1em;
 }
 
 .th {
   padding:1em;
   height:4em;
   margin-top:1em;
-  border-radius: 15px;
-  border: 2px solid #142837;
+  border-radius: 20px;
+  /*border: 2px solid #142837;*/
 }
 
 .tr:hover {
@@ -120,8 +118,16 @@ input.update-phone-number {
 
 /****** Button Columns ******/
 
-.button_column {
-  width: 40px;
+div.message-button {
+  display: inline;
+}
+
+div.message-ready {
+  background: url('sms.png') no-repeat;
+  border: none;
+  display: inline-block;
+  height: 48px;
+  width: 48px;
 }
 
 .trash {
@@ -132,13 +138,6 @@ input.update-phone-number {
   width: 48px;
 }
 
-div.message-ready {
-  background: url('sms.png') no-repeat;
-  border: none;
-  display: inline-block;
-  height: 48px;
-  width: 48px;
-}
 
 div.ready-message-sent{
   background: url('checked-box.png') no-repeat;

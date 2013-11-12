@@ -4,13 +4,7 @@ div.error-message {
 }
 
 div.create-form {
-  margin-bottom:4em;
-}
-
-div.table {
-  margin: 0 auto;
-  text-align: left;
-  width: 70em;
+  margin-bottom:3em;
 }
 
 .th {
@@ -26,4 +20,16 @@ div.table {
 
 .table-head {
   height: 48px;
+}
+
+.new_reservation > input {
+  font-size:1.3em;
+  height:2em;
+  width:10em;
+}
+
+.new_reservation > .submit_button {
+  font-size:1.5em;
+  width:2em;
+  height:2em;
 }
