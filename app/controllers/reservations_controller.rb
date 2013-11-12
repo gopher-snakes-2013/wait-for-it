@@ -33,7 +33,8 @@ class ReservationsController < ApplicationController
       render json: { name: params[:reservation][:name],
                      party_size: params[:reservation][:party_size],
                      phone_number: params[:reservation][:phone_number],
-                     wait_time: params[:reservation][:wait_time] }.to_json
+                     wait_time: reservation.wait_time_display,
+                     estimated_seat_time: reservation.estimated_seat_time_display }.to_json
     else
       session[:restaurant_id] = restaurant.id
       flash[:error] = "Try Updating Again."
@@ -59,27 +60,27 @@ class ReservationsController < ApplicationController
     render json: {reservations: reservations}.to_json
   end
 
-  def update_wait_time
-    wait_times = {}
-    restaurant = Restaurant.find(params[:restaurant_id])
-    reservations = restaurant.reservations
-    number_of_reservations = reservations.length
-    wait_times[:total] = number_of_reservations
-    Reservation.order("wait_time").each do |reservation|
-      if reservation.wait_time > 0
-        reservation.wait_time = reservation.wait_time - 1
-        reservation.save
-        wait_times[reservation.id] = {}
-        wait_times[reservation.id][:minutes] = reservation.wait_time
-        wait_times[reservation.id][:done] = false
-      elsif reservation.wait_time <= 0
-        reservation.wait_time = 0
-        reservation.save
-        wait_times[reservation.id] = {}
-        wait_times[reservation.id][:minutes] = reservation.wait_time
-        wait_times[reservation.id][:done] = true
-      end
-    end
-    render json: wait_times.to_json
-  end
+  # def update_wait_time
+  #   wait_times = {}
+  #   restaurant = Restaurant.find(params[:restaurant_id])
+  #   reservations = restaurant.reservations
+  #   number_of_reservations = reservations.length
+  #   wait_times[:total] = number_of_reservations
+  #   Reservation.order("wait_time").each do |reservation|
+  #     if reservation.wait_time > 0
+  #       reservation.wait_time = reservation.wait_time - 1
+  #       reservation.save
+  #       wait_times[reservation.id] = {}
+  #       wait_times[reservation.id][:minutes] = reservation.wait_time
+  #       wait_times[reservation.id][:done] = false
+  #     elsif reservation.wait_time <= 0
+  #       reservation.wait_time = 0
+  #       reservation.save
+  #       wait_times[reservation.id] = {}
+  #       wait_times[reservation.id][:minutes] = reservation.wait_time
+  #       wait_times[reservation.id][:done] = true
+  #     end
+  #   end
+  #   render json: wait_times.to_json
+  # end
 end

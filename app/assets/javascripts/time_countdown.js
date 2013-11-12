@@ -21,7 +21,7 @@ $(document).ready(function(){
   if($(".reservation").length > 0) {
     setInterval(function(){
       updateReservations.updateWaitTime();
-    }, 6000);
+    }, 60000);
   }
 });
 var updateReservations = {

@@ -5,7 +5,7 @@
   <span class="td name"><%= reservation.name %></span>
   <span class="td party-size"><%= reservation.party_size %></span>
   <span class="td phone-number"><%= reservation.phone_number.phony_formatted(normalize: :US, format: :national, spaces: '-') %></span>
-  <span class="td wait-time"><%= reservation.wait_time %></span>
+  <span class="td wait-time"><%= reservation.wait_time_display %></span>
   <span class="td seat-time"><%= reservation.estimated_seat_time_display %></span>
   <span class="td update-button"><input class="edit" type="submit" value="edit"></span>
   <span class="td delete-button"><%= link_to trash_img, restaurant_reservation_path(restaurant.id, reservation.id), method: 'delete', action: 'destroy', class: 'delete' %></span>

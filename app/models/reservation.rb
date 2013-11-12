@@ -10,8 +10,8 @@ class Reservation < ActiveRecord::Base
   validates_plausible_phone :phone_number, :country_code => '1'
 
   before_save :add_plus_phone_number
-  before_create :add_estimated_seat_time
-  after_save :update_all_wait_times
+  before_save :add_estimated_seat_time
+  # after_save :update_all_wait_times
   after_create :send_text_upon_new_reservation
 
   def add_plus_phone_number
@@ -23,15 +23,15 @@ class Reservation < ActiveRecord::Base
       "Hi #{self.name}, you've been added to the waitlist. Your wait is approximately #{self.wait_time} minutes.")
   end
 
-  def update_all_wait_times
-    wait_difference = self.wait_time - self.before_wait_time
-    Reservation.all.each do |reservation|
-      if reservation.id > self.id
-        reservation.update_attributes(wait_time: (reservation.wait_time + wait_difference))
-        reservation.update_attributes(before_wait_time: reservation.wait_time)
-      end
-    end
-  end
+  # def update_all_wait_times
+  #   wait_difference = self.wait_time - self.before_wait_time
+  #   Reservation.all.each do |reservation|
+  #     if reservation.id > self.id
+  #       reservation.update_attributes(wait_time: (reservation.wait_time + wait_difference))
+  #       reservation.update_attributes(before_wait_time: reservation.wait_time)
+  #     end
+  #   end
+  # end
 
   def initial
     self.name[0].upcase
@@ -67,7 +67,7 @@ class Reservation < ActiveRecord::Base
     self.estimated_seat_time.localtime.strftime("%l:%M%P")
   end
 
-  def wait_time
+  def wait_time_display
     ((self.estimated_seat_time - Time.now)/60).round
   end
 end

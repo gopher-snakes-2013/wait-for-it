@@ -52,10 +52,12 @@ var update = {
       dataType: "json",
       data: $(this).closest(".reservation").serialize()
     }).done(function(data){
+      console.log(data)
       $that.closest(".reservation").find("span.name").html(data.name);
       $that.closest(".reservation").find("span.party-size").html(data.party_size);
       $that.closest(".reservation").find("span.phone-number").html(data.phone_number);
       $that.closest(".reservation").find("span.wait-time").html(data.wait_time);
+      $that.closest(".reservation").find("span.seat-time").html(data.estimated_seat_time);
       $that.closest(".table").find(".update-button").html('<input class="edit" type="submit" value="edit">')
     })
 
