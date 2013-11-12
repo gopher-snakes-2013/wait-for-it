@@ -9,6 +9,6 @@ WaitForIt::Application.routes.draw do
 
   get '/guest/:restaurant_name', to: 'reservations#guest', as: :guest_waitlist
   get '/reservations/:restaurant_name/list.:format', to: 'reservations#api', constraints: {format: /json/}
-  post 'reservations/updatetime', to: 'reservations#update_wait_time'
+  get '/reservations/seattimes', to: 'reservations#seat_times', constraints: {format: /json/}
 
 end
