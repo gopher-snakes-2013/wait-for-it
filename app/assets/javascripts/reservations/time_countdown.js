@@ -56,5 +56,32 @@ getEstimatedSeatTimesFromServer: function(){
     }
   }
   })
+},
+
+calculateCurrentTime: function(){
+  var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+  var currentTime = new Date(Date.now())
+  var currentMonth = months[currentTime.getMonth()]
+  var currentDate = currentTime.getDate()
+  var currentYear = currentTime.getFullYear() 
+  var currentHour = currentTime.getHours()
+  var currentMinutes = currentTime.getMinutes()
+  if (currentMinutes.length === 1){
+    currentMinutes = "0"+currentMinutes
+  }
+  var currentAMPM = ""
+  if(currentHour>=12){
+    currentAMPM = "pm"
+  } else {
+    currentAMPM = "am"
+  }
+  if (currentHour > 12) {
+    currentHour -= 12 
+  }
+  return currentMonth+ " "+currentDate+", "+currentYear+" "+currentHour+":"+currentMinutes+currentAMPM
+
+},
+updateCurrentTime: function(){
+  $('div#time').html(this.calculateCurrentTime())
 }
 }
