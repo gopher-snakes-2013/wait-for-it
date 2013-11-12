@@ -56,7 +56,7 @@ describe ReservationsController do
     end
 
     xit "should not update wait times of 0" do
-      post :update_wait_time
+      post :update_wait_time, restaurant_id: @restaurant.id
       expect(Reservation.find_by_name("Jim").wait_time).to eq(0)
     end
 
