@@ -47,6 +47,7 @@ class ReservationsController < ApplicationController
                      party_size: reservation.party_size,
                      phone_number: reservation.phone_number.phony_formatted(normalize: :US, format: :national, spaces: '-'),
                      wait_time: reservation.wait_time_display,
+                     status: reservation.status,
                      estimated_seat_time: reservation.estimated_seat_time_display }.to_json
     else
       session[:restaurant_id] = restaurant.id
