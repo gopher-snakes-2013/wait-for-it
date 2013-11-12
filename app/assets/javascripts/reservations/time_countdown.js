@@ -2,9 +2,8 @@ $(document).ready(function(){
   if($(".reservation").length > 0) {
     setInterval(function(){
       updateReservations.updateWaitTime();
-    }, 60000);
-    setInterval(function(){
       updateReservations.getEstimatedSeatTimesFromServer()
+      updateReservations.updateCurrentTime()
     }, 60000)
     }})
   
