@@ -1,21 +1,17 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
-.add_guest_form {
-  display: block;
-  margin: auto;
-  text-align: center;
-  position: relative;
+.add-reservation-form {
+  margin-top:3em;
+  padding-bottom:1em;
+  text-align: left;
+  margin-left: 6em;
 }
 
 input {
   border-radius: 5px;
-  font-family: Raleway;
+  font-family:'Open Sans', helvetica-light, sans-serif;
   font-size: .8em;
   padding:4px;
-}
-
-.form_fields {
-  border-radius: 10px;
-  font-family: Raleway;
 }
 
 .submit_button {
@@ -23,10 +19,6 @@ input {
   border-color: #FF4E51;
   border-radius: 10px;
   color: #142837;
-  font-family: Raleway;
-  font-weight: bold;
-}
-
-.hidden {
-  display:none;
+  font-style: helvetica;
+  font-size:3em;
 }

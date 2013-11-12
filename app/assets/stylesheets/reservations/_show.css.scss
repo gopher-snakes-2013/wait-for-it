@@ -1,0 +1,161 @@
+div.table {
+  text-align: left;
+  width: 60em;
+  margin-left: 6em;
+
+  .table-head {
+    font-size:.8em;
+
+    span.status-head {
+      margin-right: 3.9em;
+    }
+
+    span.name {
+      margin-right: 3.1em;
+    }
+
+    span.party-size {
+      margin-right: 1em;
+    }
+
+    span.phone-number {
+      margin-right: 5.4em;
+    }
+
+    span.wait-time {
+      margin-right: 0.1em;
+    }
+  }
+
+  .th {
+    padding:1em;
+    height:4em;
+    margin-top:1em;
+    border-radius: 20px;
+  }
+
+  .table-body {
+
+    text-align:left;
+
+    div.status-flag {
+      float:left;
+      text-align:center;
+      background-color:lightblue;
+      border-radius:20px;
+      height:2.5em;
+      width:12em;
+      font-size:.8em;
+    }
+
+    .tr {
+      position:relative;
+      border: 2px solid #e67e22;
+      border-radius: 20px;
+      margin-top: 1em;
+      padding: 1em;
+
+
+      span#status-open {
+        color:green;
+      }
+
+      span#status-no-show {
+        color:blue;
+      }
+
+      span#status-seated {
+        color:black;
+      }
+
+      span#status-cancelled {
+        color:red;
+      }
+
+      .td.status {
+        float:left;
+        font-weight:900;
+        width:5.3em;
+        z-index:2;
+      }
+
+      .td {
+        text-align: center;
+        font-size: 1.7em;
+        height: 2.5em;
+        margin-left: 1em;
+      }
+
+      .td.name {
+        float: left;
+        font-size:1.5em;
+        width: 5.5em;
+        text-align: left;
+      }
+
+      .td.party-size {
+        float: left;
+        font-size:1.5em;
+        width: 1.5em;
+        text-align: left;
+      }
+
+      .td.phone-number {
+        float: left;
+        font-size:1.5em;
+        width: 7.6em;
+        text-align: left;
+      }
+
+      .td.wait-time {
+        float: left;
+        font-size:1.5em;
+        width: 2em;
+        text-align: left;
+      }
+
+      .td.seat-time {
+        float: left;
+        font-size:1.5em;
+        width: 5.5em;
+        text-align: left;
+      }
+
+      .td.max-wait-time {
+
+      }
+    }
+  }
+}
+
+input.update {
+  font-size:1em;
+  text-align: center;
+  width:3em;
+}
+
+input.update-name {
+  width:5em;
+}
+
+input.update-phone-number {
+  width:7em;
+}
+
+#time {
+  font-size:3em;
+  text-align:left;
+  margin-left:2em;
+}
+
+.ready-message-sent {
+  display: inline-block;
+}
+
+.message-ready {
+  display: inline-block;
+}
+
+.delete-button {
+  display: inline-block;
+}

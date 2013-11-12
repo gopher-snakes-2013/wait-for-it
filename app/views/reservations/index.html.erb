@@ -9,11 +9,10 @@
 </nav>
 
 <div id="time">
-    <%= DateTime.now.strftime("%e %b %Y %l:%M %p") %>
+    <%= @time %>
 </div>
 
-<br/>
-<div class="create-form">
+<div class="add-reservation-form">
 	<%= render "reservations/form" %>
 </div>
 
@@ -23,11 +22,11 @@
 
 <div class="table" data-restaurant-id="<%= @restaurant.id %>">
 		<div class="table-head" >
-			<span class="td name">Name</span>
 			<span class="td status-head">Status</span>
-			<span class="td party-size">Party Size</span>
-			<span class="td phone-number">Phone Number</span>
-      <span class="td wait-time">Wait Time</span>
+			<span class="td party-size">#</span>
+      <span class="td name">Name</span>
+			<span class="td phone-number">Phone</span>
+      <span class="td wait-time">Wait</span>
 			<span class="td seat-time">Seat Time</span>
 		</div>
 

@@ -2,7 +2,7 @@ div.body {
   margin-top:5em;
 }
 
-div.guest-button {
+div.big-guest {
   font-size:3.5em;
   font-weight:bold;
   padding-top:.3em;
@@ -10,15 +10,7 @@ div.guest-button {
   color:#2EC6A4;
 }
 
-div.guest-button a:hover {
-  color: #35E5BE;
-}
-
-div.guest-button a:active {
-  color: #88FFE4;
-}
-
-div.restaurant-button {
+div.big-restaurant {
   font-size:3.5em;
   font-weight:bold;
   padding-top:.3em;
@@ -26,13 +18,14 @@ div.restaurant-button {
   color:#2EC6A4;
 }
 
-div.restaurant-button a:hover {
+div.big-restaurant a:hover {
   color: #35E5BE;
 }
 
-div.restaurant-button a:active {
-  color: #88FFE4;
+div.big-guest a:hover {
+  color: #35E5BE;
 }
+
 
 div > a {
   color:#2EC6A4;
@@ -46,13 +39,24 @@ div > a.visited {
 
 div.register-link {
   padding-top:1em;
+  font-size:1.5em;
   font-weight: bold;
+}
+
+.restaurant-login {
+  margin-top:1.5em;
+}
+
+.restaurant-login > form > div > input {
+  font-size:1em;
+  margin-bottom:5px;
+  height:2em;
+}
+
+.hidden {
+  display:none;
 }
 
 div.register-link a:hover {
   color: #35E5BE;
-}
-
-div.register-link a:hover {
-  color: #88FFE4;
 }

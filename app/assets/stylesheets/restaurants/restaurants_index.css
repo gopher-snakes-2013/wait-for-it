@@ -7,8 +7,22 @@ div.headers {
 }
 
 span.header {
-  margin-left:2.4em;
-  margin-right:1.8em;
+  margin-left:3.4em;
+  margin-right:2.2em;
+}
+
+.th {
+  padding:1em;
+  height:4em;
+  margin-top:1em;
+  border-radius: 20px;
+}
+
+.td {
+  text-align: center;
+  font-size: 1.7em;
+  height: 2.5em;
+  margin-left: 1em;
 }
 
 div.restaurant {
@@ -17,13 +31,20 @@ div.restaurant {
   padding-bottom: 0em;
 }
 
-span.name {
-  margin-right:0em;
+span.restaurant-name {
+  float:left;
+  width:5.3em;
+  margin-right:2em;
+  margin-left:1.6em;
   color:#F5F7F7;
+  text-align: center;
 }
 
-span.max-wait-time {
+span.restaurant-max-wait-time {
+  margin-left:0.5em;
   color:#F5F7F7;
+  width:64px;
+  text-align: center;
 }
 
 div.guest-table {
@@ -31,3 +52,4 @@ div.guest-table {
   text-align: center;
   width: 50em;
 }
+

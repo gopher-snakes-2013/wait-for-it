@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
 html {
   background-color: #F5F7F7;
   font-size: 16px;
@@ -5,15 +7,8 @@ html {
 
 body {
   color: #142837;
-  font-family: Raleway;
+  font-family: 'Open Sans', helvetica-light, sans-serif;
   margin: 0 auto;
-}
-
-#container {
-  margin: 0 auto;
-  padding-top:10em;
-  padding-bottom:5em;
-  text-align: center;
 }
 
 .navbar {
@@ -22,6 +17,13 @@ body {
   position: fixed;
   width: 100%;
   z-index: 2;
+}
+
+#container {
+  margin: 0 auto;
+  padding-top:8.5em;
+  padding-bottom:5em;
+  text-align: center;
 }
 
 #title1 {
@@ -38,9 +40,8 @@ body {
   z-index:3;
 }
 
-
 #title2 {
-  bottom: 0.6em;
+  bottom: 0.5em;
   display:inline-block;
   font-family: 'Crete Round', serif;
   font-size: 3.1em;
@@ -54,14 +55,9 @@ a {
   text-decoration: none;
 }
 
-a.active {
+a.visted {
   color:#142837;
   text-decoration: none;
-}
-
-.logged-in {
-  font-family: 'Lobster', cursive;
-  font-size: xx-large;
 }
 
 /***** Restaurant Options Menu ******/
@@ -86,8 +82,4 @@ a.active {
 ul#nav-primary > li {
   list-style-type: none;
   text-align:right;
-}
-
-#time {
-  font-size:2em;
 }

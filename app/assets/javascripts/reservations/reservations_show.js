@@ -57,7 +57,7 @@ var update = {
     }).done(function(data){
 
       var statusId = updateStatusId(data);
-      
+
       $that.closest(".reservation").find("span.status").removeAttr('id').attr('id', statusId);
       $that.closest(".reservation").find("span.name").html(data.name);
       $that.closest(".reservation").find("span.status").html(data.status);
@@ -73,8 +73,8 @@ var update = {
 var reservationActions = {
 
   init: function() {
-    $(".add_guest_form").on("ajax:success", "#new_reservation", this.addReservation);
-    $(".add_guest_form").on("ajax:error", "#new_reservation", this.errorMessage);
+    $(".add-reservation-form").on("ajax:success", "#new_reservation", this.addReservation);
+    $(".add-reservation-form").on("ajax:error", "#new_reservation", this.errorMessage);
 
     $(".table").on("click", ".edit", update.init);
     $(".table").on("click", ".save", update.save);
