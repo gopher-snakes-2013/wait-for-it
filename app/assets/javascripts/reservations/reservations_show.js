@@ -55,9 +55,7 @@ var update = {
       dataType: "json",
       data: $(this).closest(".reservation").serialize()
     }).done(function(data){
-
       var statusId = updateStatusId(data);
-
       $that.closest(".reservation").find("span.status").removeAttr('id').attr('id', statusId);
       $that.closest(".reservation").find("span.name").html(data.name);
       $that.closest(".reservation").find("span.status").html(data.status);
@@ -75,6 +73,7 @@ var reservationActions = {
   init: function() {
     $(".add-reservation-form").on("ajax:success", "#new_reservation", this.addReservation);
     $(".add-reservation-form").on("ajax:error", "#new_reservation", this.errorMessage);
+    $(".add-reservation-form").on("ajax:success", setStatusId);
 
     $(".table").on("click", ".edit", update.init);
     $(".table").on("click", ".save", update.save);
@@ -82,7 +81,6 @@ var reservationActions = {
 
   addReservation: function(e, reservationPartial) {
     $(".table-body").append(reservationPartial);
-
     $("#reservation_name").val("");
     $("#reservation_party_size").val("");
     $("#reservation_phone_number").val("");
@@ -95,6 +93,11 @@ var reservationActions = {
     $(".error-message").html(error);
   }
 }
+
+var setStatusId = function() {
+  $("span.status").last().attr('id', 'status-open');
+}
+
 
 var updateStatusId = function(data) {
  var statusText = data.status;
@@ -110,7 +113,7 @@ var updateStatusId = function(data) {
   return statusId;
 }
 
-var changeStatusId = function() {
+var reloadStatusId = function() {
   var element = $('.status');
   for(var i=0; i< element.length; i++){
     var statusText = element[i].innerHTML;
@@ -130,5 +133,5 @@ var changeStatusId = function() {
 
 $(document).ready(function(){
   reservationActions.init();
-  changeStatusId();
+  reloadStatusId();
 });
