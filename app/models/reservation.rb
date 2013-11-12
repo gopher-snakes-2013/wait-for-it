@@ -62,10 +62,13 @@ class Reservation < ActiveRecord::Base
   end
 
   def as_json(options={})
-    {initial: initial,
+    {name: self.name,
       party_size: self.party_size,
-      phone_number: phone_number_obscured,
-      estimated_seating: estimated_seating
+      phone_number: self.phone_number.phony_formatted(normalize: :US, format: :national, spaces: '-'),
+      estimated_seating: self.estimated_seat_time_display,
+      wait_time: self.wait_time_display,
+      status: self.status,
+      notified: self.notified_table_ready
     }
   end
 
