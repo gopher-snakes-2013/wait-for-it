@@ -12,12 +12,12 @@ div.table {
 
   .table-body {
 
-    .tr:hover {
+/*    .tr:hover {
       background-color: #A4E1FF;
       border: 2px solid #F5F7F7;
       border-radius: 15px;
       -webkit-transition: 1s;
-    }
+    }*/
 
     .tr {
       position:relative;
@@ -26,6 +26,32 @@ div.table {
       margin-top: 1em;
       padding: 1em;
 
+      .td.status-head {
+        float:left;
+        width:5.3em;
+      }
+
+      span#status-open {
+        color:green;
+      }
+
+      span#status-no-show {
+        color:blue;
+      }
+
+      span#status-seated {
+        color:black;
+      }
+
+      span#status-cancelled {
+        color:red;
+      }
+
+      .td.status {
+        float:left;
+        font-weight:900;
+        width:5.3em;
+      }
 
       .td {
         text-align: center;
@@ -119,3 +145,5 @@ div.ready-message-sent{
   text-align:left;
   margin-left:2em;
 }
+
+
