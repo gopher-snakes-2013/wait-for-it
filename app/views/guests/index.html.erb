@@ -1,0 +1,13 @@
+
+<div class="body">
+  <h1>I am a</h1>
+  <div class="guest-button"><%= link_to "Guest", restaurants_path, remote: true, class: "guest-link" %></div>
+  <div class="restaurant-button"><a href="#">Restaurant</a></div>
+</div>
+
+<div class="restaurant-login hidden">
+  <%= render partial: 'restaurants/login' %>
+</div>
+
+<div class="restaurant-registration hidden">
+</div>

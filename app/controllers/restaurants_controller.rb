@@ -5,10 +5,12 @@ class RestaurantsController < ApplicationController
     @restaurants.each do |restaurant|
       restaurant.update_max_wait_time
     end
+    render text: render_to_string(file: 'restaurants/index', layout: false, locals: { restaurants: @restaurants })
   end
 
   def new
     @restaurant = Restaurant.new
+    render text: render_to_string(file: 'restaurants/new', layout: false, locals: { restaurant: @restaurant })
   end
 
   def create

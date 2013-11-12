@@ -37,7 +37,6 @@ class Reservation < ActiveRecord::Base
     end
   end
 
-
   def generate_unique_key
     self.unique_key = SecureRandom.hex(10)
   end
