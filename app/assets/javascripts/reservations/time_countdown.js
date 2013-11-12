@@ -50,7 +50,7 @@ calculateCurrentTime: function(){
   var currentYear = currentTime.getFullYear() 
   var currentHour = currentTime.getHours()
   var currentMinutes = currentTime.getMinutes()
-  if (currentMinutes.length === 1){
+  if (currentMinutes.toString().length === 1){
     currentMinutes = "0"+currentMinutes
   }
   var currentAMPM = ""
