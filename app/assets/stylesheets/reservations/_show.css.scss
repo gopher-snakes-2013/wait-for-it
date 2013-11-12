@@ -38,16 +38,6 @@ div.table {
 
     text-align:left;
 
-    div.status-flag {
-      float:left;
-      text-align:center;
-      background-color:lightblue;
-      border-radius:20px;
-      height:2.5em;
-      width:12em;
-      font-size:.8em;
-    }
-
     .tr {
       position:relative;
       border: 2px solid #e67e22;
@@ -57,19 +47,47 @@ div.table {
 
 
       span#status-open {
-        color:green;
+        float:left;
+        text-align:center;
+        border-radius:20px;
+        height:1.7em;
+        width:6em;
+        font-size:1.4em;
+        color:lightgreen;
+        background-color:green;
       }
 
       span#status-no-show {
-        color:blue;
+        float:left;
+        text-align:center;
+        border-radius:20px;
+        height:1.7em;
+        width:6em;
+        font-size:1.4em;
+        color:lightblue;
+        background-color:blue;
       }
 
       span#status-seated {
-        color:black;
+        float:left;
+        text-align:center;
+        border-radius:20px;
+        height:1.7em;
+        width:6em;
+        font-size:1.4em;
+        color:lightgrey;
+        background-color:grey;
       }
 
       span#status-cancelled {
-        color:red;
+        float:left;
+        text-align:center;
+        border-radius:20px;
+        height:1.7em;
+        width:6em;
+        font-size:1.4em;
+        color:pink;
+        background-color:red;
       }
 
       .td.status {

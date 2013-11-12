@@ -17,7 +17,7 @@ var update = {
   partySize: function(reservation) {
     var element = reservation.find(".party-size");
     var text = element.text();
-    element.html('<input class="update update-party-size" name="reservation[party_size]" value="'+text+'">');
+    element.html('<select class="update update-party-size" name="reservation[party_size]"><option value="'+text+'" selected>'+text+'</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>');
   },
 
   guestName: function(reservation) {
@@ -35,8 +35,7 @@ var update = {
   waitTime: function(reservation) {
     var element = reservation.find(".wait-time");
     var text = element.text();
-    var potential_wait_times = ["10","15","20","25","30"]
-    element.html('<select class="update update-wait-time" name="reservation[wait_time]"><option value="'+text+'" selected>'+text+'</option><option value="10">10</option><option value="20">20</option><option value="30">30</option></select>');
+    element.html('<select class="update update-wait-time" name="reservation[wait_time]"><option value="'+text+'" selected>'+text+'</option><option value="5">5</option><option value="10">10</option><option value="15">15</option><option value="20">20</option><option value="30">30</option><option value="45">45</option><option value="60">60</option><option value="75">75</option><option value="90">90</option></select>');
   },
 
   status: function(reservation) {
@@ -55,9 +54,7 @@ var update = {
       dataType: "json",
       data: $(this).closest(".reservation").serialize()
     }).done(function(data){
-
       var statusId = updateStatusId(data);
-
       $that.closest(".reservation").find("span.status").removeAttr('id').attr('id', statusId);
       $that.closest(".reservation").find("span.name").html(data.name);
       $that.closest(".reservation").find("span.status").html(data.status);
@@ -75,6 +72,7 @@ var reservationActions = {
   init: function() {
     $(".add-reservation-form").on("ajax:success", "#new_reservation", this.addReservation);
     $(".add-reservation-form").on("ajax:error", "#new_reservation", this.errorMessage);
+    $(".add-reservation-form").on("ajax:success", setStatusId);
 
     $(".table").on("click", ".edit", update.init);
     $(".table").on("click", ".save", update.save);
@@ -82,7 +80,6 @@ var reservationActions = {
 
   addReservation: function(e, reservationPartial) {
     $(".table-body").append(reservationPartial);
-
     $("#reservation_name").val("");
     $("#reservation_party_size").val("");
     $("#reservation_phone_number").val("");
@@ -95,6 +92,11 @@ var reservationActions = {
     $(".error-message").html(error);
   }
 }
+
+var setStatusId = function() {
+  $("span.status").last().attr('id', 'status-open');
+}
+
 
 var updateStatusId = function(data) {
  var statusText = data.status;
@@ -110,7 +112,7 @@ var updateStatusId = function(data) {
   return statusId;
 }
 
-var changeStatusId = function() {
+var reloadStatusId = function() {
   var element = $('.status');
   for(var i=0; i< element.length; i++){
     var statusText = element[i].innerHTML;
@@ -130,5 +132,5 @@ var changeStatusId = function() {
 
 $(document).ready(function(){
   reservationActions.init();
-  changeStatusId();
+  reloadStatusId();
 });
