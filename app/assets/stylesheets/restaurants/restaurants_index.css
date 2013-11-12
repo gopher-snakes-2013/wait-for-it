@@ -11,6 +11,22 @@ span.header {
   margin-right:1.8em;
 }
 
+.th {
+  padding:1em;
+  height:4em;
+  margin-top:1em;
+  border-radius: 20px;
+}
+
+.td {
+  text-align: center;
+  font-size: 1.7em;
+  font-weight: bold;
+  height: 2.5em;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
 div.restaurant {
   background-color: #e67e22;
   padding-left: 1em;
@@ -27,7 +43,7 @@ span.restaurant-name {
 }
 
 span.restaurant-max-wait-time {
-  margin-left:1em;
+  margin-left:0.5em;
   color:#F5F7F7;
   width:64px;
   text-align: center;
@@ -38,3 +54,4 @@ div.guest-table {
   text-align: center;
   width: 50em;
 }
+

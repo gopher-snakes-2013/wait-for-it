@@ -3,10 +3,10 @@ var restaurant = {
   toggleLogin: function(e) {
     e.preventDefault()
     if ( $(".restaurant-login").hasClass("hidden") ) {
-      $(".restaurant-login").slideDown("slow")
+      $(".restaurant-login").slideDown()
       $(".restaurant-login").removeClass("hidden")
     } else {
-      $(".restaurant-login").slideUp("slow")
+      $(".restaurant-login").slideUp()
       $(".restaurant-login").addClass("hidden")
     }
   },
@@ -26,7 +26,7 @@ var guest = {
 }
 
 $(document).ready(function(){
-  $(".body").on("click", ".restaurant-button", restaurant.toggleLogin)
+  $(".body").on("click", ".restaurant-link", restaurant.toggleLogin)
   $(document).on("ajax:success", ".guest-link", restaurant.showRegister)
   $(document).on("ajax:success", ".register-link", guest.showAllRestaurants)
 })

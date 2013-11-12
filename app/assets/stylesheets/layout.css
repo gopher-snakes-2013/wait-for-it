@@ -9,19 +9,19 @@ body {
   margin: 0 auto;
 }
 
-#container {
-  margin: 0 auto;
-  padding-top:10em;
-  padding-bottom:5em;
-  text-align: center;
-}
-
 .navbar {
   background-color: #2EC6A4;
   height:6em;
   position: fixed;
   width: 100%;
   z-index: 2;
+}
+
+#container {
+  margin: 0 auto;
+  padding-top:10em;
+  padding-bottom:5em;
+  text-align: center;
 }
 
 #title1 {
@@ -38,7 +38,6 @@ body {
   z-index:3;
 }
 
-
 #title2 {
   bottom: 0.5em;
   display:inline-block;
@@ -54,14 +53,9 @@ a {
   text-decoration: none;
 }
 
-a.active {
+a.visted {
   color:#142837;
   text-decoration: none;
-}
-
-.logged-in {
-  font-family: 'Lobster', cursive;
-  font-size: xx-large;
 }
 
 /***** Restaurant Options Menu ******/
@@ -86,8 +80,4 @@ a.active {
 ul#nav-primary > li {
   list-style-type: none;
   text-align:right;
-}
-
-#time {
-  font-size:2em;
 }

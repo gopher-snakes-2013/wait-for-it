@@ -1,0 +1,121 @@
+div.table {
+  margin: 0 auto;
+  text-align: left;
+  width: 70em;
+
+  .th {
+    padding:1em;
+    height:4em;
+    margin-top:1em;
+    border-radius: 20px;
+  }
+
+  .table-body {
+
+    .tr:hover {
+      background-color: #A4E1FF;
+      border: 2px solid #F5F7F7;
+      border-radius: 15px;
+      -webkit-transition: 1s;
+    }
+
+    .tr {
+      position:relative;
+      border: 2px solid #142837;
+      border-radius: 15px;
+      margin-top: 1em;
+      padding: 1em;
+
+
+      .td {
+        text-align: center;
+        font-size: 1.7em;
+        font-weight: bold;
+        height: 2.5em;
+        margin-left: 1em;
+        margin-right: 1em;
+      }
+
+      .td.name {
+        float:left;
+        width: 36%;
+      }
+
+      .td.party-size {
+        float:left;
+        margin-left:1.5em;
+        width:2em;
+      }
+
+      .td.phone-number {
+        float:left;
+        width:7em;
+      }
+
+      .td.wait-time {
+        float:left;
+        width:2em;
+      }
+
+      .td.seat-time {
+        float:left;
+        width:5em;
+      }
+
+      .td.max-wait-time {
+        width: 64px;
+      }
+    }
+  }
+}
+
+input.update {
+  font-size:1em;
+  text-align: center;
+  width:3em;
+}
+
+input.update-name {
+  width:5em;
+}
+
+input.update-phone-number {
+  width:7em;
+}
+
+/****** Button Columns ******/
+
+div.message-button {
+  display: inline;
+}
+
+div.message-ready {
+  background: url('sms.png') no-repeat;
+  border: none;
+  display: inline-block;
+  height: 48px;
+  width: 48px;
+}
+
+.trash {
+  background: url('trash-bin.png') no-repeat;
+  border: none;
+  display: inline-block;
+  height: 48px;
+  width: 48px;
+}
+
+
+div.ready-message-sent{
+  background: url('checked-box.png') no-repeat;
+  border: none;
+  display: inline-block;
+  height: 48px;
+  width: 48px;
+}
+
+#time {
+  font-size:3em;
+  text-align:left;
+  margin-left:2em;
+}
