@@ -85,7 +85,9 @@ class ReservationsController < ApplicationController
 
   def currentreservations
     current_reservations = Reservation.where("restaurant_id = ?",params[:current_restaurant])
-    current_reservations = current_reservations.reject { |reservation| reservation.estimated_seat_time < (Time.now - 30*60)}
+    current_reservations = current_reservations.reject { |reservation| reservation.estimated_seat_time < (Time.now - 30*60) }
+    current_reservations = current_reservations.reject { |reservation| reservation.status == "Archived"}
+    current_reservations = current_reservations.sort_by { |reservation| reservation.estimated_seat_time}
     render json: {reservations: current_reservations}.to_json
   end
 end
