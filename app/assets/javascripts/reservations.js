@@ -34,7 +34,8 @@ var update = {
   waitTime: function(reservation) {
     var element = reservation.find(".wait-time");
     var text = element.text();
-    element.html('<input class="update update-wait-time" name="reservation[wait_time]" value="'+text+'">');
+    var potential_wait_times = ["10","15","20","25","30"]
+    element.html('<select class="update update-wait-time" name="reservation[wait_time]"><option value="'+text+'" selected>'+text+'</option><option value="10">10</option><option value="20">20</option><option value="30">30</option></select>');
   },
 
   save: function(e) {
@@ -52,6 +53,7 @@ var update = {
       $that.closest(".reservation").find("span.party-size").html(data.party_size);
       $that.closest(".reservation").find("span.phone-number").html(data.phone_number);
       $that.closest(".reservation").find("span.wait-time").html(data.wait_time);
+      $that.closest(".reservation").find("span.seat-time").html(data.estimated_seat_time);
       $that.closest(".table").find(".update-button").html('<input class="edit" type="submit" value="edit">')
     })
 
