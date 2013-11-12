@@ -1,4 +1,5 @@
-<% if current_restaurant %>
+<% if logged_in? %>
+
 <nav id="main-nav">
   <ul id="nav-primary">
     <% logged_in_restaurant = Restaurant.find(session[:restaurant_id]) %>
@@ -34,11 +35,6 @@
 			<%= render partial: "reservations/show", locals: { restaurant: @restaurant, reservation: reservation } %>
 			<% end %>
 		</div>
-		<br>
-
-		<% @reservations.each do |reservation| %>
-		<%= render partial: "reservations/show", locals: { restaurant: @restaurant, reservation: reservation } %>
-		<% end %>
 	</div>
 </div>
 

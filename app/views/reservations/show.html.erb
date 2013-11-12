@@ -1,17 +1,17 @@
-<% trash_img = image_tag('trash-bin.png', :class =>"trash") %>
+<div class="time-now">
+</div>
 
-<div class="table" data-restaurant-id="<%= @restaurant.id %>">
-  <div class="table-body">
-    <div class="guest-reservation">
-      <div class="tr reservation" data-id="<%= @reservation.id %>">
-        <span class="td"><%= @reservation.name %></span>
-        <span class="td"><%= @reservation.party_size %></span>
-        <span class="td"><%= @reservation.wait_time %></span>
-        <span class="td delete-button"><%= link_to trash_img, restaurant_reservation_path(@restaurant.id, @reservation.id), method: 'delete', action: 'destroy', class: 'delete' %></span>
-      </form>
-    </div>
-    <% @reservations.each do |reservation| %>
-      <%= render partial: "reservations/guest_view", locals: { restaurant: @restaurant, reservation: reservation } %>
-    <% end %>
+<div id="guest-content">
+  <div class="guest-name">
+    <%= @reservation.name %>,
+    <br/>your ETDine is:
+  </div>
+
+  <div class="seat-time">
+    <%= @reservation.estimated_seat_time_display %>
+  </div>
+
+  <div class="cancel-button">
+    <a href="#">cancel</a>
   </div>
 </div>
