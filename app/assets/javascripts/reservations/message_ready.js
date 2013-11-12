@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-  $(".table").on("click", "div.message-ready", function(){
+  $(".table-body").on("click", "div.message-ready", function(){
     var guestId = $(this).closest(".reservation").data("id")
     var boundMessageGuestReady = messageGuestReady.bind(this)
     boundMessageGuestReady(guestId)
@@ -18,6 +18,7 @@ var messageGuestReady = function(guest_id){
 
   }).done(function(){
     $(that).removeClass("message-ready")
+    $(that).html("sent")
     $(that).addClass("ready-message-sent")
     $("error-message").empty()
   }).error(function(){
