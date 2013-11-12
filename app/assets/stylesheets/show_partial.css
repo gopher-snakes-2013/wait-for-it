@@ -13,10 +13,26 @@
   width:5.3em;
 }
 
+span#status-open {
+  color:green;
+}
+
+span#status-no-show {
+  color:blue;
+}
+
+span#status-seated {
+  color:black;
+}
+
+span#status-cancelled {
+  color:red;
+}
+
 .td.status {
   float:left;
+  font-weight:900;
   width:5.3em;
-  color:green;
 }
 
 .td.name {

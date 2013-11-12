@@ -41,8 +41,7 @@ var update = {
 
   status: function(reservation) {
     var element = reservation.find(".status");
-    var text = element.text();
-    element.html('<input class="update update-status" name="reservation[status]" value="'+text+'">');
+    element.html('<select class="update update-status" name="reservation[status]"><option value="Open">Open</option><option value="Seated">Seated</option><option value="Cancelled">Cancelled</option><option value="No-Show">No-Show</option></select>');
   },
 
   save: function(e) {
@@ -56,14 +55,29 @@ var update = {
       dataType: "json",
       data: $(this).closest(".reservation").serialize()
     }).done(function(data){
+      var statusText = data.status;
+
+      if (statusText == 'Open') {
+        var statusId = 'status-open';
+      } else if (statusText == 'Cancelled') {
+        statusId = 'status-cancelled';
+      } else if (statusText == 'No-Show') {
+        statusId = 'status-no-show';
+      } else if (statusText == 'Seated') {
+        statusId = 'status-seated';
+      }
+
+      console.log(statusId)
+      $that.closest(".reservation").find("span.status").removeAttr('id').attr('id', statusId);
+
       $that.closest(".reservation").find("span.name").html(data.name);
+      $that.closest(".reservation").find("span.status").html(data.status);
       $that.closest(".reservation").find("span.party-size").html(data.party_size);
       $that.closest(".reservation").find("span.phone-number").html(data.phone_number);
       $that.closest(".reservation").find("span.wait-time").html(data.wait_time);
       $that.closest(".reservation").find("span.seat-time").html(data.estimated_seat_time);
       $that.closest(".table").find(".update-button").html('<input class="edit" type="submit" value="edit">')
     })
-
   }
 }
 
@@ -91,7 +105,8 @@ var reservationActions = {
     var error = xhr.responseJSON.error_message;
     $(".error-message").html(error);
   }
-};
+}
+
 
 $(document).ready(function(){
   reservationActions.init();
