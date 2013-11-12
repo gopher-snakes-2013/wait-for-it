@@ -70,33 +70,8 @@ class ReservationsController < ApplicationController
     render json: {reservations: reservations}.to_json
   end
 
-  # def update_wait_time
-  #   wait_times = {}
-  #   restaurant = Restaurant.find(params[:restaurant_id])
-  #   reservations = restaurant.reservations
-  #   number_of_reservations = reservations.length
-  #   wait_times[:total] = number_of_reservations
-  #   Reservation.order("wait_time").each do |reservation|
-  #     if reservation.wait_time > 0
-  #       reservation.wait_time = reservation.wait_time - 1
-  #       reservation.save
-  #       wait_times[reservation.id] = {}
-  #       wait_times[reservation.id][:minutes] = reservation.wait_time
-  #       wait_times[reservation.id][:done] = false
-  #     elsif reservation.wait_time <= 0
-  #       reservation.wait_time = 0
-  #       reservation.save
-  #       wait_times[reservation.id] = {}
-  #       wait_times[reservation.id][:minutes] = reservation.wait_time
-  #       wait_times[reservation.id][:done] = true
-  #     end
-  #   end
-  #   render json: wait_times.to_json
-  # end
-
   def seat_times
     estimated_seat_times = {}
-    # debugger
     current_reservations = params[:reservations_on_page].map { |reservation_id| Reservation.find(reservation_id)}
     current_reservations.each {|reservation| estimated_seat_times[reservation.id] = reservation.estimated_seat_time_display }
     render json: {estimated_seat_times: estimated_seat_times}.to_json
