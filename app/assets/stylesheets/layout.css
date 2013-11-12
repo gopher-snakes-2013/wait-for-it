@@ -10,7 +10,11 @@ body {
 }
 
 #container {
+  width:60em;
+  overflow:hidden;
+  margin: 0 auto;
   padding-top:10em;
+  padding-bottom:5em;
   text-align: center;
 }
 
@@ -48,6 +52,11 @@ body {
 }
 
 a {
+  color:#142837;
+  text-decoration: none;
+}
+
+a.active {
   color:#142837;
   text-decoration: none;
 }

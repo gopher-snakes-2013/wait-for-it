@@ -1,4 +1,8 @@
-<% if current_restaurant %>
+<% if logged_in? %>
+
+<% if logged_in? %>
+<%= link_to current_restaurant.name, restaurant_reservations_path(current_restaurant.id) %>
+<% end %>
 
 <div class="nav">
 	<%= render "restaurants/logout" %>
@@ -27,4 +31,4 @@
 		</div>
 	</div>
 
-	<% end %>
+<% end %>

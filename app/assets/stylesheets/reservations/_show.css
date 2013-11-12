@@ -10,7 +10,7 @@
 
 .td.name {
   float:left;
-  width:5.3em;
+  width: 36%;
 }
 
 .td.party-size {
@@ -35,7 +35,7 @@
 }
 
 .td.max-wait-time {
-  width:5.3em;
+  width: 64px;
 }
 
 .td .x {
@@ -60,8 +60,8 @@
   padding:1em;
   height:4em;
   margin-top:1em;
-  border-radius: 15px;
-  border: 2px solid #142837;
+  border-radius: 20px;
+  /*border: 2px solid #142837;*/
 }
 
 .tr:hover {

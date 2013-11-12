@@ -9,6 +9,7 @@ class RestaurantsController < ApplicationController
 
   def new
     @restaurant = Restaurant.new
+    render text: render_to_string(file: 'restaurants/new', layout: false, locals: { restaurant: @restaurant })
   end
 
   def create

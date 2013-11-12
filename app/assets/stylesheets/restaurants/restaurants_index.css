@@ -1,0 +1,32 @@
+div.table {
+  margin: 0 auto;
+  text-align: left;
+  width: 50em;
+}
+
+div.headers {
+  border:none;
+  font-size:1em;
+  padding-bottom: 0;
+  margin-bottom: -2em;
+  margin-left: 60px;
+}
+
+span.header {
+  margin-left:1.3em;
+}
+
+div.restaurant {
+  background-color: #e67e22;
+  padding-left: 51px;
+  padding-bottom: 0em;
+}
+
+span.name {
+  margin-right:3em;
+  color:#F5F7F7;
+}
+
+span.max-wait-time {
+  color:#F5F7F7;
+}
