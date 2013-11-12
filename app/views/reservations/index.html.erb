@@ -1,8 +1,16 @@
 <% if current_restaurant %>
+<nav id="main-nav">
+  <ul id="nav-primary">
+    <% logged_in_restaurant = Restaurant.find(session[:restaurant_id]) %>
+    <li class="restaurant-name"><a href="#"><%= logged_in_restaurant.name %></a></li>
+    <li class="subnav hidden"><%= link_to 'Logout', session_path(session), method: :delete %></li>
+  </ul>
+</nav>
 
-<div class="nav">
-	<%= render "restaurants/logout" %>
+<div id="time">
+    <%= DateTime.now.strftime("%e %b %Y %l:%M %p") %>
 </div>
+
 <br/>
 <div class="create-form">
 	<%= render "reservations/form" %>
@@ -26,6 +34,12 @@
 			<%= render partial: "reservations/show", locals: { restaurant: @restaurant, reservation: reservation } %>
 			<% end %>
 		</div>
-	</div>
+		<br>
 
-	<% end %>
+		<% @reservations.each do |reservation| %>
+		<%= render partial: "reservations/show", locals: { restaurant: @restaurant, reservation: reservation } %>
+		<% end %>
+	</div>
+</div>
+
+<% end %>
