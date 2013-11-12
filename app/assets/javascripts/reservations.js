@@ -55,18 +55,9 @@ var update = {
       dataType: "json",
       data: $(this).closest(".reservation").serialize()
     }).done(function(data){
-      var statusText = data.status;
 
-      if (statusText == 'Open') {
-        var statusId = 'status-open';
-      } else if (statusText == 'Cancelled') {
-        statusId = 'status-cancelled';
-      } else if (statusText == 'No-Show') {
-        statusId = 'status-no-show';
-      } else if (statusText == 'Seated') {
-        statusId = 'status-seated';
-      }
-
+      var statusId = updateStatusId(data);
+      
       $that.closest(".reservation").find("span.status").removeAttr('id').attr('id', statusId);
       $that.closest(".reservation").find("span.name").html(data.name);
       $that.closest(".reservation").find("span.status").html(data.status);
@@ -103,6 +94,20 @@ var reservationActions = {
     var error = xhr.responseJSON.error_message;
     $(".error-message").html(error);
   }
+}
+
+var updateStatusId = function(data) {
+ var statusText = data.status;
+ if (statusText == 'Open') {
+  var statusId = 'status-open';
+} else if (statusText == 'Cancelled') {
+  statusId = 'status-cancelled';
+} else if (statusText == 'No-Show') {
+  statusId = 'status-no-show';
+} else if (statusText == 'Seated') {
+  statusId = 'status-seated';
+}
+return statusId;
 }
 
 
