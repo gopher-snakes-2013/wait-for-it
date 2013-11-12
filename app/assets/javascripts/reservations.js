@@ -2,7 +2,6 @@ var update = {
 
   init: function() {
     var $edit = $(this)
-
     var reservation = $(this).closest(".reservation");
     var id = reservation.data("id");
     update.partySize(reservation);
@@ -11,7 +10,6 @@ var update = {
     update.waitTime(reservation);
 
     $edit.closest(".update-button").html('<input class="save" name="commit" type="submit" value="save">');
-
     $(".edit").remove();
   },
 

@@ -1,7 +1,21 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+
+20.times do
+  restaurant = Restaurant.new
+  restaurant.name = Faker::Commerce.color.capitalize
+  restaurant.email = restaurant.name.downcase + "@mail.com"
+  restaurant.password = "password"
+  restaurant.password_confirmation = "password"
+  restaurant.save
+end
+
+Restaurant.all.each do |restaurant|
+  6.times do
+    reservation = restaurant.reservations.new
+    reservation.name = Faker::Name.first_name
+    reservation.party_size = 1 + rand(8)
+    reservation.phone_number = Faker::PhoneNumber.cell_phone.gsub(/\s.*/, "")
+    reservation.wait_time = 10
+    reservation.before_wait_time = 0
+    reservation.save
+  end
+end
