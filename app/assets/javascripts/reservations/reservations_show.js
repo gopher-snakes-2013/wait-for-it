@@ -100,17 +100,35 @@ var updateStatusId = function(data) {
  var statusText = data.status;
  if (statusText == 'Open') {
   var statusId = 'status-open';
-} else if (statusText == 'Cancelled') {
-  statusId = 'status-cancelled';
-} else if (statusText == 'No-Show') {
-  statusId = 'status-no-show';
-} else if (statusText == 'Seated') {
-  statusId = 'status-seated';
+  } else if (statusText == 'Cancelled') {
+    statusId = 'status-cancelled';
+  } else if (statusText == 'No-Show') {
+    statusId = 'status-no-show';
+  } else if (statusText == 'Seated') {
+    statusId = 'status-seated';
+  }
+  return statusId;
 }
-return statusId;
+
+var changeStatusId = function() {
+  var element = $('.status');
+  for(var i=0; i< element.length; i++){
+    var statusText = element[i].innerHTML;
+    if (statusText == 'Open') {
+      var statusId = 'status-open';
+    } else if (statusText == 'Cancelled') {
+      statusId = 'status-cancelled';
+    } else if (statusText == 'No-Show') {
+      statusId = 'status-no-show';
+    } else if (statusText == 'Seated') {
+      statusId = 'status-seated';
+    }
+  $($('span.status')[i]).attr('id', statusId);
+  }
 }
 
 
 $(document).ready(function(){
   reservationActions.init();
+  changeStatusId();
 });
