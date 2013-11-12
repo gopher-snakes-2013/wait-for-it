@@ -10,9 +10,7 @@ body {
 }
 
 #container {
-  width:60em;
-  overflow:hidden;
-  margin: 0 auto;
+    margin: 0 auto;
   padding-top:10em;
   padding-bottom:5em;
   text-align: center;

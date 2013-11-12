@@ -40,8 +40,8 @@ class ReservationsController < ApplicationController
     reservation = Reservation.find(params[:id])
   	if reservation.update_attributes(params[:reservation])
       session[:restaurant_id] = restaurant.id
-      render json: { name: params[:reservation][:name],
-                     party_size: params[:reservation][:party_size],
+      render json: { name: reservation.name,
+                     party_size: reservation.party_size,
                      phone_number: reservation.phone_number.phony_formatted(normalize: :US, format: :national, spaces: '-'),
                      wait_time: reservation.wait_time_display,
                      estimated_seat_time: reservation.estimated_seat_time_display }.to_json
