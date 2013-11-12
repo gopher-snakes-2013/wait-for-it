@@ -1,0 +1,29 @@
+
+div.error-message {
+  margin:1em;
+}
+
+div.create-form {
+  margin-bottom:3em;
+}
+
+div.table {
+  margin: 0 auto;
+  text-align: left;
+  width: 70em;
+}
+
+.th {
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-left: 2.3em;
+  margin-right: 4em;
+}
+
+.th.phone {
+  margin-left: -0.1em;
+}
+
+.table-head {
+  height: 48px;
+}

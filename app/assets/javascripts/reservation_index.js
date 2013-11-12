@@ -1,6 +1,5 @@
 $(document).ready(function(){
   $("#main-nav").mouseenter(showNav).mouseleave(hideNav);
-  $(".submit_button").prop("value", "+")
 })
 
 function showNav(e){

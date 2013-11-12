@@ -18,6 +18,14 @@ div.big-restaurant {
   color:#2EC6A4;
 }
 
+div.big-restaurant a:hover {
+  color: #35E5BE;
+}
+
+div.big-restaurant a:active {
+  color: #88FFE4;
+}
+
 div > a {
   color:#2EC6A4;
   text-decoration: none;
@@ -46,4 +54,12 @@ div.register-link {
 
 .hidden {
   display:none;
+}
+
+div.register-link a:hover {
+  color: #35E5BE;
+}
+
+div.register-link a:hover {
+  color: #88FFE4;
 }
