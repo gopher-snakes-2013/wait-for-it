@@ -2,10 +2,6 @@ div.error-message {
   margin:1em;
 }
 
-div.create-form {
-  margin-bottom:3em;
-}
-
 .th {
   font-size: 1.3em;
   font-weight: bold;
@@ -18,7 +14,7 @@ div.create-form {
 }
 
 .table-head {
-  height: 48px;
+  height: 36px;
 }
 
 .new_reservation > input {

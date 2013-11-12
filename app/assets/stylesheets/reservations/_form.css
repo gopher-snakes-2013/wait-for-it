@@ -1,8 +1,8 @@
-.add_guest_form {
-  display: block;
-  margin: auto;
-  text-align: center;
-  position: relative;
+.add-reservation-form {
+  margin-top:3em;
+  padding-bottom:1em;
+  text-align: left;
+  margin-left: 6em;
 }
 
 input {
@@ -17,4 +17,6 @@ input {
   border-color: #FF4E51;
   border-radius: 10px;
   color: #142837;
+  font-style: helvetica;
+  font-size:3em;
 }

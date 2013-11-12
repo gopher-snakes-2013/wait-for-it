@@ -1,7 +1,31 @@
 div.table {
-  margin: 0 auto;
   text-align: left;
-  width: 70em;
+  width: 60em;
+  margin-left: 6em;
+
+  .table-head {
+    font-size:.8em;
+
+    span.status-head {
+      margin-right: 3.7em;
+    }
+
+    span.name {
+      margin-right: 3.6em;
+    }
+
+    span.party-size {
+      margin-right: .8em;
+    }
+
+    span.phone-number {
+      margin-right: 0em;
+    }
+
+    span.wait-time {
+      margin-right: 0em;
+    }
+  }
 
   .th {
     padding:1em;
@@ -12,24 +36,25 @@ div.table {
 
   .table-body {
 
-/*    .tr:hover {
-      background-color: #A4E1FF;
-      border: 2px solid #F5F7F7;
-      border-radius: 15px;
-      -webkit-transition: 1s;
-    }*/
+    text-align:left;
+
+    div.status-flag {
+      float:left;
+      text-align:center;
+      background-color:lightblue;
+      border-radius:20px;
+      height:2em;
+      width:12em;
+      font-size:.8em;
+    }
 
     .tr {
       position:relative;
-      border: 2px solid #142837;
-      border-radius: 15px;
+      border: 2px solid #e67e22;
+      border-radius: 20px;
       margin-top: 1em;
       padding: 1em;
 
-      .td.status-head {
-        float:left;
-        width:5.3em;
-      }
 
       span#status-open {
         color:green;
@@ -51,6 +76,7 @@ div.table {
         float:left;
         font-weight:900;
         width:5.3em;
+        z-index:2;
       }
 
       .td {
@@ -59,37 +85,45 @@ div.table {
         font-weight: bold;
         height: 2.5em;
         margin-left: 1em;
-        margin-right: 1em;
       }
 
       .td.name {
-        float:left;
-        width: 36%;
+        float: left;
+        font-size:1.5em;
+        width: 6em;
+        text-align: left;
       }
 
       .td.party-size {
-        float:left;
-        margin-left:1.5em;
-        width:2em;
+        float: left;
+        font-size:1.5em;
+        width: 1.5em;
+        text-align: left;
       }
 
       .td.phone-number {
-        float:left;
-        width:7em;
+        float: left;
+        font-size:1.5em;
+        width: 7.6em;
+        text-align: left;
       }
 
       .td.wait-time {
-        float:left;
-        width:2em;
+        float: left;
+        font-size:1.5em;
+        width: 1.5em;
+        text-align: left;
       }
 
       .td.seat-time {
-        float:left;
-        width:5em;
+        float: left;
+        font-size:1.5em;
+        width: 5em;
+        text-align: left;
       }
 
       .td.max-wait-time {
-        width: 64px;
+
       }
     }
   }
@@ -109,41 +143,9 @@ input.update-phone-number {
   width:7em;
 }
 
-/****** Button Columns ******/
-
-div.message-button {
-  display: inline;
-}
-
-div.message-ready {
-  background: url('sms.png') no-repeat;
-  border: none;
-  display: inline-block;
-  height: 48px;
-  width: 48px;
-}
-
-.trash {
-  background: url('trash-bin.png') no-repeat;
-  border: none;
-  display: inline-block;
-  height: 48px;
-  width: 48px;
-}
-
-
-div.ready-message-sent{
-  background: url('checked-box.png') no-repeat;
-  border: none;
-  display: inline-block;
-  height: 48px;
-  width: 48px;
-}
-
 #time {
   font-size:3em;
   text-align:left;
   margin-left:2em;
 }
-
 
