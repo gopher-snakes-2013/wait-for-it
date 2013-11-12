@@ -43,9 +43,7 @@ updateWaitTime: function(){
     if (pmREGEXP.exec(currentEstimatedTime.ampm) && currentEstimatedTime.hour != "12"){
       currentEstimatedTime.hour =  (parseInt(currentEstimatedTime.hour) + 12).toString()
     }
-    console.log(currentEstimatedTime)
     var newTime = new Date(currentYear,currentMonth,currentDate,currentEstimatedTime.hour,currentEstimatedTime.minute)
-    console.log("wait time: ",Math.round((newTime - Date.now())/60000))
     var newWaitTime  = Math.round((newTime - Date.now())/60000)
     $($(reservations_on_page[i]).find('.wait-time')).html(newWaitTime)   
 }
