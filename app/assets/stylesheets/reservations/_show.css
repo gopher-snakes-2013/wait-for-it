@@ -28,6 +28,10 @@
   float:left;
   width:2em;
 }
+.td.seat-time {
+  float:left;
+  width:2em;
+}
 
 .td.update-button {
   float:left;

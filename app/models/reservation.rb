@@ -10,8 +10,11 @@ class Reservation < ActiveRecord::Base
   validates_plausible_phone :phone_number, :country_code => '1'
 
   before_save :add_plus_phone_number
+  before_save :add_estimated_seat_time
+
   before_create :generate_unique_key
   after_save :update_all_wait_times
+
   after_create :send_text_upon_new_reservation
 
   def add_plus_phone_number
@@ -33,6 +36,7 @@ class Reservation < ActiveRecord::Base
       end
     end
   end
+
 
   def generate_unique_key
     self.unique_key = SecureRandom.hex(10)
@@ -64,4 +68,15 @@ class Reservation < ActiveRecord::Base
     }
   end
 
+  def add_estimated_seat_time
+    self.estimated_seat_time = Time.now + self.wait_time*60
+  end
+
+  def estimated_seat_time_display
+    self.estimated_seat_time.localtime.strftime("%l:%M%P")
+  end
+
+  def wait_time_display
+    ((self.estimated_seat_time - Time.now)/60).round
+  end
 end
