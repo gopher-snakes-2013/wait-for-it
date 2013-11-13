@@ -6,7 +6,7 @@ module TwilioHelper
   #         body: message,
   #         to: phone_number,
   #         from: "+14159926163")
-  # end
+  end
 
   def self.table_ready(phone_number, retaurant_name)
        @client = Twilio::REST::Client.new ENV['ACCOUNT_SID'], ENV['AUTH_TOKEN']
