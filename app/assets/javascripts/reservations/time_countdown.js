@@ -1,13 +1,9 @@
 $(document).ready(function(){
   if($(".reservation").length > 0) {
-    setInterval(function(){
-      updateReservations.getReservationsFromServer()
-      updateReservations.updateCurrentTime()
-    }, 6000)
-    }})
-  
-var updateReservations = {
+    setInterval(function(){ updateReservations.updateCurrentTime()}, 60000)
+    }})  
 
+var updateReservations = {
 getReservationsFromServer: function(){
   var current_restaurant = $('div.table').data("restaurant-id")
   $.ajax({
@@ -29,9 +25,10 @@ addReservationsToPage: function(reservations){
     $(updatedReservationTemplate).data("id", reservations.reservations[i].id)
     updatedReservationTemplate.find('span.name').html((reservations.reservations[i].name))
     updatedReservationTemplate.find('span.phone-number').html((reservations.reservations[i].phone_number))
-    updatedReservationTemplate.find('span.status').html((reservations.reservations[i].attr('id', reservations.reservations[i].lower)))
-    updatedReservationTemplate.find('span.status').removeAttr('id').attr('id', statusId)
-    console.log(statusId);
+    updatedReservationTemplate.find('span.status').html((reservations.reservations[i].status))
+
+    updatedReservationTemplate.find('span.status').attr("id","status-"+reservations.reservations[i].status.toLowerCase())
+
     updatedReservationTemplate.find('span.party-size').html((reservations.reservations[i].party_size))
     updatedReservationTemplate.find('span.message-button').before('<span class="update-button"><input class="edit" type="submit" value="edit"></span>')
     updatedReservationTemplate.find('span.seat-time').html((reservations.reservations[i].estimated_seating))

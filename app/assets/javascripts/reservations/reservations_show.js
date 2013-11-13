@@ -1,3 +1,4 @@
+var superBadAssTimer
 var update = {
 
   init: function() {
@@ -9,7 +10,7 @@ var update = {
     update.phoneNumber(reservation);
     update.waitTime(reservation);
     update.status(reservation);
-
+    clearInterval(superBadAssTimer)
     $edit.closest(".update-button").html('<input class="save" name="commit" type="submit" value="save">');
     $(".edit").remove();
   },
@@ -63,13 +64,12 @@ var update = {
       $that.closest(".reservation").find("span.wait-time").html(data.wait_time);
       $that.closest(".reservation").find("span.seat-time").html(data.estimated_seat_time);
       $that.closest(".table").find(".update-button").html('<input class="edit" type="submit" value="edit">')
+      superBadAssTimer = setInterval(function(){updateReservations.getReservationsFromServer()},60000)
     })
-  }
-}
+  },
 
-var reservationActions = {
-
-  init: function() {
+  initBang: function() {
+    superBadAssTimer = setInterval(function(){updateReservations.getReservationsFromServer()},60000)
     $(".add-reservation-form").on("ajax:success", "#new_reservation", this.addReservation);
     $(".add-reservation-form").on("ajax:error", "#new_reservation", this.errorMessage);
 
@@ -125,6 +125,6 @@ var reloadStatusId = function() {
 
 
 $(document).ready(function(){
-  reservationActions.init();
+  update.initBang();
   reloadStatusId();
 });
