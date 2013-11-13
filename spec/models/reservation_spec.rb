@@ -40,15 +40,65 @@ describe Reservation do
       end
     end
 
-    context "generate_unique_key" do
+    context "#generate_unique_key" do
       it "should assign unique_key to a random secure hex key" do
         expect(Reservation.find_by_name("Cindy").unique_key).to be_true
       end
     end
+
+    context "#add_estimated_seat_time" do
+      xit "should update the estimated seat time in the db when wait time is changed" do
+        @reservation.update_attributes(wait_time: 10)
+        expect(@reservation.estimated_seat_time).to eq((Time.now + 10*60).getutc)
+      end
+    end
+
+    context "#send_test_table_ready" do
+      it "should change the reservation's notified_table_ready status to true" do
+        @reservation.send_text_table_ready
+        expect(@reservation.notified_table_ready).to be_true
+      end
+    end
+
+  end
+
+  context "#estimated_seat_time_display" do
+    it "should return an hour:minute am/pm time string" do
+      time = (Time.now + 20*60).localtime.strftime("%l:%M%P")
+      expect(@reservation_2.estimated_seat_time_display).to eq(time)
+    end
+  end
+
+  context "#wait_time_display" do
+    it "should return a rounded up wait time" do
+      time = ((@reservation_2.estimated_seat_time - Time.now)/60).round
+      expect(@reservation_2.wait_time_display).to eq(time)
+    end
+  end
+
+  context "#time_range_display_start" do
+    it "should return a start time with the hour:minute format" do
+      minutes = @reservation_2.estimated_seat_time.localtime.strftime("%M").to_i
+      hour = @reservation_2.estimated_seat_time.localtime.strftime("%l")
+      time = RounderHelper.round_up(hour, minutes)
+
+      expect(@reservation_2.time_range_display_start).to eq(time[:hour]+":"+time[:minutes])
+    end
+  end
+
+  context "#time_range_display_end" do
+    it "should return an end time with the hour:minute am/pm format" do
+      minutes = @reservation_2.estimated_seat_time.localtime.strftime("%M").to_i + 10
+      hour = @reservation_2.estimated_seat_time.localtime.strftime("%l")
+      am_pm = @reservation_2.estimated_seat_time.localtime.strftime("%P")
+      time = RounderHelper.round_up(hour, minutes.to_s)
+
+      expect(@reservation_2.time_range_display_end).to eq("#{time[:hour]}:#{time[:minutes]}#{am_pm}")
+    end
   end
 
   context "#status" do
-    it "should set to default of Open" do 
+    it "should set to default of Open" do
       expect(@reservation.status).to eq "Open"
     end
   end
