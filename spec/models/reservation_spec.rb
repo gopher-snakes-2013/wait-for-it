@@ -40,15 +40,47 @@ describe Reservation do
       end
     end
 
-    context "generate_unique_key" do
+    context "#generate_unique_key" do
       it "should assign unique_key to a random secure hex key" do
         expect(Reservation.find_by_name("Cindy").unique_key).to be_true
       end
     end
+
+    context "#add_estimated_seat_time" do
+      xit "should update the estimated seat time in the db when wait time is changed" do
+        @reservation.update_attributes(wait_time: 10)
+        expect(@reservation.estimated_seat_time).to eq((Time.now + 10*60).getutc)
+      end
+    end
+
+  end
+
+  context "#estimated_seat_time_display" do
+    it "should return an hour:minute am/pm time string" do
+
+    end
+  end
+
+  context "#wait_time_display" do
+    it "should return a rounded down wait time" do
+
+    end
+  end
+
+  context "#time_range_display_start" do
+    it "should return a start time with the hour:minute format" do
+
+    end
+  end
+
+  context "#time_range_display_end" do
+    it "should return an end time with the hour:minute am/pm format" do
+
+    end
   end
 
   context "#status" do
-    it "should set to default of Open" do 
+    it "should set to default of Open" do
       expect(@reservation.status).to eq "Open"
     end
   end
