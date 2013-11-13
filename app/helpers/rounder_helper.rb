@@ -2,15 +2,13 @@ module RounderHelper
   def self.round_up(hour, mins)
     rounded_minutes = self.round_minutes(mins.to_i)
     hour = hour.to_i
-    if rounded_minutes == 60
-      rounded_minutes = 0
-    elsif rounded_minutes > 60
-      rounded_minutes = 5
+    if rounded_minutes >= 56
       if hour < 12
         hour += 1
       else
         hour = 1
       end
+      rounded_minutes = 0
     end
 
     { hour: hour.to_s, minutes: self.format(rounded_minutes) }
