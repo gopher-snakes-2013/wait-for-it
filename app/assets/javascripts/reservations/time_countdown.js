@@ -1,4 +1,5 @@
 $(document).ready(function(){
+$(document).ready(function(){
   if($(".reservation").length > 0) {
     setInterval(function(){ updateReservations.updateCurrentTime()}, 60000)
   }})  
