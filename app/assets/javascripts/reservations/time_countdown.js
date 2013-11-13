@@ -67,3 +67,4 @@ calculateCurrentTime: function(){
 updateCurrentTime: function(){
   $('div#time').html(this.calculateCurrentTime())
 }
+}
