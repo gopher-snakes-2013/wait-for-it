@@ -92,11 +92,6 @@ class Reservation < ActiveRecord::Base
     self.archived
   end
 
-  # NAT!
-  # run this after:
-  # new reservation
-  # update reservation
-  # destroy reservation (or status change)
   def update_restaurant_wait_time
     self.restaurant.update_max_wait_time
   end

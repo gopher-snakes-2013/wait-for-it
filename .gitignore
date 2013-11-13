@@ -16,3 +16,6 @@
 
 # Ignore .env
 /.env
+
+# Ignore simplecov
+/coverage/*

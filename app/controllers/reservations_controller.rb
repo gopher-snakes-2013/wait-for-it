@@ -2,7 +2,7 @@ class ReservationsController < ApplicationController
   before_filter :authenticate_restaurant, :only => [:index]
   before_filter :authenticate_guest, :only => [:show]
   before_filter :load_restaurant, :except => [:index, :guest, :seat_times, :currentreservations, :messages]
-  before_filter :load_reservation, :only => [:show, :update, :destroy, :messages]
+  before_filter :load_reservation, :only => [:show, :update, :destroy, :messages, :archive]
 
 	def index
     @reservations = current_restaurant.reservations.order("wait_time ASC")
@@ -37,6 +37,7 @@ class ReservationsController < ApplicationController
 
   def archive
     @reservation.archive!
+    @reservation.save
     redirect_to restaurant_reservations_path(@restaurant)
   end
 

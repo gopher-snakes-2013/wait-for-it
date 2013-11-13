@@ -97,7 +97,6 @@ var setStatusId = function() {
   $("span.status").last().attr('id', 'status-open');
 }
 
-
 var updateStatusId = function(data) {
  var statusText = data.status;
  if (statusText == 'Open') {
@@ -128,7 +127,6 @@ var reloadStatusId = function() {
   $($('span.status')[i]).attr('id', statusId);
   }
 }
-
 
 $(document).ready(function(){
   reservationActions.init();
