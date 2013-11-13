@@ -1,4 +1,4 @@
-class AddArchiveButton < ActiveRecord::Migration
+class AddArchiveColumn < ActiveRecord::Migration
   def up
   	add_column :reservations, :archived, :boolean, :default => "false"
   end
