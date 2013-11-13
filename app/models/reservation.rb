@@ -3,7 +3,7 @@ class Reservation < ActiveRecord::Base
   belongs_to :restaurant
 
   STATUSES = {
-    :open => "Open",
+    :waiting => "Waiting",
     :cancelled => "Cancelled",
     :no_show => "No-Show",
     :seated => "Seated"
@@ -92,7 +92,23 @@ class Reservation < ActiveRecord::Base
     self.archived
   end
 
-  def update_restaurant_wait_time
-    self.restaurant.update_max_wait_time
+  def time_range_display_start
+    minutes = self.estimated_seat_time.localtime.strftime("%M")
+    hour = self.estimated_seat_time.localtime.strftime("%l")
+    time = RounderHelper.round_up(hour, minutes)
+    start_mins = time[:minutes]
+    start_hour = time[:hour]
+    start_time = start_hour + ":" + start_mins
   end
+
+  def time_range_display_end
+    minutes = self.estimated_seat_time.localtime.strftime("%M").to_i + 10
+    hour = self.estimated_seat_time.localtime.strftime("%l")
+    am_pm = self.estimated_seat_time.localtime.strftime("%P")
+    time = RounderHelper.round_up(hour, minutes.to_s)
+    end_mins = time[:minutes]
+    end_hour = time[:hour]
+    end_time = end_hour + ":" + end_mins + am_pm
+  end
+
 end

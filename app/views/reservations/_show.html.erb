@@ -1,7 +1,7 @@
 <form class="tr reservation" data-id="<%= reservation.id %>" data-restaurant-id="<%= restaurant.id %>" method="post" action="/restaurants/<%= restaurant.id %>/reservations/<%= reservation.id %>">
 
   <div class="status-flag">
-    <span class="td status"><%= reservation.status %></span>
+    <span class="td status" id='status-waiting'><%= reservation.status %></span>
   </div>
 
   <span class="td party-size"><%= reservation.party_size %></span>

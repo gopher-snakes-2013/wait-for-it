@@ -1,13 +1,10 @@
 $(document).ready(function(){
   if($(".reservation").length > 0) {
-    setInterval(function(){
-      updateReservations.getReservationsFromServer()
-      updateReservations.updateCurrentTime()
-    }, 60000)
+    setInterval(function(){ updateReservations.updateCurrentTime()}, 60000)
     }})
   
-var updateReservations = {
 
+var updateReservations = {
 getReservationsFromServer: function(){
   var current_restaurant = $('div.table').data("restaurant-id")
   $.ajax({

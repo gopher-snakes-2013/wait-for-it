@@ -11,20 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131113033406) do
-
+ActiveRecord::Schema.define(:version => 20131113034629) do
   create_table "reservations", :force => true do |t|
     t.string   "name"
     t.integer  "party_size"
     t.string   "phone_number"
     t.integer  "wait_time"
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
     t.integer  "restaurant_id"
     t.datetime "estimated_seat_time"
     t.boolean  "notified_table_ready"
+    t.string   "status",               :default => "Waiting"
     t.string   "unique_key"
-    t.string   "status",               :default => "Open"
     t.boolean  "archived",             :default => false
   end
 
@@ -34,7 +33,6 @@ ActiveRecord::Schema.define(:version => 20131113033406) do
     t.string   "password_digest"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
-    t.integer  "max_wait_time"
   end
 
 end

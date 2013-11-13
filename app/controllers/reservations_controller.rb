@@ -5,7 +5,7 @@ class ReservationsController < ApplicationController
   before_filter :load_reservation, :only => [:show, :update, :destroy, :messages, :archive]
 
 	def index
-    @reservations = current_restaurant.reservations.order("wait_time ASC")
+    @reservations = current_restaurant.current_reservations
     @reservation = current_restaurant.reservations.new
   end
 
