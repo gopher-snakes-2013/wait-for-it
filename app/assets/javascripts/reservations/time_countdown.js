@@ -26,9 +26,7 @@ addReservationsToPage: function(reservations){
     updatedReservationTemplate.find('span.name').html((reservations.reservations[i].name))
     updatedReservationTemplate.find('span.phone-number').html((reservations.reservations[i].phone_number))
     updatedReservationTemplate.find('span.status').html((reservations.reservations[i].status))
-
     updatedReservationTemplate.find('span.status').attr("id","status-"+reservations.reservations[i].status.toLowerCase())
-
     updatedReservationTemplate.find('span.party-size').html((reservations.reservations[i].party_size))
     updatedReservationTemplate.find('span.message-button').before('<span class="update-button"><input class="edit" type="submit" value="edit"></span>')
     updatedReservationTemplate.find('span.seat-time').html((reservations.reservations[i].estimated_seating))
@@ -38,7 +36,7 @@ addReservationsToPage: function(reservations){
     } else {
       updatedReservationTemplate.find('span.message-button').html('<div class="message-ready">notify</div><div class="delete-button"></div>')
     }
-    updatedReservationTemplate.find('div.delete-button').html('<a href="/restaurants/'+reservations.reservations[i].restaurant_id+'/reservations/'+reservations.reservations[i].id+'" action="destroy" class="delete" data-method="delete" rel="nofollow">x</a>')
+    updatedReservationTemplate.find('div.delete-button').html('<a href="/restaurants/'+reservations.reservations[i].restaurant_id+'/reservations/'+reservations.reservations[i].id+'" action="archive" class="delete" data-method="post" rel="nofollow">x</a>')
     $('div.table-body').append(updatedReservationTemplate)
   }
 },
@@ -69,23 +67,3 @@ calculateCurrentTime: function(){
 updateCurrentTime: function(){
   $('div#time').html(this.calculateCurrentTime())
 }
-}
-
-var updateStatusId = function(data) {
- console.log(data) 
- var statusText = data.status;
- if (statusText == 'Waiting') {
-  var statusId = 'status-waiting';
-  } else if (statusText == 'Cancelled') {
-    statusId = 'status-cancelled';
-  } else if (statusText == 'No-Show') {
-    statusId = 'status-no-show';
-  } else if (statusText == 'Seated') {
-    statusId = 'status-seated';
-  }
-  return statusId;
-}
-
-
-
-

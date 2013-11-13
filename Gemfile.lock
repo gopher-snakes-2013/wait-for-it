@@ -88,6 +88,7 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    method_source (0.8.2)
     mime-types (1.25)
     mini_portile (0.5.2)
     multi_json (1.8.2)
@@ -108,6 +109,10 @@ GEM
       countries (>= 0.8.2)
       phony (>= 1.7.7)
     polyglot (0.3.3)
+    pry (0.9.12.3)
+      coderay (~> 1.0)
+      method_source (~> 0.8)
+      slop (~> 3.4)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -163,6 +168,7 @@ GEM
       multi_json
       simplecov-html (~> 0.8.0)
     simplecov-html (0.8.0)
+    slop (3.4.6)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -198,6 +204,7 @@ DEPENDENCIES
   jquery-rails
   pg
   phony_rails
+  pry
   rails (= 3.2.11)
   rspec-rails
   sass-rails (~> 3.2.3)

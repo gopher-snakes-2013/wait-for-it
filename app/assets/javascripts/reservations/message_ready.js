@@ -26,5 +26,3 @@ GuestReady: function(reservationId){
     $("error-message").text("SMS failed :(")
   })
 }
-}
-

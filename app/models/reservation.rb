@@ -84,6 +84,14 @@ class Reservation < ActiveRecord::Base
     ((self.estimated_seat_time - Time.now)/60).round
   end
 
+  def archive!
+    self.archived = true
+  end
+
+  def archived?
+    self.archived
+  end
+
   def time_range_display_start
     minutes = self.estimated_seat_time.localtime.strftime("%M")
     hour = self.estimated_seat_time.localtime.strftime("%l")
@@ -104,4 +112,3 @@ class Reservation < ActiveRecord::Base
   end
 
 end
-
