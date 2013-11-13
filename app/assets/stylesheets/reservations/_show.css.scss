@@ -44,16 +44,16 @@ div.table {
       border-radius: 20px;
       margin-top: 1em;
       padding: 1em;
-
+      height: 2em;
 
       span#status-open {
         float:left;
         text-align:center;
         border-radius:20px;
-        height:1.7em;
-        width:6em;
+        height: 1.5em;
+        width: 6em;
         font-size:1.4em;
-        color:lightgreen;
+        color:#F5F7F7;
         background-color:green;
       }
 
@@ -61,10 +61,10 @@ div.table {
         float:left;
         text-align:center;
         border-radius:20px;
-        height:1.7em;
+        height:1.5em;
         width:6em;
         font-size:1.4em;
-        color:lightblue;
+        color:#F5F7F7;
         background-color:blue;
       }
 
@@ -72,10 +72,10 @@ div.table {
         float:left;
         text-align:center;
         border-radius:20px;
-        height:1.7em;
-        width:6em;
+        height: 1.5em;
+        width: 6em;
         font-size:1.4em;
-        color:lightgrey;
+        color:#F5F7F7;
         background-color:grey;
       }
 
@@ -83,16 +83,16 @@ div.table {
         float:left;
         text-align:center;
         border-radius:20px;
-        height:1.7em;
+        height: 1.5em;
         width:6em;
         font-size:1.4em;
-        color:pink;
+        color:#F5F7F7;
         background-color:red;
       }
 
       .td.status {
         float:left;
-        font-weight:900;
+        font-weight:700;
         width:5.3em;
         z-index:2;
       }
@@ -147,23 +147,9 @@ div.table {
 }
 
 input.update {
-  font-size:1em;
-  text-align: center;
-  width:3em;
-}
-
-input.update-name {
-  width:5em;
-}
-
-input.update-phone-number {
+  font-size:.8em;
+  text-align: left;
   width:7em;
-}
-
-#time {
-  font-size:3em;
-  text-align:left;
-  margin-left:2em;
 }
 
 .ready-message-sent {
@@ -172,6 +158,7 @@ input.update-phone-number {
 
 .message-ready {
   display: inline-block;
+  cursor:pointer;
 }
 
 .delete-button {
