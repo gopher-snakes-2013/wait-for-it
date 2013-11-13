@@ -1,11 +1,10 @@
 $(document).ready(function(){
 	$("#main-nav").mouseenter(showNav).mouseleave(hideNav);
 	$(".submit_button").prop("value", "+")
-	$(".archive").click(archive); 
+	$(".delete-button").click(archive); 
 
 	function archive(e) {
-		$(".archive-button").append("Archived!");
-		$(".archive").remove()
+		$(this).remove();
 	}
 
 	function showNav(e){
