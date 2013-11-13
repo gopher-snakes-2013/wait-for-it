@@ -60,7 +60,6 @@ a.visted {
   text-decoration: none;
 }
 
-/***** Restaurant Options Menu ******/
 #main-nav {
   margin-left: 108em;
 }
@@ -69,7 +68,7 @@ a.visted {
   bottom: 51em;
   display: block;
   float: right;
-  left: 108 em;
+  left: 108em;
   list-style-type: none;
   margin: 15px;
   padding: 10px;
