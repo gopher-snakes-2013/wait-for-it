@@ -9,10 +9,14 @@ class Restaurant < ActiveRecord::Base
 
   has_secure_password
 
-  # NAT! :)
-  def update_max_wait_time
-		reservation_with_longest_wait_time = self.reservations.map { |x| x.wait_time }.sort.last
-    self.max_wait_time = reservation_with_longest_wait_time.nil? ? 0 : reservation_with_longest_wait_time
+  def max_wait_time
+    wait_times = []
+
+    self.reservations.each do |reservation|
+      wait_times << reservation.wait_time
+    end
+
+    max_wait_time = wait_times.sort.last
   end
 
   def current_reservations
