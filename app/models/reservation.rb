@@ -84,6 +84,14 @@ class Reservation < ActiveRecord::Base
     ((self.estimated_seat_time - Time.now)/60).round
   end
 
+  def archive!
+    self.archived = true
+  end
+
+  def archived?
+    self.archived
+  end
+
   # NAT!
   # run this after:
   # new reservation

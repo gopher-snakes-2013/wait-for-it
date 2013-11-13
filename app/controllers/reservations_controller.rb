@@ -2,6 +2,7 @@ class ReservationsController < ApplicationController
   before_filter :authenticate_restaurant, :only => [:index]
   before_filter :authenticate_guest, :only => [:show]
   before_filter :load_restaurant, :except => [:index, :guest, :seat_times, :currentreservations, :messages]
+  before_filter :load_reservation, :only => [:show, :update, :destroy, :messages]
 
 	def index
     @reservations = current_restaurant.reservations.order("wait_time ASC")
@@ -18,39 +19,33 @@ class ReservationsController < ApplicationController
   end
 
   def show
-    @reservation = Reservation.find(params[:id])
-    @reservations = Reservation.where(restaurant_id: @restaurant.id).order("wait_time ASC")
+    @reservations = @reservation.order("wait_time ASC")
   end
 
   def update
-    reservation = Reservation.find(params[:id])
-  	if reservation.update_attributes(params[:reservation])
-      render json: reservation.as_json
+  	if @reservation.update_attributes(params[:reservation])
+      render json: @reservation.as_json
     else
-      render status: :unprocessable_entity, json: {:errors => reservation.errors.full_messages.join(", ")}
+      render status: :unprocessable_entity, json: {:errors => @reservation.errors.full_messages.join(", ")}
     end
   end
 
   def destroy
-  	reservation = Reservation.find(params[:id])
-  	reservation.destroy
+  	@reservation.destroy
   	redirect_to restaurant_reservations_path(@restaurant)
   end
 
-  # def archive!
-    #Laura!  (archive default to false; add archive column. when you click on x switch to archive is true.)
-  # end
-
-  # def archive?
-  # end
+  def archive
+    @reservation.archive!
+    redirect_to restaurant_reservations_path(@restaurant)
+  end
 
   def currentreservations
     render json: { reservations: current_restaurant.current_reservations }
   end
   
   def messages
-    reservation = Reservation.find(params[:id])
-    reservation.send_text_table_ready
+    @reservation.send_text_table_ready
     render json: {reservation: reservation}
   end
 
@@ -67,4 +62,7 @@ class ReservationsController < ApplicationController
     @restaurant = Restaurant.find(params[:restaurant_id])
   end
 
+  def load_reservation
+    @reservation = Reservation.find(params[:id])
+  end
 end
