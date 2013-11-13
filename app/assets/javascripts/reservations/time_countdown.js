@@ -20,8 +20,6 @@ addReservationsToPage: function(reservations){
   $('div.table-body').empty()
   for(var i=0; i< reservations.reservations.length; i++){
     var updatedReservationTemplate = $('div#template > form').clone()
-    var statusId = updateStatusId(reservations.reservations[i]);
-
     $(updatedReservationTemplate).data("id", reservations.reservations[i].id)
     updatedReservationTemplate.find('span.name').html((reservations.reservations[i].name))
     updatedReservationTemplate.find('span.phone-number').html((reservations.reservations[i].phone_number))
