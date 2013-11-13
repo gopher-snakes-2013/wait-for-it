@@ -78,15 +78,6 @@ class Reservation < ActiveRecord::Base
     ((self.estimated_seat_time - Time.now)/60).round
   end
 
-  # NAT!
-  # run this after:
-  # new reservation
-  # update reservation
-  # destroy reservation (or status change)
-  def update_restaurant_wait_time
-    self.restaurant.update_max_wait_time
-  end
-
   def time_range_display_start
     minutes = self.estimated_seat_time.localtime.strftime("%M")
     hour = self.estimated_seat_time.localtime.strftime("%l")
