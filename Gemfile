@@ -17,6 +17,7 @@ end
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+   gem 'jasmine'
 end
 
 group :test do
@@ -26,6 +27,7 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'simplecov', :require => false
+  gem 'jasmine'
 end
 
 gem 'jquery-rails'
