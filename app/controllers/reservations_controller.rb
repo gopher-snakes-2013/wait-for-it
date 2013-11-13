@@ -4,7 +4,7 @@ class ReservationsController < ApplicationController
   before_filter :load_restaurant, :except => [:index, :guest, :seat_times, :currentreservations, :messages]
 
 	def index
-    @reservations = current_restaurant.reservations.order("wait_time ASC")
+    @reservations = current_restaurant.current_reservations
     @reservation = current_restaurant.reservations.new
   end
 
