@@ -25,6 +25,7 @@ addReservationsToPage: function(reservations){
     updatedReservationTemplate.find('span.name').html((reservations.reservations[i].name))
     updatedReservationTemplate.find('span.phone-number').html((reservations.reservations[i].phone_number))
     updatedReservationTemplate.find('span.status').html((reservations.reservations[i].status))
+    updatedReservationTemplate.find('span.status').attr("id","status-"+reservations.reservations[i].status.toLowerCase())
     updatedReservationTemplate.find('span.party-size').html((reservations.reservations[i].party_size))
     updatedReservationTemplate.find('span.message-button').before('<span class="update-button"><input class="edit" type="submit" value="edit"></span>')
     updatedReservationTemplate.find('span.seat-time').html((reservations.reservations[i].estimated_seating))
