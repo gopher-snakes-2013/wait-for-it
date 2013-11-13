@@ -8,8 +8,6 @@ WaitForIt::Application.routes.draw do
   resources :guests, only: [:index]
 
   get '/guest/:restaurant_name', to: 'reservations#guest', as: :guest_waitlist
-  get '/reservations/:restaurant_name/list.:format', to: 'reservations#api', constraints: {format: /json/}
-  get '/reservations/seattimes', to: 'reservations#seat_times', constraints: {format: /json/}
   get '/reservations/currentreservations', to: 'reservations#currentreservations', constraints: {format: /json/}
 
 end

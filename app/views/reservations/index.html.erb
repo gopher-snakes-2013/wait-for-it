@@ -1,9 +1,6 @@
-<% if logged_in? %>
-
 <nav id="main-nav">
   <ul id="nav-primary">
-    <% logged_in_restaurant = Restaurant.find(session[:restaurant_id]) %>
-    <li class="restaurant-name"><a href="#"><%= logged_in_restaurant.name %></a></li>
+    <li class="restaurant-name"><a href="#"><%= current_restaurant.name %></a></li>
     <li class="subnav hidden"><%= link_to 'Logout', session_path(session), method: :delete %></li>
   </ul>
 </nav>
@@ -20,7 +17,7 @@
 	<%= flash[:error] %>
 </div>
 
-<div class="table" data-restaurant-id="<%= @restaurant.id %>">
+<div class="table" data-restaurant-id="<%= current_restaurant.id %>">
 		<div class="table-head" >
 			<span class="td status-head">Status</span>
 			<span class="td party-size">#</span>
@@ -32,7 +29,7 @@
 
 		<div class="table-body">
 			<% @reservations.each do |reservation| %>
-			<%= render partial: "reservations/show", locals: { restaurant: @restaurant, reservation: reservation } %>
+			 <%= render partial: "reservations/show", locals: { restaurant: current_restaurant, reservation: reservation } %>
 			<% end %>
 		</div>
 	</div>
@@ -56,4 +53,4 @@
 </form>
 
 </div>
-<% end %>
+

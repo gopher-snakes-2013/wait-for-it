@@ -12,7 +12,15 @@ class ApplicationController < ActionController::Base
 
   def guest_access
     reservation = Reservation.find(params[:id])
-    true if params[:guest] == reservation.unique_key
+    guest_key == reservation.unique_key
+  end
+
+  def login restaurant
+    session[:restaurant_id] = restaurant.id
+  end
+
+  def guest_key
+    params[:guest]
   end
 
 end

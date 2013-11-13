@@ -1,11 +1,13 @@
 development:
   adapter: postgresql
   encoding: unicode
+  host: localhost
   database: wait-for-it_development
   pool: 5
 
 test:
   adapter: postgresql
   encoding: unicode
+  host: localhost
   database: wait-for-it_test
   pool: 5

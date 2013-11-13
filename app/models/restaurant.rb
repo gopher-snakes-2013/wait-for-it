@@ -11,11 +11,13 @@ class Restaurant < ActiveRecord::Base
 
   def update_max_wait_time
 		reservation_with_longest_wait_time = self.reservations.map { |x| x.wait_time }.sort.last
-		if reservation_with_longest_wait_time.nil?
-			self.max_wait_time = 0
-		else	
-			self.max_wait_time = reservation_with_longest_wait_time
-		end
+    self.max_wait_time = reservation_with_longest_wait_time.nil? ? 0 : reservation_with_longest_wait_time
+  end
+
+  def current_reservations
+    self.reservations.reject do |reservation|
+      reservation.thirty_minutes_before_current_time || reservation.archived?
+    end.sort_by { |reservation| reservation.estimated_seat_time }
   end
 
 end
