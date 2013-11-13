@@ -11,7 +11,7 @@ div.table {
     }
 
     span.name {
-      margin-right: 3.1em;
+      margin-right: 3.4em;
     }
 
     span.party-size {
@@ -41,7 +41,7 @@ div.table {
     .tr {
       position:relative;
       border: 2px solid #e67e22;
-      border-radius: 20px;
+      border-radius: 15px;
       margin-top: 1em;
       padding: 1em;
       height: 2em;
@@ -50,29 +50,29 @@ div.table {
       span#status-no-show {
         float:left;
         text-align:center;
-        border-radius:20px;
+        border-radius:15px;
         height: 1.5em;
         width: 6em;
         font-size:1.4em;
         color:#F5F7F7;
-        background-color:blue;
+        background-color:#2EC6A4;
       }
-      
+
       span#status-waiting {
         float:left;
         text-align:center;
-        border-radius:20px;
+        border-radius:15px;
         height:1.5em;
         width:6em;
         font-size:1.4em;
         color:#F5F7F7;
-        background-color:green;
+        background-color:#3498db;
       }
 
       span#status-seated {
         float:left;
         text-align:center;
-        border-radius:20px;
+        border-radius:15px;
         height: 1.5em;
         width: 6em;
         font-size:1.4em;
@@ -83,12 +83,12 @@ div.table {
       span#status-cancelled {
         float:left;
         text-align:center;
-        border-radius:20px;
+        border-radius:15px;
         height: 1.5em;
         width:6em;
         font-size:1.4em;
         color:#F5F7F7;
-        background-color:red;
+        background-color:#e74c3c;
       }
 
       .td.status {
@@ -108,7 +108,7 @@ div.table {
       .td.name {
         float: left;
         font-size:1.5em;
-        width: 5.5em;
+        width: 5.6em;
         text-align: left;
       }
 
@@ -122,14 +122,14 @@ div.table {
       .td.phone-number {
         float: left;
         font-size:1.5em;
-        width: 7.6em;
+        width: 7.9em;
         text-align: left;
       }
 
       .td.wait-time {
         float: left;
         font-size:1.5em;
-        width: 2em;
+        width: 1.8em;
         text-align: left;
       }
 
@@ -164,4 +164,15 @@ input.update {
 
 .delete-button {
   display: inline-block;
+}
+
+select {
+  -webkit-appearance:none;
+  font-family: 'Open Sans', sans-serif;
+  font-size: .8em;
+  padding:.3em;
+  height:1.9em;
+  border:1px #888;
+  text-align:center;
+  box-shadow:inset 1.5px 1.5px 3px #888;
 }
