@@ -16,6 +16,6 @@
     <% else %>
       <div class="message-ready">notify</div>
     <% end %>
-  <div class="delete-button"><%= link_to "x", restaurant_reservation_path(restaurant.id, reservation.id), method: 'delete', action: 'destroy', class: 'delete' %></div>
+  <div class="delete-button"><%= link_to "x", archive_path(current_restaurant.id, reservation.id), method:"post", action: 'archive', class: 'archive' %></div>
   </span>
 </form>

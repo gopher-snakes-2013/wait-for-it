@@ -21,7 +21,7 @@ class Restaurant < ActiveRecord::Base
 
   def current_reservations
     self.reservations.reject do |reservation|
-      reservation.thirty_minutes_before_current_time #|| reservation.archived?
+      reservation.thirty_minutes_before_current_time || reservation.archived?
     end.sort_by { |reservation| reservation.estimated_seat_time }
   end
 

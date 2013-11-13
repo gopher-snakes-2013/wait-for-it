@@ -108,7 +108,6 @@ var reloadStatusId = function() {
   }
 }
 
-
 $(document).ready(function(){
   update.initBang();
   reloadStatusId();

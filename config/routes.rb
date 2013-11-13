@@ -6,8 +6,8 @@ WaitForIt::Application.routes.draw do
   resources :sessions, only:[:create, :destroy]
   resources :guests, only: [:index]
 
+  post '/archive/:restaurant_id/:id', to: 'reservations#archive', as: :archive
   get '/guest/:restaurant_name', to: 'reservations#guest', as: :guest_waitlist
   get '/reservations/currentreservations', to: 'reservations#currentreservations', constraints: {format: /json/}
   post '/messages', to: 'reservations#messages', constraints: {format: /json/}
-
 end
