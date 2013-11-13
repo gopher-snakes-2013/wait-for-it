@@ -7,13 +7,13 @@
   restaurant.save
 end
 
-Restaurant.all.each do |restaurant|
-  6.times do
-    reservation = restaurant.reservations.new
-    reservation.name = Faker::Name.first_name
-    reservation.party_size = 1 + rand(8)
-    reservation.phone_number = Faker::PhoneNumber.cell_phone.gsub(/\s.*/, "")
-    reservation.wait_time = 10
-    reservation.save
-  end
-end
+# Restaurant.all.each do |restaurant|
+#   6.times do
+#     reservation = restaurant.reservations.new
+#     reservation.name = Faker::Name.first_name
+#     reservation.party_size = 1 + rand(8)
+#     reservation.phone_number = Faker::PhoneNumber.cell_phone.gsub(/\s.*/, "")
+#     reservation.wait_time = 30
+#     reservation.save
+#   end
+# end

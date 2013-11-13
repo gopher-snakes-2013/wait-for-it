@@ -1,7 +1,7 @@
 $(document).ready(function(){
   if($(".reservation").length > 0) {
     setInterval(function(){ updateReservations.updateCurrentTime()}, 60000)
-    }})  
+    }})
 
 var updateReservations = {
 getReservationsFromServer: function(){
@@ -44,7 +44,7 @@ calculateCurrentTime: function(){
   var currentTime = new Date(Date.now())
   var currentMonth = months[currentTime.getMonth()]
   var currentDate = currentTime.getDate()
-  var currentYear = currentTime.getFullYear() 
+  var currentYear = currentTime.getFullYear()
   var currentHour = currentTime.getHours()
   var currentMinutes = currentTime.getMinutes()
   if (currentMinutes.toString().length === 1){
@@ -57,7 +57,7 @@ calculateCurrentTime: function(){
     currentAMPM = "am"
   }
   if (currentHour > 12) {
-    currentHour -= 12 
+    currentHour -= 12
   }
   return currentMonth+ " "+currentDate+", "+currentYear+" "+currentHour+":"+currentMinutes+currentAMPM
 

@@ -41,7 +41,8 @@ var update = {
 
   status: function(reservation) {
     var element = reservation.find(".status");
-    element.html('<select class="update update-status" name="reservation[status]"><option value="Waiting">Waiting</option><option value="Seated">Seated</option><option value="Cancelled">Cancelled</option><option value="No-Show">No-Show</option></select>');
+    var text = element.text();
+    element.html('<select class="update update-status" name="reservation[status]"><option value="'+text+'" selected>'+text+'</option><option value="Waiting">Waiting</option><option value="Seated">Seated</option><option value="Cancelled">Cancelled</option><option value="No-Show">No-Show</option></select>');
   },
 
   save: function(e) {
