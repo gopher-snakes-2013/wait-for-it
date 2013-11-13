@@ -46,7 +46,8 @@ div.table {
       padding: 1em;
       height: 2em;
 
-      span#status-open {
+
+      span#status-no-show {
         float:left;
         text-align:center;
         border-radius:20px;
@@ -54,10 +55,10 @@ div.table {
         width: 6em;
         font-size:1.4em;
         color:#F5F7F7;
-        background-color:green;
+        background-color:blue;
       }
-
-      span#status-no-show {
+      
+      span#status-waiting {
         float:left;
         text-align:center;
         border-radius:20px;
@@ -65,7 +66,7 @@ div.table {
         width:6em;
         font-size:1.4em;
         color:#F5F7F7;
-        background-color:blue;
+        background-color:green;
       }
 
       span#status-seated {

@@ -41,7 +41,7 @@ var update = {
 
   status: function(reservation) {
     var element = reservation.find(".status");
-    element.html('<select class="update update-status" name="reservation[status]"><option value="Open">Open</option><option value="Seated">Seated</option><option value="Cancelled">Cancelled</option><option value="No-Show">No-Show</option></select>');
+    element.html('<select class="update update-status" name="reservation[status]"><option value="Waiting">Waiting</option><option value="Seated">Seated</option><option value="Cancelled">Cancelled</option><option value="No-Show">No-Show</option></select>');
   },
 
   save: function(e) {
@@ -72,7 +72,6 @@ var update = {
     superBadAssTimer = setInterval(function(){updateReservations.getReservationsFromServer()},60000)
     $(".add-reservation-form").on("ajax:success", "#new_reservation", this.addReservation);
     $(".add-reservation-form").on("ajax:error", "#new_reservation", this.errorMessage);
-    $(".add-reservation-form").on("ajax:success", setStatusId);
 
     $(".table").on("click", ".edit", update.init);
     $(".table").on("click", ".save", update.save);
@@ -93,15 +92,10 @@ var update = {
   }
 }
 
-var setStatusId = function() {
-  $("span.status").last().attr('id', 'status-open');
-}
-
-
 var updateStatusId = function(data) {
  var statusText = data.status;
- if (statusText == 'Open') {
-  var statusId = 'status-open';
+ if (statusText == 'Waiting') {
+  var statusId = 'status-waiting';
   } else if (statusText == 'Cancelled') {
     statusId = 'status-cancelled';
   } else if (statusText == 'No-Show') {
@@ -116,8 +110,8 @@ var reloadStatusId = function() {
   var element = $('.status');
   for(var i=0; i< element.length; i++){
     var statusText = element[i].innerHTML;
-    if (statusText == 'Open') {
-      var statusId = 'status-open';
+    if (statusText == 'Waiting') {
+      var statusId = 'status-waiting';
     } else if (statusText == 'Cancelled') {
       statusId = 'status-cancelled';
     } else if (statusText == 'No-Show') {
@@ -125,7 +119,7 @@ var reloadStatusId = function() {
     } else if (statusText == 'Seated') {
       statusId = 'status-seated';
     }
-  $($('span.status')[i]).attr('id', statusId);
+  $($('span.status')[i]).removeAttr('id').attr('id', statusId);
   }
 }
 

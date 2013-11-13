@@ -98,9 +98,8 @@ describe Reservation do
   end
 
   context "#status" do
-    it "should set to default of Open" do
-      expect(@reservation.status).to eq "Open"
+    it "should set to default of Waiting" do 
+      expect(@reservation.status).to eq "Waiting"
     end
   end
-
 end
