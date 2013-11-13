@@ -1,7 +1,7 @@
 class RestaurantsController < ApplicationController
 
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.all.sort_by {|restaurant| restaurant.max_wait_time }
     render text: render_to_string(file: 'restaurants/index', layout: false, locals: { restaurants: @restaurants })
   end
 

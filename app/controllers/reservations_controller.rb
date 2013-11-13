@@ -44,10 +44,10 @@ class ReservationsController < ApplicationController
   def currentreservations
     render json: { reservations: current_restaurant.current_reservations }
   end
-  
+
   def messages
     @reservation.send_text_table_ready
-    render json: {reservation: reservation}
+    render json: {reservation: @reservation}
   end
 
   private
