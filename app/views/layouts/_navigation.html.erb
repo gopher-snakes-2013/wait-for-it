@@ -1,7 +1,9 @@
 <div class="navbar">
+	<div class="restaurant-menu">
   <% if logged_in? %>
+  	<div class="restaurant-menu-name">Welcome, <%= current_restaurant.name %>!</div>
     <%= link_to "logout", session_path(current_restaurant), :method => :delete %>
-  <% end %>
-  <span id="title1">don't</span>
-  <h2 id="title2"><a href="/">Seat Time</a></h2>
+  <% end %></div>
+  <span id="title1">no</span>
+  <h2 id="title2"><a href="/">Reservations</a></h2>
 </div>
