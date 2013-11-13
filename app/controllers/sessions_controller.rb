@@ -3,10 +3,10 @@ class SessionsController < ApplicationController
 	def create
 		restaurant = Restaurant.find_by_email(params[:email])
 		if restaurant && restaurant.authenticate(params[:password])
-			session[:restaurant_id] = restaurant.id
-			redirect_to restaurant_reservations_path(session[:restaurant_id])
+			login(restaurant)
+			redirect_to restaurant_reservations_path(restaurant)
 		else
-			flash[:error] = "Try Again!"
+			flash[:error] = "Invalid username/password combination"
       redirect_to root_path
 		end
 	end
@@ -15,5 +15,4 @@ class SessionsController < ApplicationController
 		session.clear
 		redirect_to root_path
 	end
-
 end

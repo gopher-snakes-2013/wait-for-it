@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(:version => 20131111202200) do
     t.integer  "restaurant_id"
     t.datetime "estimated_seat_time"
     t.boolean  "notified_table_ready"
-    t.integer  "before_wait_time"
     t.string   "unique_key"
     t.string   "status",               :default => "Open"
   end

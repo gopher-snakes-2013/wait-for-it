@@ -1,5 +1,6 @@
 <h1>Restaurant Registration</h1>
-<%= form_for restaurant do |f| %>
+<%= form_for @restaurant do |f| %>
+	<%= render 'shared/form_errors', :model => @restaurant %>
 	<div class="error-message">
 	  <%= flash[:error] %>
 	</div>

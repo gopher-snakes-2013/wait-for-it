@@ -1,27 +1,13 @@
-<% if logged_in? %>
-
-<nav id="main-nav">
-  <ul id="nav-primary">
-    <% logged_in_restaurant = Restaurant.find(session[:restaurant_id]) %>
-    <li class="restaurant-name"><a href="#"><%= logged_in_restaurant.name %></a></li>
-    <li class="subnav hidden"><%= link_to 'Logout', session_path(session), method: :delete %></li>
-  </ul>
-</nav>
-
 <div id="time">
-    <%= @time %>
+    <%= DateTime.now.strftime("%b %e, %Y %l:%M %P") %>
 </div>
 
 <div class="add-reservation-form">
 	<%= render "reservations/form" %>
 </div>
 
-<div class="error-message">
-	<%= flash[:error] %>
-</div>
-
-<div class="table" data-restaurant-id="<%= @restaurant.id %>">
-		<div class="table-head" >
+<div class="table" data-restaurant-id="<%= current_restaurant.id %>">
+		<div class="table-head">
 			<span class="td status-head">Status</span>
 			<span class="td party-size">#</span>
       <span class="td name">Name</span>
@@ -32,28 +18,10 @@
 
 		<div class="table-body">
 			<% @reservations.each do |reservation| %>
-			<%= render partial: "reservations/show", locals: { restaurant: @restaurant, reservation: reservation } %>
+			 <%= render partial: "reservations/show", locals: { restaurant: current_restaurant, reservation: reservation } %>
 			<% end %>
 		</div>
 	</div>
 </div>
 
-<div id="template" class="hidden">
-<form class="tr reservation" data-restaurant-id="1" method="post" >
-  <div class="status-flag">
-    <span class="td status"></span>
-  </div>
-
-  <span class="td party-size"></span>
-  <span class="td name"></span>
-  <span class="td phone-number"></span>
-  <span class="td wait-time"></span>
-  <span class="td seat-time"></span>
-  <span class="message-button">
-
-  <div class="delete-button"></div>
-  </span>
-</form>
-
-</div>
-<% end %>
+<%= render partial: "layouts/templates" %>

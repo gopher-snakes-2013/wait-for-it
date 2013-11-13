@@ -1,5 +1,4 @@
 <form class="tr reservation" data-id="<%= reservation.id %>" data-restaurant-id="<%= restaurant.id %>" method="post" action="/restaurants/<%= restaurant.id %>/reservations/<%= reservation.id %>">
-  <input type="hidden" name="reservation[before_wait_time]" value="<%= reservation.wait_time %>">
 
   <div class="status-flag">
     <span class="td status"><%= reservation.status %></span>

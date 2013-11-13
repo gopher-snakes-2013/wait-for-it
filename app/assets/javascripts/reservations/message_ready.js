@@ -8,6 +8,7 @@ $(document).ready(function(){
 
 })
 
+// you're polluting the global namespace. namespace it using object literals/modules, etc.
 var messageGuestReady = function(guest_id){
   var that = this
   $.ajax({

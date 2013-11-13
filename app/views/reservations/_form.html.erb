@@ -1,4 +1,4 @@
-<%= form_for [@restaurant, @reservation], remote: true do |f| %>
+<%= form_for [current_restaurant, @reservation], remote: true do |f| %>
   <%= f.text_field :name, placeholder: "Name"%>
   <%= f.text_field :party_size, placeholder: "Party Size"%>
   <%= f.text_field :phone_number, placeholder: "Phone Number"%>

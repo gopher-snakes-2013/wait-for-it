@@ -37,11 +37,11 @@ feature "Restaurant Registration Page" do
       click_on("Create Account")
     end
 
-    scenario "user sees an error message" do
+    xscenario "user sees an error message" do
       expect(page).to have_content("Try Again!")
     end
 
-    scenario "stays on registration page" do
+    xscenario "stays on registration page" do
       expect(current_path).to eq(new_restaurant_path)
     end
   end
@@ -51,7 +51,7 @@ feature "Restaurant Registration Page" do
       @test_restaurant = Restaurant.create(name: "What the Duck", email: "duck@what.com", password: "password", password_confirmation: "password")
     end
 
-    scenario "restaurant logs in" do
+    xscenario "restaurant logs in" do
       visit root_path
       fill_in "email", with: "duck@what.com"
       fill_in "password", with: "password"

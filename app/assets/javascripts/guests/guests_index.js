@@ -1,4 +1,4 @@
-var restaurant = {
+var Restaurant = {
 
   toggleLogin: function(e) {
     e.preventDefault()
@@ -17,7 +17,7 @@ var restaurant = {
   }
 }
 
-var guest = {
+var Guest = {
 
   showAllRestaurants: function(e, restaurantPage) {
     $("#container").addClass("hidden").html(restaurantPage);
@@ -26,7 +26,7 @@ var guest = {
 }
 
 $(document).ready(function(){
-  $(".body").on("click", ".restaurant-link", restaurant.toggleLogin)
-  $(document).on("ajax:success", ".guest-link", guest.showAllRestaurants )
-  $(document).on("ajax:success", ".register-link", restaurant.showRegister)
+  $(".body").on("click", ".restaurant-link", Restaurant.toggleLogin)
+  $(document).on("ajax:success", ".guest-link", Guest.showAllRestaurants )
+  $(document).on("ajax:success", ".register-link", Restaurant.showRegister)
 })
