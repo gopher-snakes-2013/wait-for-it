@@ -27,16 +27,15 @@ body {
 }
 
 #title1 {
-  bottom:3.5em;
+  bottom: 6em;
   color: #F5F7F7;
   display: block;
   font-family: 'Lobster', cursive;
   font-size: 2.5em;
-  left: 9px;
+  left: 25px;
   margin-left: .2em;
   position: absolute;
   top: 19px;
-  -webkit-transform: rotate(-18deg);
   z-index:3;
 }
 
@@ -45,7 +44,7 @@ body {
   display:inline-block;
   font-family: 'Crete Round', serif;
   font-size: 3.1em;
-  margin-left:2.5em;
+  margin-left:1.5em;
   position:relative;
   z-index:2;
 }
@@ -64,24 +63,25 @@ a.visted {
   margin-left: 108em;
 }
 
-#nav-primary {
-  bottom: 51em;
-  display: block;
-  float: right;
-  left: 108em;
-  list-style-type: none;
-  margin: 15px;
-  padding: 10px;
-  position: fixed;
-  text-decoration: none;
-  z-index: 4;
-}
-
 .restaurant-name {
   font-size:2em;
 }
 
-ul#nav-primary > li {
-  list-style-type: none;
-  text-align:right;
+.restaurant-menu {
+  font-family: 'Crete Round', serif;
+  display: block;
+  float: right;
+  margin: 30px;
+}
+
+.restaurant-menu a{
+  color: #142837;
+  display: block;
+  float: right;
+  font-family: 'Crete Round', serif;
+  z-index: 4;
+}
+
+.restaurant-menu a:hover {
+  color: #F5F7F7;
 }
