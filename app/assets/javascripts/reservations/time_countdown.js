@@ -70,22 +70,3 @@ updateCurrentTime: function(){
   $('div#time').html(this.calculateCurrentTime())
 }
 }
-
-var updateStatusId = function(data) {
- console.log(data) 
- var statusText = data.status;
- if (statusText == 'Waiting') {
-  var statusId = 'status-waiting';
-  } else if (statusText == 'Cancelled') {
-    statusId = 'status-cancelled';
-  } else if (statusText == 'No-Show') {
-    statusId = 'status-no-show';
-  } else if (statusText == 'Seated') {
-    statusId = 'status-seated';
-  }
-  return statusId;
-}
-
-
-
-
