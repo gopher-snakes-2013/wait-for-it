@@ -23,7 +23,7 @@ var Status = {
       $(".confirmation-message").removeClass("hidden")
       $(".confirmation-message").html("Please try again.")
     })
-  }
+  },
 
   confirm: function() {
     var $cancelButton = $(this)
