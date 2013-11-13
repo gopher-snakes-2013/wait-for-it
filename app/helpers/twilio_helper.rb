@@ -6,7 +6,6 @@ module TwilioHelper
           body: message,
           to: phone_number,
           from: "+14159926163")
-        # puts "sending text message"
   end
 
   def self.table_ready(phone_number)
@@ -15,7 +14,6 @@ module TwilioHelper
           body: "Your table is now ready!",
           to: phone_number,
           from: "+14159926163")
-        # puts "sending text message that table is ready"
   end
 
 end
