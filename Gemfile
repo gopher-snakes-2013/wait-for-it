@@ -25,6 +25,7 @@ group :test do
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'simplecov', :require => false
 end
 
 gem 'jquery-rails'
