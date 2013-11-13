@@ -1,8 +1,7 @@
 $(document).ready(function(){
   if($(".reservation").length > 0) {
     setInterval(function(){ updateReservations.updateCurrentTime()}, 60000)
-    }})
-  
+    }})  
 
 var updateReservations = {
 getReservationsFromServer: function(){
@@ -21,11 +20,15 @@ addReservationsToPage: function(reservations){
   $('div.table-body').empty()
   for(var i=0; i< reservations.reservations.length; i++){
     var updatedReservationTemplate = $('div#template > form').clone()
+    var statusId = updateStatusId(reservations.reservations[i]);
+
     $(updatedReservationTemplate).data("id", reservations.reservations[i].id)
     updatedReservationTemplate.find('span.name').html((reservations.reservations[i].name))
     updatedReservationTemplate.find('span.phone-number').html((reservations.reservations[i].phone_number))
     updatedReservationTemplate.find('span.status').html((reservations.reservations[i].status))
+
     updatedReservationTemplate.find('span.status').attr("id","status-"+reservations.reservations[i].status.toLowerCase())
+
     updatedReservationTemplate.find('span.party-size').html((reservations.reservations[i].party_size))
     updatedReservationTemplate.find('span.message-button').before('<span class="update-button"><input class="edit" type="submit" value="edit"></span>')
     updatedReservationTemplate.find('span.seat-time').html((reservations.reservations[i].estimated_seating))
@@ -68,6 +71,20 @@ updateCurrentTime: function(){
 }
 }
 
+var updateStatusId = function(data) {
+ console.log(data) 
+ var statusText = data.status;
+ if (statusText == 'Waiting') {
+  var statusId = 'status-waiting';
+  } else if (statusText == 'Cancelled') {
+    statusId = 'status-cancelled';
+  } else if (statusText == 'No-Show') {
+    statusId = 'status-no-show';
+  } else if (statusText == 'Seated') {
+    statusId = 'status-seated';
+  }
+  return statusId;
+}
 
 
 
