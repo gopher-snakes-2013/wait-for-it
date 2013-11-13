@@ -1,14 +1,43 @@
-<div id="guest-content">
+<% if @reservation.status != "Cancelled" %>
+
+<div id="guest-content" data-id="<%= @reservation.id %>" data-restaurant-id="<%= @reservation.restaurant_id %>">
   <div class="guest-name">
-    <%= @reservation.name %>,
-    <br/>your seat time is:
+    <%= @reservation.name %>,<span class="ha"></span>
+    <br/>head back to<br/><%= @reservation.restaurant.name %> around
   </div>
 
   <div class="seat-time">
-    <%= @reservation.estimated_seat_time_display %>
+    <%= @reservation.time_range_display_start %> – <%= @reservation.time_range_display_end %>
   </div>
 
   <div class="cancel-button">
-    <a href="#">cancel</a>
+    <span class="cancel">cancel</span>
+  </div>
+
+  <div class="confirmation-message hidden">
+    <span class="confirmed">Your reservation has been cancelled.</span>
   </div>
 </div>
+
+<% else %>
+
+<div id="guest-content" data-id="<%= @reservation.id %>" data-restaurant-id="<%= @reservation.restaurant_id %>">
+  <div class="guest-name">
+    <%= @reservation.name %>,<span class="ha"> don't</span>
+    <br/>head back to<br/><%= @reservation.restaurant.name %> around
+  </div>
+
+  <div class="seat-time">
+    <%= @reservation.time_range_display_start %> – <%= @reservation.time_range_display_end %>
+  </div>
+
+  <div class="cancel-button hidden">
+    <span class="cancel">cancel</span>
+  </div>
+
+  <div class="confirmation-message">
+    <span class="confirmed">Your reservation has been cancelled.</span>
+  </div>
+</div>
+
+<% end %>
