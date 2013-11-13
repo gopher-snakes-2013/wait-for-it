@@ -46,16 +46,6 @@ div.table {
       padding: 1em;
 
 
-      span#status-open {
-        float:left;
-        text-align:center;
-        border-radius:20px;
-        height:1.7em;
-        width:6em;
-        font-size:1.4em;
-        color:lightgreen;
-        background-color:green;
-      }
 
       span#status-no-show {
         float:left;
@@ -66,6 +56,17 @@ div.table {
         font-size:1.4em;
         color:lightblue;
         background-color:blue;
+      }
+      
+      span#status-waiting {
+        float:left;
+        text-align:center;
+        border-radius:20px;
+        height:1.7em;
+        width:6em;
+        font-size:1.4em;
+        color:lightgreen;
+        background-color:green;
       }
 
       span#status-seated {

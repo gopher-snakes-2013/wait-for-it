@@ -3,7 +3,7 @@ class Reservation < ActiveRecord::Base
   belongs_to :restaurant
 
   STATUSES = {
-    :open => "Open",
+    :waiting => "Waiting",
     :cancelled => "Cancelled",
     :no_show => "No-Show",
     :seated => "Seated"
