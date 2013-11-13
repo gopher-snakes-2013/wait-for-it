@@ -48,7 +48,7 @@ class Reservation < ActiveRecord::Base
   def send_text_table_ready
     self.notified_table_ready = true
     self.save
-    TwilioHelper.table_ready(self.phone_number)
+    TwilioHelper.table_ready(self.phone_number, self.restaurant.name)
   end
 
   def generate_unique_key
