@@ -1,24 +1,13 @@
-<nav id="main-nav">
-  <ul id="nav-primary">
-    <li class="restaurant-name"><a href="#"><%= current_restaurant.name %></a></li>
-    <li class="subnav hidden"><%= link_to 'Logout', session_path(session), method: :delete %></li>
-  </ul>
-</nav>
-
 <div id="time">
-    <%= @time %>
+    <%= DateTime.now.strftime("%b %e, %Y %l:%M %P") %>
 </div>
 
 <div class="add-reservation-form">
 	<%= render "reservations/form" %>
 </div>
 
-<div class="error-message">
-	<%= flash[:error] %>
-</div>
-
 <div class="table" data-restaurant-id="<%= current_restaurant.id %>">
-		<div class="table-head" >
+		<div class="table-head">
 			<span class="td status-head">Status</span>
 			<span class="td party-size">#</span>
       <span class="td name">Name</span>
@@ -35,22 +24,4 @@
 	</div>
 </div>
 
-<div id="template" class="hidden">
-<form class="tr reservation" data-restaurant-id="1" method="post" >
-  <div class="status-flag">
-    <span class="td status"></span>
-  </div>
-
-  <span class="td party-size"></span>
-  <span class="td name"></span>
-  <span class="td phone-number"></span>
-  <span class="td wait-time"></span>
-  <span class="td seat-time"></span>
-  <span class="message-button">
-
-  <div class="delete-button"></div>
-  </span>
-</form>
-
-</div>
-
+<%= render partial: "layouts/templates" %>

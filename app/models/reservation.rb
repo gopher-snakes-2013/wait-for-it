@@ -1,15 +1,13 @@
 class Reservation < ActiveRecord::Base
-  attr_accessible :name, :party_size, :phone_number, :wait_time, :estimated_seat_time, :status
+  attr_accessible :name, :party_size, :phone_number, :wait_time, :estimated_seat_time, :status, :restaurant_id
   belongs_to :restaurant
 
   STATUSES = {
-    :archived => "Archived",
     :open => "Open",
     :cancelled => "Cancelled",
-    :"no_show" => "No-Show",
+    :no_show => "No-Show",
     :seated => "Seated"
   }
-
 
   validates :name, :party_size, :wait_time, :status, :presence => true
   validates_numericality_of :party_size, :wait_time
@@ -55,20 +53,6 @@ class Reservation < ActiveRecord::Base
     BitlyHelper.shorten_url(self)
   end
 
-  def phone_number_obscured
-    "XXX-X" + self.phone_number.slice(-3,3)
-  end
-
-  def estimated_seating
-    t = self.updated_at.localtime
-    t += self.wait_time * 60
-    if (Time.now <=> t) == -1
-      t.strftime("%I:%Mp")
-    else
-      "soon"
-    end
-  end
-
   def as_json(options={})
     {name: self.name,
       id: self.id,
@@ -94,6 +78,7 @@ class Reservation < ActiveRecord::Base
     ((self.estimated_seat_time - Time.now)/60).round
   end
 
+  # NAT!
   # run this after:
   # new reservation
   # update reservation

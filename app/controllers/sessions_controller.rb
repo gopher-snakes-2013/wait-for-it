@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 			login(restaurant)
 			redirect_to restaurant_reservations_path(restaurant)
 		else
-			flash[:error] = "Bad username/password combination"
+			flash[:error] = "Invalid username/password combination"
       redirect_to root_path
 		end
 	end
@@ -15,5 +15,4 @@ class SessionsController < ApplicationController
 		session.clear
 		redirect_to root_path
 	end
-
 end

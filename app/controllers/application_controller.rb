@@ -22,5 +22,4 @@ class ApplicationController < ActionController::Base
   def guest_key
     params[:guest]
   end
-
 end

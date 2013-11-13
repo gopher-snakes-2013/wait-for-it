@@ -6,7 +6,6 @@ class ReservationsController < ApplicationController
 	def index
     @reservations = current_restaurant.reservations.order("wait_time ASC")
     @reservation = current_restaurant.reservations.new
-    @time = DateTime.now.strftime("%b %e, %Y %l:%M %P")
   end
 
   def create
@@ -28,9 +27,8 @@ class ReservationsController < ApplicationController
   	if reservation.update_attributes(params[:reservation])
       render json: reservation.as_json
     else
-      render json: {:errors => reservation.errors.full_messages.join(", ")}, :unprocessable_entity
+      render status: :unprocessable_entity, json: {:errors => reservation.errors.full_messages.join(", ")}
     end
-    login(@restaurant) # this is not good, let's find the bug and fix it.
   end
 
   def destroy
@@ -38,6 +36,13 @@ class ReservationsController < ApplicationController
   	reservation.destroy
   	redirect_to restaurant_reservations_path(@restaurant)
   end
+
+  # def archive!
+    #Laura!  (archive default to false; add archive column. when you click on x switch to archive is true.)
+  # end
+
+  # def archive?
+  # end
 
   def currentreservations
     render json: { reservations: current_restaurant.current_reservations }

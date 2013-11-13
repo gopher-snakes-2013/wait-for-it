@@ -5,12 +5,10 @@ describe Reservation do
   it { should validate_presence_of :party_size }
   it { should validate_presence_of :phone_number }
   it { should validate_presence_of :wait_time }
-  it { should validate_presence_of :before_wait_time }
   it { should validate_presence_of :status }
 
   it { should validate_numericality_of :party_size }
   it { should validate_numericality_of :wait_time }
-  it { should validate_numericality_of :before_wait_time }
 
   it { should belong_to(:restaurant) }
 
@@ -21,7 +19,6 @@ describe Reservation do
     @reservation.party_size = 1
     @reservation.phone_number = "555-555-5555"
     @reservation.wait_time = 0
-    @reservation.before_wait_time = 0
     @reservation.save
 
     @reservation_2 = @restaurant.reservations.new
@@ -29,7 +26,6 @@ describe Reservation do
     @reservation_2.party_size = 2
     @reservation_2.phone_number = "555-555-5555"
     @reservation_2.wait_time = 20
-    @reservation_2.before_wait_time = 20
     @reservation_2.save
   end
 
@@ -44,14 +40,6 @@ describe Reservation do
       end
     end
 
-    context "#update_all_wait_times" do
-      xit "should update all subsequent wait times for that restaurant in the db" do
-        @reservation.wait_time = 20
-        @reservation.save
-        expect(Reservation.find_by_name("Cindy").wait_time).to eq(30)
-      end
-    end
-
     context "generate_unique_key" do
       it "should assign unique_key to a random secure hex key" do
         expect(Reservation.find_by_name("Cindy").unique_key).to be_true
@@ -59,31 +47,7 @@ describe Reservation do
     end
   end
 
-
-  context "#phone_number_obscured" do
-    it "should obscure phone number" do
-      expect(@reservation.phone_number_obscured).to eq "XXX-X555"
-    end
-  end
-
-  context "#estimated_seating" do
-      it "should return a local time for reservations more than current time" do
-        expect(@reservation_2.estimated_seating).to eq (Time.now()+20*60).localtime.strftime("%I:%Mp")
-      end
-
-      it "should return 'soon' for reservations that are at current time" do
-        expect(@reservation.estimated_seating).to eq "soon"
-      end
-
-    end
-
   context "#status" do
-    before(:each) do
-      @reservation = Reservation.create(name: "Laura",
-                           party_size: 3,
-                           phone_number: "555-555-5555",
-                           wait_time: 10 )
-    end
     it "should set to default of Open" do 
       expect(@reservation.status).to eq "Open"
     end

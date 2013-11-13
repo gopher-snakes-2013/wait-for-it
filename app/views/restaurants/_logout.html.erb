@@ -1,9 +1,0 @@
-<% if logged_in? %>
-	<div class='logged-in'>
-		<%= 'Hello, ' + current_restaurant.name %>
-	</div>
-
-	<div class='logout'>
-		<%= link_to 'Logout', session_path(session), method: :delete %>
-	</div>
-<% end %>

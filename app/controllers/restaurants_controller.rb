@@ -2,11 +2,10 @@ class RestaurantsController < ApplicationController
 
   def index
     @restaurants = Restaurant.all
-    # move this to happen on reservation creation/change
+    # Paul!  move this to happen on reservation creation/change
     @restaurants.each do |restaurant|
       restaurant.update_max_wait_time
     end
-    # create a _index partial and render that.
     render text: render_to_string(file: 'restaurants/index', layout: false, locals: { restaurants: @restaurants })
   end
 
@@ -24,5 +23,4 @@ class RestaurantsController < ApplicationController
       render :new
     end
   end
-
 end
