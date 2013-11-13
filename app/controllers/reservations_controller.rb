@@ -1,7 +1,7 @@
 class ReservationsController < ApplicationController
   before_filter :authenticate_restaurant, :only => [:index]
   before_filter :authenticate_guest, :only => [:show]
-  before_filter :load_restaurant, :except => [:index, :guest, :seat_times, :currentreservations]
+  before_filter :load_restaurant, :except => [:index, :guest, :seat_times, :currentreservations, :messages]
 
 	def index
     @reservations = current_restaurant.reservations.order("wait_time ASC")
@@ -47,6 +47,12 @@ class ReservationsController < ApplicationController
   def currentreservations
     render json: { reservations: current_restaurant.current_reservations }
   end
+  
+  def messages
+    reservation = Reservation.find(params[:id])
+    reservation.send_text_table_ready
+    render json: {reservation: reservation}
+  end
 
   private
   def authenticate_restaurant
@@ -60,4 +66,5 @@ class ReservationsController < ApplicationController
   def load_restaurant
     @restaurant = Restaurant.find(params[:restaurant_id])
   end
+
 end

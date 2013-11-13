@@ -45,6 +45,12 @@ class Reservation < ActiveRecord::Base
       "Hi #{self.name}, you've been added to #{self.restaurant.name}'s waitlist. Your wait is approximately #{self.wait_time} minutes. #{self.short_url}")
   end
 
+  def send_text_table_ready
+    self.notified_table_ready = true
+    self.save
+    TwilioHelper.table_ready(self.phone_number)
+  end
+
   def generate_unique_key
     self.unique_key = SecureRandom.hex(10)
   end

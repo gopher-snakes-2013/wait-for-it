@@ -1,20 +1,20 @@
 $(document).ready(function(){
 
   $(".table-body").on("click", "div.message-ready", function(){
-    var guestId = $(this).closest(".reservation").data("id")
+    var reservationId = $(this).closest(".reservation").data("id")
     var boundMessageGuestReady = messageGuestReady.bind(this)
-    boundMessageGuestReady(guestId)
+    boundMessageGuestReady(reservationId)
   })
 
 })
 
 // you're polluting the global namespace. namespace it using object literals/modules, etc.
-var messageGuestReady = function(guest_id){
+var messageGuestReady = function(reservationId){
   var that = this
   $.ajax({
     url: "/messages",
     type: "post",
-    data: {guest_id: guest_id},
+    data: {id: reservationId},
     data_type: "json"
 
   }).done(function(){
