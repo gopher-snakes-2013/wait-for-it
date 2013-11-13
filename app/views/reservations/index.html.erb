@@ -18,7 +18,7 @@
 
 		<div class="table-body">
 			<% @reservations.each do |reservation| %>
-			 <%= render partial: "reservations/show", locals: { restaurant: current_restaurant, reservation: reservation } %>
+			 <%= render partial: "reservations/show", locals: { restaurant: current_restaurant, reservation: reservation } %><div class="archive-button"></div>
 			<% end %>
 		</div>
 	</div>
