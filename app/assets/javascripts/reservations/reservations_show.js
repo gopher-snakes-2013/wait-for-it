@@ -74,6 +74,9 @@ var Update = {
       $that.closest(".reservation").find("span.seat-time").html(data.estimated_seat_time);
       $that.closest(".table").find(".update-button").html('<input class="edit" type="submit" value="edit">')
       Timer.getReservationsAndSetTimer();
+    }).fail(function(xhr){
+      debugger
+      console.log(xhr.responseJSON.error_message)
     })
   },
 

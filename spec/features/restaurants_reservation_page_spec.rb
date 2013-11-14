@@ -38,7 +38,7 @@ feature "Restaurant's Reservation Page" do
     end
 
     xscenario "user sees an error message" do
-      expect(page).to have_content("Try Again.")
+      expect(page).to have_content("")
     end
   end
 end
@@ -64,7 +64,7 @@ feature 'Restaurant Page' do
       expect(page).to have_content('Sourdough Kitchen')
     end
 
-    scenario 'clicking on archive will archive the reservation' do 
+    scenario 'clicking on archive will archive the reservation' do
       page.find('div.delete-button').click_link('x')
       expect(Reservation.last.archived).to be_true
     end

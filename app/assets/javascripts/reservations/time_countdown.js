@@ -34,9 +34,10 @@ var updateReservations = {
     }
   },
 
-updateCurrentTime: function(){
-  //utilizes date.js formatting
-  $('div#time').html(Date.now().toString("MMM d, yyyy h:mm tt"))
+  updateCurrentTime: function(){
+    //utilizes date.js formatting
+    $('div#time').html(Date.now().toString("MMM d, yyyy h:mm tt"))
+  }
 }
 
 $(document).ready(function(){
