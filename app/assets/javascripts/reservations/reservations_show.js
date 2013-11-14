@@ -2,8 +2,8 @@ var superBadAssTimer;
 
 var Timer = {
   getReservationsAndSetTimer: function() {
-    updateReservations.getReservationsFromServer()
-    superBadAssTimer = setInterval(function(){ updateReservations.getReservationsFromServer() }, 60000)
+    UpdateReservations.getReservationsFromServer()
+    superBadAssTimer = setInterval(function(){ UpdateReservations.getReservationsFromServer() }, 60000)
   }
 }
 
@@ -75,8 +75,6 @@ var Update = {
       $that.closest(".table").find(".update-button").html('<input class="edit" type="submit" value="edit">')
       Timer.getReservationsAndSetTimer();
     }).fail(function(xhr){
-      debugger
-      console.log(xhr.responseJSON.error_message)
     })
   },
 
