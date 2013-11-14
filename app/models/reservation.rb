@@ -1,12 +1,14 @@
 class Reservation < ActiveRecord::Base
-  attr_accessible :name, :party_size, :phone_number, :wait_time, :estimated_seat_time, :status, :restaurant_id
+  attr_accessible :name, :party_size, :phone_number, :wait_time, :estimated_seat_time, :status, :restaurant_id, :archived, :guest_id
   belongs_to :restaurant
+  belongs_to :guest
 
   STATUSES = {
     :waiting => "Waiting",
     :cancelled => "Cancelled",
     :no_show => "No-Show",
-    :seated => "Seated"
+    :seated => "Seated",
+    :pending => "Pending"
   }
 
   validates :name, :party_size, :wait_time, :status, :presence => true
@@ -19,10 +21,10 @@ class Reservation < ActiveRecord::Base
   validates :status, inclusion: { in: STATUSES.values }
 
   before_save :add_plus_phone_number, :add_estimated_seat_time
+  after_update :send_text_to_accepted_reservation
 
   before_create :generate_unique_key
   after_create :send_text_upon_new_reservation
-
 
   STATUSES.keys.each do |name|
     define_method "#{name}?" do
@@ -42,8 +44,22 @@ class Reservation < ActiveRecord::Base
   end
 
   def send_text_upon_new_reservation
-    TwilioHelper.send_on_waitlist(self.phone_number,
-      "Hi #{self.name}, you've been added to #{self.restaurant.name}'s waitlist. Your wait is approximately #{self.wait_time} minutes. #{self.short_url}")
+    if self.status != "Pending"
+      TwilioHelper.send_on_waitlist(self.phone_number,
+        "Hi #{self.name}, you've been added to #{self.restaurant.name}'s waitlist. Your wait is approximately #{self.wait_time} minutes. #{self.short_url}")
+    end
+  end
+
+  def send_text_to_accepted_reservation
+    if self.request_from_guest_changed_from_pending_to_waiting
+      TwilioHelper.send_on_waitlist(self.phone_number,
+        "Hi #{self.name}, you've been added to #{self.restaurant.name}'s waitlist. Your wait is approximately #{self.wait_time} minutes. #{self.short_url}")
+      self.confirmed = true
+    end
+  end
+
+  def request_from_guest_changed_from_pending_to_waiting
+    self.guest && self.status == "Waiting" && self.confirmed == false
   end
 
   def send_text_table_ready
@@ -69,7 +85,9 @@ class Reservation < ActiveRecord::Base
       wait_time: self.wait_time_display,
       status: self.status,
       notified: self.notified_table_ready,
-      restaurant_id: self.restaurant_id
+      restaurant_id: self.restaurant_id,
+      archived: self.archived,
+      confirmed: self.confirmed
     }
   end
 
@@ -94,16 +112,17 @@ class Reservation < ActiveRecord::Base
   end
 
   def time_range_display_start
-    minutes = self.estimated_seat_time.localtime.strftime("%M")
+    minutes = self.estimated_seat_time.localtime.strftime("%M").to_i - 8
     hour = self.estimated_seat_time.localtime.strftime("%l")
-    time = RounderHelper.round_up(hour, minutes)
+    time = RounderHelper.round_up(hour, minutes.to_s)
     start_mins = time[:minutes]
     start_hour = time[:hour]
     start_time = start_hour + ":" + start_mins
+    { start_time: start_time, minutes: start_mins.to_i }
   end
 
   def time_range_display_end
-    minutes = self.estimated_seat_time.localtime.strftime("%M").to_i + 10
+    minutes = self.time_range_display_start[:minutes] + 10
     hour = self.estimated_seat_time.localtime.strftime("%l")
     am_pm = self.estimated_seat_time.localtime.strftime("%P")
     time = RounderHelper.round_up(hour, minutes.to_s)

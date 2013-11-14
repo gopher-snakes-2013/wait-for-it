@@ -27,7 +27,7 @@ feature "Restaurant Registration Page" do
     end
   end
 
-  context "user submits an invalid restaurant" do
+  context "user signs up with an invalid restaurant" do
     before(:each) do
       visit new_restaurant_path
       fill_in("restaurant[name]", with: "")
@@ -37,12 +37,14 @@ feature "Restaurant Registration Page" do
       click_on("Create Account")
     end
 
-    xscenario "user sees an error message" do
-      expect(page).to have_content("Try Again!")
+    scenario "user sees an error message" do
+      expect(page).to have_content("Name can't be blank")
+      expect(page).to have_content("Email can't be blank")
+      expect(page).to have_content("Email is invalid")
     end
 
-    xscenario "stays on registration page" do
-      expect(current_path).to eq(new_restaurant_path)
+    scenario "stays on registration page" do
+      expect(page).to have_content("Restaurant Registration")
     end
   end
 
@@ -51,8 +53,9 @@ feature "Restaurant Registration Page" do
       @test_restaurant = Restaurant.create(name: "What the Duck", email: "duck@what.com", password: "password", password_confirmation: "password")
     end
 
-    xscenario "restaurant logs in" do
+    scenario "restaurant logs in" do
       visit root_path
+      click_on "Restaurant"
       fill_in "email", with: "duck@what.com"
       fill_in "password", with: "password"
       click_on("Login")

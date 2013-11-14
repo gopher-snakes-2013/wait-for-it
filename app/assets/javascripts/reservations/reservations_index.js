@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	$("#main-nav").mouseenter(showNav).mouseleave(hideNav);
 	$(".submit_button").prop("value", "+")
-	$(".delete-button").click(archive); 
+	$("#container").on("click", ".delete-button", archive);
 
 	function archive(e) {
 		$(this).remove();

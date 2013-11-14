@@ -16,11 +16,13 @@ span.time-header {
   margin-right: 2.7em;
 }
 
-.th {
+.guest-table > .th {
   padding:1em;
-  height:4em;
+  height:3em;
   margin-top:1em;
   border-radius: 20px;
+  margin-left: 1.5em;
+  margin-right: 1.5em;
 }
 
 .td {
@@ -64,3 +66,11 @@ div.guest-table {
   width: 50em;
 }
 
+a.guest-sign-in {
+  color:#142837;
+  font-size:1.2em;
+}
+
+a.guest-sign-in:hover {
+  color:#e67e22;
+}

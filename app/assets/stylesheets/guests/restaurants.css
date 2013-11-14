@@ -1,0 +1,19 @@
+span.td > a.restaurant-request {
+  color:#F5F7F7;
+}
+
+span.td > a.restaurant-request:hover {
+  color:#142837;
+}
+
+div.form-area {
+  margin-top:1em;
+}
+
+div.confirmation-text {
+  margin-top:1em;
+}
+
+div.form-area {
+  margin-top: 1em;
+}

@@ -1,15 +1,19 @@
+<div class="guest-sign-in">
+	<a class="guest-sign-in" href="#">Sign in to add your name to a waitlist.</a>
+	<div class="guest-signin-form hidden"><br/>
+		<%= render partial: 'guests/login' %>
+    <br/><%= link_to "Register", new_guest_path %>
+	</div>
+</div>
+
+<div class="guest-sign-up"></div>
+
 <div class="guest-table">
-	<table>
-		<thead>
-			<div class="th headers">
-				<span class='td name-header'>Restaurant</span>
-				<span class='td time-header'>Wait Time (mins)</span>
-			</div>
-		</thead>
-		<tbody>
-			<% @restaurants.each do |restaurant| %>
-				<%= render partial: 'restaurants/show', locals: { restaurant: restaurant } %>
-			<% end %>
-		</tbody>
-	</table>
+	<div class="th headers">
+		<span class='td name-header'>Restaurant</span>
+		<span class='td time-header'>Wait Time (mins)</span>
+	</div>
+	<% @restaurants.each do |restaurant| %>
+		<%= render partial: 'restaurants/show', locals: { restaurant: restaurant } %>
+	<% end %>
 </div>

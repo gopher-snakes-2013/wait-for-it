@@ -7,7 +7,7 @@
   </div>
 
   <div class="seat-time">
-    <%= @reservation.time_range_display_start %> – <%= @reservation.time_range_display_end %>
+    <%= @reservation.time_range_display_start[:start_time] %> – <%= @reservation.time_range_display_end %>
   </div>
 
   <div class="cancel-button">
@@ -28,7 +28,7 @@
   </div>
 
   <div class="seat-time">
-    <%= @reservation.time_range_display_start %> – <%= @reservation.time_range_display_end %>
+    <%= @reservation.time_range_display_start[:start_time] %> – <%= @reservation.time_range_display_end %>
   </div>
 
   <div class="cancel-button hidden">

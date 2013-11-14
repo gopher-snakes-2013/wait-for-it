@@ -33,36 +33,36 @@ describe Reservation do
     @reservation.notified_table_ready.should be nil
   end
 
-  it 'should default to archived false' do 
+  it 'should default to archived false' do
     @reservation.archived.should be false
   end
 
-  it 'should not allow non-integer party sizes' do 
+  it 'should not allow non-integer party sizes' do
     @reservation.party_size = 1.1
     expect(@reservation.invalid?).to be_true
-  end 
+  end
 
-  it 'should not allow party sizes over 10' do 
+  it 'should not allow party sizes over 10' do
     @reservation.party_size = 11
     expect(@reservation.invalid?).to be_true
   end
 
-  it 'should not allow negative party sizes' do 
+  it 'should not allow negative party sizes' do
     @reservation.party_size = -1
     expect(@reservation.invalid?).to be_true
   end
 
-  it 'should not allow non-integer wait times' do 
+  it 'should not allow non-integer wait times' do
     @reservation.wait_time = 1.1
     expect(@reservation.invalid?).to be_true
-  end 
+  end
 
-  it 'should not allow wait times over 120' do 
+  it 'should not allow wait times over 120' do
     @reservation.wait_time = 121
     expect(@reservation.invalid?).to be_true
   end
 
-  it 'should not allow negative wait times on update' do 
+  it 'should not allow negative wait times on update' do
     @reservation.wait_time = -1
     expect(@reservation.invalid?).to be_true
   end
@@ -95,13 +95,50 @@ describe Reservation do
         @reservation.send_text_table_ready
         expect(@reservation.notified_table_ready).to be_true
       end
-      it "should call the Twilio helper to send a text" do 
+      it "should call the Twilio helper to send a text" do
         TwilioHelper.should_receive(:table_ready)
         @reservation.send_text_table_ready
       end
     end
 
-  context "#send_text_upon_new_reservation" do 
+    context "#send_text_to_accepted_reservation" do
+      let!(:guest) { Guest.create(name: "Laura", phone_number: "555-555-5555", email: "laura@mail.com", password: "password", password_confirmation: "password") }
+      let(:reservation) { Reservation.create(name: guest.name, party_size: 1, phone_number: guest.phone_number, wait_time: 10, status: "Pending", restaurant_id: @restaurant.id, guest_id: guest.id) }
+      let(:send_on_waitlist) { double(:send_on_waitlist) }
+
+      it "should change reservation.confirmed from false to true if confirmed" do
+        reservation.update_attributes(status: "Waiting")
+        reservation.send_text_to_accepted_reservation
+        expect(reservation.confirmed).to be_true
+      end
+
+      it "should NOT change reservation.confirmed from false to true if not confirmed" do
+        reservation.send_text_to_accepted_reservation
+        expect(reservation.confirmed).to_not be_true
+      end
+
+      it "should send a message with TwilioHelper when a guest's request changes from status Pending to Waiting" do
+        reservation.stub(:short_url).and_return("bit.ly")
+        TwilioHelper.should_receive(:send_on_waitlist)
+        reservation.update_attributes(status: "Waiting")
+        reservation.send_text_to_accepted_reservation
+      end
+
+      it "should NOT send a text when a reservation doesn't belong to a guest" do
+        reservation.stub(:short_url).and_return("bit.ly")
+        TwilioHelper.should_not_receive(:send_on_waitlist)
+        reservation.update_attributes(status: "Waiting", guest_id: nil)
+        reservation.send_text_to_accepted_reservation
+      end
+
+      it "should NOT send a text when a reservation status isn't waiting" do
+        reservation.stub(:short_url).and_return("bit.ly")
+        TwilioHelper.should_not_receive(:send_on_waitlist)
+        reservation.send_text_to_accepted_reservation
+      end
+    end
+
+  context "#send_text_upon_new_reservation" do
       let(:send_on_waitlist) { double(:send_on_waitlist) }
     it "should send a message with the Twilio helper" do
       @reservation.stub(:short_url).and_return("bit.ly")
@@ -127,17 +164,18 @@ end
 
   context "#time_range_display_start" do
     it "should return a start time with the hour:minute format" do
-      minutes = @reservation_2.estimated_seat_time.localtime.strftime("%M").to_i
+      minutes = @reservation_2.estimated_seat_time.localtime.strftime("%M").to_i - 10
       hour = @reservation_2.estimated_seat_time.localtime.strftime("%l")
       time = RounderHelper.round_up(hour, minutes)
 
-      expect(@reservation_2.time_range_display_start).to eq(time[:hour]+":"+time[:minutes])
+      expect(@reservation_2.time_range_display_start[:start_time]).to eq(time[:hour]+":"+time[:minutes])
+      expect(@reservation_2.time_range_display_start[:minutes]).to eq(time[:minutes].to_i)
     end
   end
 
   context "#time_range_display_end" do
     it "should return an end time with the hour:minute am/pm format" do
-      minutes = @reservation_2.estimated_seat_time.localtime.strftime("%M").to_i + 10
+      minutes = @reservation_2.time_range_display_start[:minutes].to_i + 10
       hour = @reservation_2.estimated_seat_time.localtime.strftime("%l")
       am_pm = @reservation_2.estimated_seat_time.localtime.strftime("%P")
       time = RounderHelper.round_up(hour, minutes.to_s)
@@ -147,13 +185,13 @@ end
   end
 
   context "#status" do
-    it "should set to default of Waiting" do 
+    it "should set to default of Waiting" do
       expect(@reservation.status).to eq "Waiting"
     end
   end
 
-  context "#archive!" do 
-    it "should change status of reservation to archive" do 
+  context "#archive!" do
+    it "should change status of reservation to archive" do
       expect {
         @reservation.archive!
       }.to change{@reservation.archived}.to true

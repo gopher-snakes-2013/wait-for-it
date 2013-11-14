@@ -13,7 +13,7 @@ class RestaurantsController < ApplicationController
   def create
     @restaurant = Restaurant.new(params[:restaurant])
     if @restaurant.save
-      login(@restaurant)
+      login_restaurant(@restaurant)
       redirect_to restaurant_reservations_path(@restaurant)
     else
       render :new

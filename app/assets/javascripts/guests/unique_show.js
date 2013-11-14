@@ -1,8 +1,3 @@
-$(document).ready(function(){
-  $("#guest-content").on("click", "div.cancel-button", Status.confirm)
-  $("#guest-content").on("click", "div.confirm-button", Status.cancel)
-})
-
 var Status = {
   cancel: function() {
     var restaurant_id = $("#guest-content").data("restaurant-id")
@@ -32,3 +27,8 @@ var Status = {
     $cancelButton.find("span").html("confirm")
   }
 }
+
+$(document).ready(function(){
+  $("#guest-content").on("click", "div.cancel-button", Status.confirm)
+  $("#guest-content").on("click", "div.confirm-button", Status.cancel)
+})

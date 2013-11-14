@@ -14,7 +14,7 @@ class ReservationsController < ApplicationController
     if reservation.save
       render text: render_to_string(partial: 'reservations/show', layout: false, locals: { restaurant: @restaurant, reservation: reservation })
     else
-      render status: :unprocessable_entity, json: { error_message: reservation.errors.full_messages.join(", ") }.to_json
+      render json: { error_message: reservation.errors.full_messages.join(", ") }, status: :unprocessable_entity
     end
   end
 

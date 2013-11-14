@@ -1,16 +1,25 @@
-var superBadAssTimer
-var update = {
+var superBadAssTimer;
 
-  init: function() {
-    var $edit = $(this)
-    var reservation = $(this).closest(".reservation");
+var Timer = {
+  getReservationsAndSetTimer: function() {
+    UpdateReservations.getReservationsFromServer()
+    superBadAssTimer = setInterval(function(){ UpdateReservations.getReservationsFromServer() }, 60000)
+  }
+}
+
+var Update = {
+
+  init: function(el) {
+    clearInterval(superBadAssTimer);
+
+    var $edit = $(el)
+    var reservation = $edit.closest(".reservation");
     var id = reservation.data("id");
-    update.partySize(reservation);
-    update.guestName(reservation);
-    update.phoneNumber(reservation);
-    update.waitTime(reservation);
-    update.status(reservation);
-    clearInterval(superBadAssTimer)
+    this.partySize(reservation);
+    this.guestName(reservation);
+    this.phoneNumber(reservation);
+    this.waitTime(reservation);
+    this.status(reservation);
     $edit.closest(".update-button").html('<input class="save" name="commit" type="submit" value="save">');
     $(".edit").remove();
   },
@@ -64,26 +73,32 @@ var update = {
       $that.closest(".reservation").find("span.wait-time").html(data.wait_time);
       $that.closest(".reservation").find("span.seat-time").html(data.estimated_seat_time);
       $that.closest(".table").find(".update-button").html('<input class="edit" type="submit" value="edit">')
-      superBadAssTimer = setInterval(function(){UpdateReservations.getReservationsFromServer()},60000)
+      Timer.getReservationsAndSetTimer();
+    }).fail(function(xhr){
     })
   },
 
-  initBang: function() {
-    superBadAssTimer = setInterval(function(){UpdateReservations.getReservationsFromServer()},60000)
-    $(".add-reservation-form").on("ajax:success", "#new_reservation", this.addReservation);
-    $(".add-reservation-form").on("ajax:error", "#new_reservation", this.errorMessage);
-
-    $(".table").on("click", ".edit", update.init);
-    $(".table").on("click", ".save", update.save);
-  },
-
-  addReservation: function(e, reservationPartial) {
-    $(".table-body").append(reservationPartial);
+  clearFields: function() {
     $("#reservation_name").val("");
     $("#reservation_party_size").val("");
     $("#reservation_phone_number").val("");
     $("#reservation_wait_time").val("");
     $(".error-message").html("");
+  },
+
+  initBang: function() {
+    Timer.getReservationsAndSetTimer();
+
+    $(".add-reservation-form").on("ajax:success", "#new_reservation", this.addReservation);
+    $(".add-reservation-form").on("ajax:error", "#new_reservation", this.errorMessage);
+
+    $(".table").on("click", ".edit", function(){ Update.init(this) });
+    $(".table").on("click", ".save", Update.save);
+  },
+
+  addReservation: function(e, reservationPartial) {
+    $(".table-body").append(reservationPartial);
+    Update.clearFields();
   },
 
   errorMessage: function(e, xhr) {
@@ -104,12 +119,14 @@ var reloadStatusId = function() {
       statusId = 'status-no-show';
     } else if (statusText == 'Seated') {
       statusId = 'status-seated';
+    } else {
+      statusId = 'status-pending';
     }
-  $($('span.status')[i]).removeAttr('id').attr('id', statusId);
+    $($('span.status')[i]).removeAttr('id').attr('id', statusId);
   }
 }
 
 $(document).ready(function(){
-  update.initBang();
+  Update.initBang();
   reloadStatusId();
 });

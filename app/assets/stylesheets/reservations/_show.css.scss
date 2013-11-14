@@ -46,18 +46,6 @@ div.table {
       padding: 1em;
       height: 2em;
 
-
-      span#status-no-show {
-        float:left;
-        text-align:center;
-        border-radius:15px;
-        height: 1.5em;
-        width: 6em;
-        font-size:1.4em;
-        color:#F5F7F7;
-        background-color:#3498db;
-      }
-
       span#status-waiting {
         float:left;
         text-align:center;
@@ -89,6 +77,28 @@ div.table {
         font-size:1.4em;
         color:#F5F7F7;
         background-color:#e74c3c;
+      }
+
+      span#status-no-show {
+        float:left;
+        text-align:center;
+        border-radius:15px;
+        height: 1.5em;
+        width: 6em;
+        font-size:1.4em;
+        color:#F5F7F7;
+        background-color:#3498db;
+      }
+
+      span#status-pending {
+        float:left;
+        text-align:center;
+        border-radius:15px;
+        height: 1.5em;
+        width: 6em;
+        font-size:1.4em;
+        color:#F5F7F7;
+        background-color:#e67e22;
       }
 
       .td.status {

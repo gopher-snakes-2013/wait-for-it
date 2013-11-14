@@ -1,9 +1,19 @@
 <div class="navbar">
 	<div class="restaurant-menu">
-  <% if logged_in? %>
-  	<div class="restaurant-menu-name">Welcome, <%= current_restaurant.name %>!</div>
-    <%= link_to "logout", session_path(current_restaurant), :method => :delete %>
-  <% end %></div>
+    <% if logged_in? %>
+    	<div class="restaurant-menu-name">Welcome, <%= current_restaurant.name %>!</div>
+      <%= link_to "logout", session_path(current_restaurant), :method => :delete %>
+    <% end %>
+
+    <% if guest_logged_in? %>
+      <div class="guest-menu-name">
+        <%= link_to current_guest.name, guest_path(current_guest) %>
+      </div>
+      <div class="logout">
+        <%= link_to "logout", guestssession_path(current_guest), :method => :delete %>
+      </div>
+    <% end %>
+  </div>
   <span id="title1">no</span>
   <h2 id="title2"><a href="/">Reservations</a></h2>
 </div>
