@@ -34,11 +34,6 @@ var updateReservations = {
     }
   },
 
-    updatedReservationTemplate.find('div.delete-button').html('<a href="/restaurants/'+reservations.reservations[i].restaurant_id+'/reservations/'+reservations.reservations[i].id+'" action="archive" class="delete" data-method="post" rel="nofollow">x</a>')
-    $('div.table-body').append(updatedReservationTemplate)
-  }
-},
-
 updateCurrentTime: function(){
   //utilizes date.js formatting
   $('div#time').html(Date.now().toString("MMM d, yyyy h:mm tt"))
