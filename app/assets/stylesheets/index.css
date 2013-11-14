@@ -1,3 +1,11 @@
+div#time {
+  font-size:2.5em;
+  text-align:left;
+  margin-left:8.5%;
+  width: 50%;
+  display: block;
+}
+
 div.error-message {
   margin:1em;
 }
@@ -9,7 +17,7 @@ div.create-form {
 div.table {
   margin: 0 auto;
   text-align: left;
-  width: 70em;
+  width: 88%;
 }
 
 .th {
@@ -24,13 +32,4 @@ div.table {
 
 .table-head {
   height: 48px;
-}
-
-div#time {
-  font-size:2.5em;
-  text-align:left;
-  margin-left:2.4em;
-  margin-top:.5em;
-  width: auto;
-  display:block;
 }
