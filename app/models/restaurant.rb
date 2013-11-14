@@ -16,7 +16,7 @@ class Restaurant < ActiveRecord::Base
       calculated_wait_times << ((reservation.estimated_seat_time - Time.now)/60).round
     end
 
-    max = calculated_wait_times.sort.last
+    max = calculated_wait_times.sort.last || 0
   end
 
   def current_reservations

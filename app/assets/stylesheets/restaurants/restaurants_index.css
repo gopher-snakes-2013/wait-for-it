@@ -6,9 +6,14 @@ div.headers {
   margin-left: 2em;
 }
 
-span.header {
-  margin-left:3.4em;
-  margin-right:2.2em;
+span.name-header {
+  margin-left: 2em;
+  margin-right: 3.4em;
+}
+
+span.time-header {
+  margin-left: 3em;
+  margin-right: 2.7em;
 }
 
 .th {
@@ -32,19 +37,25 @@ div.restaurant {
 }
 
 span.restaurant-name {
-  float:left;
-  width:5.3em;
-  margin-right:2em;
-  margin-left:1.6em;
-  color:#F5F7F7;
-  text-align: center;
+  margin-top: 0.2em;
+  float: left;
+  width: 11.3em;
+  margin-right: 2em;
+  margin-left: 2em;
+  color: #F5F7F7;
+  text-align: left;
+  font-size: 1.5em;
 }
 
 span.restaurant-max-wait-time {
+  float:left;
+  margin-top: 0.2em;
   margin-left:0.5em;
+  margin-right: 1em;
   color:#F5F7F7;
   width:64px;
   text-align: center;
+  font-size: 1.5em;
 }
 
 div.guest-table {
