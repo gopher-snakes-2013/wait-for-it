@@ -29,7 +29,7 @@ var updateReservations = {
       } else {
         updatedReservationTemplate.find('span.message-button').html('<div class="message-ready">notify</div><div class="delete-button"></div>')
       }
-      updatedReservationTemplate.find('div.delete-button').html('<a href="/restaurants/'+reservations.reservations[i].restaurant_id+'/reservations/'+reservations.reservations[i].id+'" action="archive" class="delete" data-method="post" rel="nofollow">x</a>')
+      updatedReservationTemplate.find('div.delete-button').html('<a href="/archive/'+reservations.reservations[i].restaurant_id+'/'+reservations.reservations[i].id+'" action="archive" class="delete" data-method="post" rel="nofollow">x</a>')
       $('div.table-body').append(updatedReservationTemplate)
     }
   },
