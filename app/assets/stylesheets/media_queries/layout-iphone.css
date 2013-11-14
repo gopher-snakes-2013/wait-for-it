@@ -83,10 +83,6 @@
 		z-index: 3;
 	}
 
-	* {
-		border: 1px solid red;
-	}
-
 	.restaurant-menu a:hover {
 		color: #F5F7F7;
 	}

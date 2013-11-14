@@ -19,7 +19,6 @@ GuestReady: function(reservationId){
 
   }).done(function(){
     $(that).removeClass("message-ready")
-    $(that).html("sent")
     $(that).addClass("ready-message-sent")
     $("error-message").empty()
   }).error(function(){

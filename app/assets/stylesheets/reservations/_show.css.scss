@@ -1,29 +1,38 @@
 div.table {
   text-align: left;
-  width: 60em;
+  width: 80%;
   margin-left: 6em;
 
   .table-head {
     font-size:.8em;
+    margin-left: 5%;
 
     span.status-head {
-      margin-right: 3.9em;
-    }
-
-    span.name {
-      margin-right: 3.4em;
-    }
-
-    span.party-size {
       margin-right: 1em;
     }
 
+    span.party-size {
+      margin-left: 3%;
+      width: 3%;
+    }
+
+    span.name {
+      margin-left: 4.5%;
+      width: 7%;
+    }
+
     span.phone-number {
-      margin-right: 5.4em;
+      margin-left: 7.5%;
+      width: 7%;
     }
 
     span.wait-time {
-      margin-right: 0.1em;
+      margin-left: 11.5%;
+      width: 7%;
+    }
+
+    span.seat-time {
+      margin-left: 6%;
     }
   }
 
@@ -40,7 +49,7 @@ div.table {
 
     .tr {
       position:relative;
-      border: 2px solid #e67e22;
+      border: 2px solid #FF9900;
       border-radius: 15px;
       margin-top: 1em;
       padding: 1em;
@@ -52,7 +61,7 @@ div.table {
         text-align:center;
         border-radius:15px;
         height: 1.5em;
-        width: 6em;
+        width: 11%;
         font-size:1.4em;
         color:#F5F7F7;
         background-color:#3498db;
@@ -63,7 +72,7 @@ div.table {
         text-align:center;
         border-radius:15px;
         height:1.5em;
-        width:6em;
+        width: 11%;
         font-size:1.4em;
         color:#F5F7F7;
         background-color:#2EC6A4;
@@ -74,7 +83,7 @@ div.table {
         text-align:center;
         border-radius:15px;
         height: 1.5em;
-        width: 6em;
+        width: 11%;
         font-size:1.4em;
         color:#F5F7F7;
         background-color:grey;
@@ -85,7 +94,7 @@ div.table {
         text-align:center;
         border-radius:15px;
         height: 1.5em;
-        width:6em;
+        width: 11%;
         font-size:1.4em;
         color:#F5F7F7;
         background-color:#e74c3c;
@@ -94,54 +103,83 @@ div.table {
       .td.status {
         float:left;
         font-weight:700;
-        width:5.3em;
+        width:7%;
         z-index:2;
       }
 
       .td {
         text-align: center;
-        font-size: 1.7em;
-        height: 2.5em;
-        margin-left: 1em;
+        font-size: 1em;
+        height: 2em;
+        margin-left: 3%;
       }
 
       .td.name {
         float: left;
         font-size:1.5em;
-        width: 5.6em;
+        width: 7%;
         text-align: left;
       }
 
       .td.party-size {
         float: left;
         font-size:1.5em;
-        width: 1.5em;
+        width: 3%;
         text-align: left;
       }
 
       .td.phone-number {
         float: left;
         font-size:1.5em;
-        width: 7.9em;
+        width: 20%;
         text-align: left;
       }
 
       .td.wait-time {
         float: left;
         font-size:1.5em;
-        width: 1.8em;
+        width: 7%;
         text-align: left;
       }
 
       .td.seat-time {
         float: left;
         font-size:1.5em;
-        width: 5.5em;
+        width: 7%;
         text-align: left;
       }
 
       .td.max-wait-time {
 
+      }
+
+      .td.message-button {
+        margin-left: 3%;
+      }
+
+      .td.ready-message-sent {
+        display: inline-block;
+        /*margin-left: 50px;*/
+      }
+
+      .td.message-ready {
+        cursor: pointer;
+        display: inline-block;
+        
+      }
+
+      .td.delete-button {
+        display: inline-block;
+      }
+
+      .td.update-button {
+        display: inline;
+        margin: 40px;
+      }
+
+      .td.edit {
+        display: inline-block;
+        position: absolute;
       }
     }
   }
@@ -150,20 +188,8 @@ div.table {
 input.update {
   font-size:.8em;
   text-align: left;
-  width:7em;
-}
-
-.ready-message-sent {
-  display: inline-block;
-}
-
-.message-ready {
-  display: inline-block;
-  cursor:pointer;
-}
-
-.delete-button {
-  display: inline-block;
+  width:100%;
+  margin-bottom: 0.2em;
 }
 
 select {

@@ -1,0 +1,67 @@
+@media screen and (max-width: 64em){
+	.add-reservation-form {
+  margin-top:2em;
+  padding-bottom: 1em;
+  width: 100%;
+}
+
+input {
+  border-radius: 5px;
+  font-family:'Open Sans', helvetica-light, sans-serif;
+  padding:4px;
+}
+
+.submit_button {
+  background-color: #FF9900;
+  border: #142837;
+  border-radius: 5px;
+  color: white;
+  font-style: helvetica;
+  font-size:3em;
+}
+
+form#new_reservation.new_reservation {
+	width: 90%;
+}
+
+form#new_reservation.new_reservation > .submit_button {
+	font-size: 1.5em;
+	height: 2em;
+	position: relative;
+	width: 15em;
+}
+
+input.update {
+  font-size:.8em;
+  text-align: left;
+  width:7%;
+  margin-bottom: 0.2em;
+}
+
+.ready-message-sent {
+  display: inline-block;
+}
+
+.message-ready {
+  display: inline-block;
+  cursor:pointer;
+}
+
+.delete-button {
+  display: inline-block;
+}
+
+select {
+  -webkit-appearance:none;
+  font-family: 'Open Sans', sans-serif;
+  font-size: .8em;
+  padding:.3em;
+  height:1.9em;
+  border:1px #888;
+  text-align:center;
+  box-shadow:inset 1.5px 1.5px 3px #888;
+}
+
+.update-button {
+  bottom: 0.2em;
+}
