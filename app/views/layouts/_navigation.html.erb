@@ -1,9 +1,13 @@
 <div class="navbar">
+	<div class="complete-title">
+		<span id="title1">no</span>
+		<span id="title2"><a href="/">Reservations</a></span>
+	</div>
 	<div class="restaurant-menu">
-  <% if logged_in? %>
-  	<div class="restaurant-menu-name">Welcome, <%= current_restaurant.name %>!</div>
-    <%= link_to "logout", session_path(current_restaurant), :method => :delete %>
-  <% end %></div>
-  <span id="title1">no</span>
-  <h2 id="title2"><a href="/">Reservations</a></h2>
+		<% if logged_in? %>
+		<div class="restaurant-menu-name">Welcome, <%= current_restaurant.name %>!</div>
+		<div class="restaurant-logout"><%= link_to "logout", session_path(current_restaurant), :method => :delete %>
+			<% end %></div>
+		</div>
+	</div>
 </div>
