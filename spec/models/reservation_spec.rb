@@ -33,6 +33,11 @@ describe Reservation do
     @reservation.notified_table_ready.should be nil
   end
 
+  it 'should not allow non-integer party sizes' do 
+    @reservation.party_size = 1.1
+    expect(@reservation.invalid?).to be_true
+  end 
+
   describe "custom callback methods" do
     context "#add_plus_phone_number" do
       it "should add a plus to normalized phone numbers" do
