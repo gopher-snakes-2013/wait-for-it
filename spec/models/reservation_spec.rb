@@ -33,6 +33,10 @@ describe Reservation do
     @reservation.notified_table_ready.should be nil
   end
 
+  it 'should default to archived false' do 
+    @reservation.archived.should be false
+  end
+
   it 'should not allow non-integer party sizes' do 
     @reservation.party_size = 1.1
     expect(@reservation.invalid?).to be_true
@@ -62,9 +66,9 @@ describe Reservation do
     end
 
     context "#add_estimated_seat_time" do
-      xit "should update the estimated seat time in the db when wait time is changed" do
+      it "should update the estimated seat time in the db when wait time is changed" do
         @reservation.update_attributes(wait_time: 10)
-        expect(@reservation.estimated_seat_time).to eq((Time.now + 10*60).getutc)
+        expect(@reservation.estimated_seat_time.to_s).to eq((Time.now + 10*60).getutc.strftime('%F %T UTC'))
       end
     end
 
@@ -115,6 +119,14 @@ describe Reservation do
   context "#status" do
     it "should set to default of Waiting" do 
       expect(@reservation.status).to eq "Waiting"
+    end
+  end
+
+  context "#archive!" do 
+    it "should change status of reservation to archive" do 
+      expect {
+        @reservation.archive!
+      }.to change{@reservation.archived}.to true
     end
   end
 end
