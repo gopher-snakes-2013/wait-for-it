@@ -21,6 +21,7 @@ class Reservation < ActiveRecord::Base
   validates :status, inclusion: { in: STATUSES.values }
 
   before_save :add_plus_phone_number, :add_estimated_seat_time
+  after_update :send_text_to_accepted_reservation
 
   before_create :generate_unique_key
   after_create :send_text_upon_new_reservation
@@ -47,6 +48,14 @@ class Reservation < ActiveRecord::Base
       TwilioHelper.send_on_waitlist(self.phone_number,
         "Hi #{self.name}, you've been added to #{self.restaurant.name}'s waitlist. Your wait is approximately #{self.wait_time} minutes. #{self.short_url}")
     end
+  end
+
+  def send_text_to_accepted_reservation
+    if self.status == "Waiting" && self.guest && self.confirmed == false
+      TwilioHelper.send_on_waitlist(self.phone_number,
+        "Hi #{self.name}, you've been added to #{self.restaurant.name}'s waitlist. Your wait is approximately #{self.wait_time} minutes. #{self.short_url}")
+    end
+    self.confirmed = true
   end
 
   def send_text_table_ready

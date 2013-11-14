@@ -5,3 +5,15 @@ span.td > a.restaurant-request {
 span.td > a.restaurant-request:hover {
   color:#142837;
 }
+
+div.form-area {
+  margin-top:1em;
+}
+
+div.confirmation-text {
+  margin-top:1em;
+}
+
+div.form-area {
+  margin-top: 1em;
+}

@@ -34,7 +34,7 @@ class GuestsController < ApplicationController
     reservation = restaurant.reservations.new(params[:reservation])
     reservation.guest_id = guest.id
     if reservation.save
-      render json: { text: "Your reservation request has been sent. You'll recieve a confirmation text shortly."}
+      render json: { text: "Your waitlist request has been sent. You'll recieve a confirmation text shortly."}
     else
       render status: :unprocessable_entity, json: { simple_error: "Please try again." ,error_messages: reservation.errors.full_messages.join(", ") }.to_json
     end

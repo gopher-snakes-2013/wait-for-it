@@ -7,7 +7,7 @@ var GuestPage = {
     var restaurantId = $(this).closest(".restaurant").data("restaurant-id")
     var $requestForm = $(".request-form").clone()
     $requestForm = $requestForm.find("form").prop("action", "restaurants/"+restaurantId+"/reservations")
-    $(".form-area").html($requestForm).slideToggle("slideDown")
+    $("#form_"+restaurantId).html($requestForm).slideToggle("slideDown")
   },
 
   sendRequest: function(e, data){
@@ -27,8 +27,8 @@ var GuestPage = {
 }
 
 $(document).ready(function(){
-  $("body").on("click", "a.guest-sign-in", GuestPage.showLogin)
-  $("body").on("click", ".restaurant-request", GuestPage.showForm)
-  $("body").on("ajax:success", "form#new-request", GuestPage.sendRequest)
-  $("body").on("ajax:error", "form#new-request", GuestPage.showErrorMessage)
+  $("#container").on("click", "a.guest-sign-in", GuestPage.showLogin)
+  $("#container").on("click", ".restaurant-request", GuestPage.showForm)
+  $("#container").on("ajax:success", "form#new-request", GuestPage.sendRequest)
+  $("#container").on("ajax:error", "form#new-request", GuestPage.showErrorMessage)
 })
