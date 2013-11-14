@@ -19,7 +19,6 @@ class ReservationsController < ApplicationController
   end
 
   def show
-    @reservations = @reservation.order("wait_time ASC")
   end
 
   def update
