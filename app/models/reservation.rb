@@ -1,6 +1,6 @@
 class Reservation < ActiveRecord::Base
   attr_accessible :name, :party_size, :phone_number, :wait_time, :estimated_seat_time, :status, :restaurant_id
-  belongs_to :restaurant
+  belongs_to :restaurant, :guest
 
   STATUSES = {
     :waiting => "Waiting",

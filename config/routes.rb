@@ -4,7 +4,7 @@ WaitForIt::Application.routes.draw do
     resources :reservations, only: [:update, :destroy, :index, :create, :show]
   end
   resources :sessions, only:[:create, :destroy]
-  resources :guests, only: [:index]
+  resources :guests, only: [:index, :new, :create, :show]
 
   post '/archive/:restaurant_id/:id', to: 'reservations#archive', as: :archive
   get '/guest/:restaurant_name', to: 'reservations#guest', as: :guest_waitlist
