@@ -1,7 +1,7 @@
 <% if model.errors.any? %>
-<ul>
+<div>
   <% model.errors.full_messages.each do |error| %>
-    <li><%= error %></li>
+    <div><%= error unless error == "Password digest can't be blank" %></div>
   <% end %>
-</ul>
+</div>
 <% end %>
