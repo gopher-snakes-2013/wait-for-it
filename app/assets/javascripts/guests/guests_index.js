@@ -21,6 +21,6 @@ var Guest = {
 
 $(document).ready(function(){
   $(".body").on("click", ".restaurant-link", Restaurant.toggleLogin)
-  $(document).on("ajax:success", ".guest-link", Guest.showAllRestaurants )
+  $(document).on("ajax:success", ".guest-link", Guest.showAllRestaurants)
   $(document).on("ajax:success", ".register-link", Restaurant.showRegister)
 })

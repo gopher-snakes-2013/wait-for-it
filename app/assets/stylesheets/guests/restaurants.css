@@ -1,0 +1,7 @@
+span.td > a.restaurant-link {
+  color:#F5F7F7;
+}
+
+span.td > a.restaurant-link:hover {
+  color:#142837;
+}

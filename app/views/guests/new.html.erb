@@ -1,0 +1,19 @@
+<h1>Guest Sign Up</h1>
+<%= form_for @guest do |f| %>
+  <div class='name-field'>
+    <%= f.text_field :name, placeholder:'Name'%>
+  </div>
+  <div class='email-field'>
+    <%= f.text_field :email, placeholder: "Email" %>
+  </div>
+  <div class='password-field'>
+    <%= f.password_field :password, placeholder: "Password" %>
+  </div>
+  <div class='password_confirm-field'>
+    <%= f.password_field :password_confirmation, placeholder: "Password" %>
+  </div>
+  <div class='submit' ><%= f.submit value='Create Account' %></div>
+<% end %>
+<br/>
+
+<%= render 'shared/form_errors', :model => @guest %>

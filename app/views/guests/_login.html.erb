@@ -1,0 +1,9 @@
+<%= form_tag guestssessions_path do %>
+<div class='email-field'>
+  <%= text_field_tag :email, params[:email], placeholder: "Email" %>
+</div>
+<div class='password-field'>
+  <%= password_field_tag :password, nil, placeholder: "Password" %>
+</div>
+<div class='submit'><%= submit_tag 'Login' %></div>
+<% end %>

@@ -1,12 +1,14 @@
 class Reservation < ActiveRecord::Base
   attr_accessible :name, :party_size, :phone_number, :wait_time, :estimated_seat_time, :status, :restaurant_id
-  belongs_to :restaurant, :guest
+  belongs_to :restaurant
+  belongs_to :guest
 
   STATUSES = {
     :waiting => "Waiting",
     :cancelled => "Cancelled",
     :no_show => "No-Show",
-    :seated => "Seated"
+    :seated => "Seated",
+    :pending => "Pending"
   }
 
   validates :name, :party_size, :wait_time, :status, :presence => true
@@ -22,7 +24,6 @@ class Reservation < ActiveRecord::Base
 
   before_create :generate_unique_key
   after_create :send_text_upon_new_reservation
-
 
   STATUSES.keys.each do |name|
     define_method "#{name}?" do
@@ -42,8 +43,10 @@ class Reservation < ActiveRecord::Base
   end
 
   def send_text_upon_new_reservation
-    TwilioHelper.send_on_waitlist(self.phone_number,
-      "Hi #{self.name}, you've been added to #{self.restaurant.name}'s waitlist. Your wait is approximately #{self.wait_time} minutes. #{self.short_url}")
+    if self.status != "Pending"
+      TwilioHelper.send_on_waitlist(self.phone_number,
+        "Hi #{self.name}, you've been added to #{self.restaurant.name}'s waitlist. Your wait is approximately #{self.wait_time} minutes. #{self.short_url}")
+    end
   end
 
   def send_text_table_ready

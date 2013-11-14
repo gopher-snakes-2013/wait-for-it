@@ -1,6 +1,8 @@
 <div class="guest-sign-in">
 	<a class="guest-sign-in" href="#">Sign in to add your name to a waitlist.</a>
-	<div class="form">
+	<div class="guest-signin-form hidden"><br/>
+		<%= render partial: 'guests/login' %>
+    <br/><%= link_to "Register", new_guest_path %>
 	</div>
 </div>
 
