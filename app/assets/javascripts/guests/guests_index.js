@@ -5,6 +5,7 @@ var Restaurant = {
     if ( $(".restaurant-login").hasClass("hidden") ) {
       $(".restaurant-login").slideDown()
       $(".restaurant-login").removeClass("hidden")
+      $(".error").addClass("hidden")
     } else {
       $(".restaurant-login").slideUp()
       $(".restaurant-login").addClass("hidden")
