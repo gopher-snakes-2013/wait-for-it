@@ -70,7 +70,7 @@ describe Reservation do
   describe "custom callback methods" do
     context "#add_plus_phone_number" do
       it "should add a plus to normalized phone numbers" do
-        expect(@reservation.phone_number).to eq("+15555555555")
+        expect(@reservation.add_plus_phone_number).to eq("+15555555555")
       end
     end
 
