@@ -4,6 +4,6 @@
     <span class='td time-header'>Wait Time (mins)</span>
   </div>
   <% @restaurants.each do |restaurant| %>
-    <%= render partial: 'guests/restaurants', locals: { restaurant: restaurant } %>
+    <%= render partial: 'guests/restaurants', locals: { guest: @guest, restaurant: restaurant } %>
   <% end %>
 </div>

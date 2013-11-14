@@ -13,7 +13,7 @@ class GuestsController < ApplicationController
     guest = Guest.new(params[:guest])
     if guest.save
       login_guest(guest)
-      redirect_to guest_path(guest)
+      redirect_to guest_restaurants_path(guest)
     else
       render :new
     end
@@ -21,8 +21,7 @@ class GuestsController < ApplicationController
 
   def restaurants
     @restaurants = Restaurant.all
-    @restaurant = Restaurant.new
-    @reservation = Reservation.new
+    @guest = Guest.find(params[:id])
   end
 
   def show
