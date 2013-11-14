@@ -10,4 +10,6 @@ describe Guest do
 
   it { should_not allow_value("blah").for(:email) }
   it { should allow_value("blah@email.com").for(:email) }
+  it { should_not allow_value("000").for(:phone_number) }
+  it { should allow_value("555-555-5555").for(:phone_number) }
 end
