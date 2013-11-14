@@ -3,5 +3,7 @@
   <span class="td guest-status"><%= reservation.status %></span>
   <span class="td guest-wait-time"><%= reservation.wait_time %></span>
   <span class="td guest-seat-time"><%= reservation.estimated_seat_time_display %></span>
-  <span class="td guest-cancel">cancel</span>
+  <% if reservation.status != "Cancelled" %>
+    <span class="td guest-cancel">cancel</span>
+  <% end %>
 </div>
