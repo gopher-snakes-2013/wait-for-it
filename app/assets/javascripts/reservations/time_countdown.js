@@ -34,32 +34,14 @@ var updateReservations = {
     }
   },
 
-  calculateCurrentTime: function(){
-    var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
-    var currentTime = new Date(Date.now())
-    var currentMonth = months[currentTime.getMonth()]
-    var currentDate = currentTime.getDate()
-    var currentYear = currentTime.getFullYear()
-    var currentHour = currentTime.getHours()
-    var currentMinutes = currentTime.getMinutes()
-    if (currentMinutes.toString().length === 1){
-      currentMinutes = "0"+currentMinutes
-    }
-    var currentAMPM = ""
-    if(currentHour>=12){
-      currentAMPM = "pm"
-    } else {
-      currentAMPM = "am"
-    }
-    if (currentHour > 12) {
-      currentHour -= 12
-    }
-    return currentMonth+ " "+currentDate+", "+currentYear+" "+currentHour+":"+currentMinutes+currentAMPM
-  },
-
-  updateCurrentTime: function(){
-    $('div#time').html(this.calculateCurrentTime())
+    updatedReservationTemplate.find('div.delete-button').html('<a href="/restaurants/'+reservations.reservations[i].restaurant_id+'/reservations/'+reservations.reservations[i].id+'" action="archive" class="delete" data-method="post" rel="nofollow">x</a>')
+    $('div.table-body').append(updatedReservationTemplate)
   }
+},
+
+updateCurrentTime: function(){
+  //utilizes date.js formatting
+  $('div#time').html(Date.now().toString("MMM d, yyyy h:mm tt"))
 }
 
 $(document).ready(function(){
