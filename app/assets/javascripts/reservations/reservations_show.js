@@ -64,12 +64,12 @@ var update = {
       $that.closest(".reservation").find("span.wait-time").html(data.wait_time);
       $that.closest(".reservation").find("span.seat-time").html(data.estimated_seat_time);
       $that.closest(".table").find(".update-button").html('<input class="edit" type="submit" value="edit">')
-      superBadAssTimer = setInterval(function(){updateReservations.getReservationsFromServer()},60000)
+      superBadAssTimer = setInterval(function(){UpdateReservations.getReservationsFromServer()},60000)
     })
   },
 
   initBang: function() {
-    superBadAssTimer = setInterval(function(){updateReservations.getReservationsFromServer()},60000)
+    superBadAssTimer = setInterval(function(){UpdateReservations.getReservationsFromServer()},60000)
     $(".add-reservation-form").on("ajax:success", "#new_reservation", this.addReservation);
     $(".add-reservation-form").on("ajax:error", "#new_reservation", this.errorMessage);
 
