@@ -52,6 +52,21 @@ describe Reservation do
     expect(@reservation.invalid?).to be_true
   end
 
+  it 'should not allow non-integer wait times' do 
+    @reservation.wait_time = 1.1
+    expect(@reservation.invalid?).to be_true
+  end 
+
+  it 'should not allow party sizes over 120' do 
+    @reservation.wait_time = 121
+    expect(@reservation.invalid?).to be_true
+  end
+
+  it 'should not allow negative wait times on update' do 
+    @reservation.wait_time = -1
+    expect(@reservation.invalid?).to be_true
+  end
+
   describe "custom callback methods" do
     context "#add_plus_phone_number" do
       it "should add a plus to normalized phone numbers" do
@@ -67,18 +82,32 @@ describe Reservation do
 
     context "#add_estimated_seat_time" do
       it "should update the estimated seat time in the db when wait time is changed" do
+        @time_now = Time.parse("Oct 31 2012")
+        Time.stub(:now).and_return(@time_now)
         @reservation.update_attributes(wait_time: 10)
         expect(@reservation.estimated_seat_time.to_s).to eq((Time.now + 10*60).getutc.strftime('%F %T UTC'))
       end
     end
 
-    context "#send_test_table_ready" do
+    context "#send_text_table_ready" do
+        let(:table_ready) { double(:table_ready) }
       it "should change the reservation's notified_table_ready status to true" do
         @reservation.send_text_table_ready
         expect(@reservation.notified_table_ready).to be_true
       end
+      it "should call the Twilio helper to send a text" do 
+        TwilioHelper.should_receive(:table_ready)
+        @reservation.send_text_table_ready
+      end
     end
 
+  context "#send_text_upon_new_reservation" do 
+      let(:send_on_waitlist) { double(:send_on_waitlist) }
+    it "should send a message with the Twilio helper" do
+      @reservation.stub(:short_url).and_return("bit.ly")
+      TwilioHelper.should_receive(:send_on_waitlist)
+      @reservation.send_text_upon_new_reservation
+    end
   end
 
   context "#estimated_seat_time_display" do
@@ -87,6 +116,7 @@ describe Reservation do
       expect(@reservation_2.estimated_seat_time_display).to eq(time)
     end
   end
+end
 
   context "#wait_time_display" do
     it "should return a rounded up wait time" do
