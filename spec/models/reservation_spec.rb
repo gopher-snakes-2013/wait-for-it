@@ -75,6 +75,43 @@ describe Reservation do
       end
     end
 
+    context "#send_text_to_accepted_reservation" do
+      let!(:guest) { Guest.create(name: "Laura", phone_number: "555-555-5555", email: "laura@mail.com", password: "password", password_confirmation: "password") }
+      let(:reservation) { Reservation.create(name: guest.name, party_size: 1, phone_number: guest.phone_number, wait_time: 10, status: "Pending", restaurant_id: @restaurant.id, guest_id: guest.id) }
+      let(:send_on_waitlist) { double(:send_on_waitlist) }
+
+      it "should change reservation.confirmed from false to true if confirmed" do
+        reservation.update_attributes(status: "Waiting")
+        reservation.send_text_to_accepted_reservation
+        expect(reservation.confirmed).to be_true
+      end
+
+      it "should NOT change reservation.confirmed from false to true if not confirmed" do
+        reservation.send_text_to_accepted_reservation
+        expect(reservation.confirmed).to_not be_true
+      end
+
+      it "should send a message with TwilioHelper when a guest's request changes from status Pending to Waiting" do
+        reservation.stub(:short_url).and_return("bit.ly")
+        TwilioHelper.should_receive(:send_on_waitlist)
+        reservation.update_attributes(status: "Waiting")
+        reservation.send_text_to_accepted_reservation
+      end
+
+      it "should NOT send a text when a reservation doesn't belong to a guest" do
+        reservation.stub(:short_url).and_return("bit.ly")
+        TwilioHelper.should_not_receive(:send_on_waitlist)
+        reservation.update_attributes(status: "Waiting", guest_id: nil)
+        reservation.send_text_to_accepted_reservation
+      end
+
+      it "should NOT send a text when a reservation status isn't waiting" do
+        reservation.stub(:short_url).and_return("bit.ly")
+        TwilioHelper.should_not_receive(:send_on_waitlist)
+        reservation.send_text_to_accepted_reservation
+      end
+    end
+
   end
 
   context "#estimated_seat_time_display" do
