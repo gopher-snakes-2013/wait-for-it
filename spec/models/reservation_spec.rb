@@ -57,7 +57,7 @@ describe Reservation do
     expect(@reservation.invalid?).to be_true
   end 
 
-  it 'should not allow party sizes over 120' do 
+  it 'should not allow wait times over 120' do 
     @reservation.wait_time = 121
     expect(@reservation.invalid?).to be_true
   end
