@@ -10,13 +10,13 @@ class Restaurant < ActiveRecord::Base
   has_secure_password
 
   def max_wait_time
-    wait_times = []
+    calculated_wait_times = []
 
     self.reservations.each do |reservation|
-      wait_times << reservation.wait_time
+      calculated_wait_times << ((reservation.estimated_seat_time - Time.now)/60).round
     end
 
-    max_wait_time = wait_times.sort.last
+    max = calculated_wait_times.sort.last || 0
   end
 
   def current_reservations

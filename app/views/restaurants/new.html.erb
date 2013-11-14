@@ -1,9 +1,5 @@
 <h1>Restaurant Registration</h1>
 <%= form_for @restaurant do |f| %>
-	<%= render 'shared/form_errors', :model => @restaurant %>
-	<div class="error-message">
-	  <%= flash[:error] %>
-	</div>
 	<div class='name-field'>
 		<%= f.text_field :name, placeholder:'Restaurant Name'%>
 	</div>
@@ -18,3 +14,5 @@
 	</div>
 	<div class='submit' ><%= f.submit value='Create Account' %></div>
 <% end %>
+<br/>
+<%= render 'shared/form_errors', :model => @restaurant %>

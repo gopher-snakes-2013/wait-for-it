@@ -53,6 +53,14 @@ div.register-link {
   height:2em;
 }
 
+/** for when form errors happen **/
+
+div.field_with_errors > input {
+  font-size:1em;
+  margin-bottom:5px;
+  height:2em;
+}
+
 .hidden {
   display:none;
 }
