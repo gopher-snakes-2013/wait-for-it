@@ -9,13 +9,19 @@
   <span class="td phone-number"><%= reservation.phone_number.phony_formatted(normalize: :US, format: :national, spaces: '-') %></span>
   <span class="td wait-time"><%= reservation.wait_time_display %></span>
   <span class="td seat-time"><%= reservation.estimated_seat_time_display %></span>
-  <span class="update-button"><input class="edit" type="submit" value="edit"></span>
-  <span class="message-button">
+  <span class="td update-button"><input class="td edit" type="submit" value="edit"></span>
+  <span class="td message-button">
     <% if reservation.notified_table_ready %>
-      <div class="ready-message-sent">sent</div>
+      <div class="td ready-message-sent">
+        <%= image_tag('sms-sent.png')%>
+      </div>
     <% else %>
-      <div class="message-ready">notify</div>
+      <div class="td message-ready">
+        <%= image_tag('sms.png') %>
+      </div>
     <% end %>
-  <div class="delete-button"><%= link_to "x", archive_path(current_restaurant.id, reservation.id), method:"post", action: 'archive', class: 'archive' %></div>
+  <div class="td delete-button">
+    <%= link_to image_tag("archive.jpeg"), archive_path(current_restaurant.id, reservation.id), method:"post", action: 'archive', class: 'archive' %>
+  </div>
   </span>
 </form>

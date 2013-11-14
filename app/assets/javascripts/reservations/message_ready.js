@@ -8,7 +8,6 @@ var Message = {
       data_type: "json"
     }).done(function(){
       $(that).removeClass("message-ready")
-      $(that).html("sent")
       $(that).addClass("ready-message-sent")
       $("error-message").empty()
     }).error(function(){
@@ -28,4 +27,3 @@ var Message = {
 $(document).ready(function(){
   Message.SMSButtonEvent();
 })
-

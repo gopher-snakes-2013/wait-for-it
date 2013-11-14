@@ -1,9 +1,9 @@
 .add-reservation-form {
-  margin-top:3em;
-  padding-bottom:3em;
+  margin-top:2em;
+  padding-bottom:2em;
   text-align: left;
-  margin-left: 6.1em;
-  width: 70em;
+  margin-left: 8.5%;
+  width: 88%;
 }
 
 input {
@@ -14,10 +14,10 @@ input {
 }
 
 .submit_button {
-  background-color: #2EC6A4;
-  border-color: #2EC6A4;
+  background-color: #FF9900;
+  border: #142837;
   border-radius: 10px;
-  color: #142837;
+  color: white;
   font-style: helvetica;
   font-size:3em;
 }

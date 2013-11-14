@@ -1,0 +1,96 @@
+@media (max-width: 64em) {
+	html {
+		background-color: #F5F7F7;
+		font-size: 1em;
+	} 
+
+	body {
+		color: #142837;
+		font-family: 'Open Sans', helvetica-light, sans-serif;
+		margin: 0 auto;
+	}
+
+	.navbar {
+		background-color: #2EC6A4;
+		height:6em;
+		position: fixed;
+		width: 100%;
+		z-index: 2;
+	}
+
+	#container {
+		margin: 0 auto;
+		padding-top:8.5em;
+		padding-bottom:5em;
+		text-align: center;
+	}
+
+	#title1 {
+		color: #F5F7F7;
+		display: inline-block;
+		font-family: 'Lobster', cursive;
+		font-size: 2.5em;
+		margin-left: 5%;
+		top: -0.4em;
+		width: 10%;
+	}
+
+	#title2 {
+		display: inline-block;
+		font-family: 'Crete Round', serif;
+		font-size: 3.1em;
+		position: relative;
+		z-index:3;
+	}
+
+	.complete-title {
+		display: inline-block;
+		padding-top: 2em;
+		width: 60%;
+	}
+
+	a {
+		color:#142837;
+		text-decoration: none;
+	}
+
+	a.visted {
+		color:#142837;
+		text-decoration: none;
+	}
+
+	#main-nav {
+		margin-left: 108em;
+	}
+
+	.restaurant-name {
+		font-size:2em;
+	}
+
+	.restaurant-menu {
+		font-family: 'Crete Round', serif;
+		display: inline-block;
+		padding-left: 15%;
+		margin-left: auto;
+		z-index: 3;
+	}
+
+	.restaurant-menu a{
+		color: #142837;
+		display: block;
+		font-family: 'Crete Round', serif;
+		z-index: 3;
+	}
+
+	.restaurant-menu a:hover {
+		color: #F5F7F7;
+	}
+
+	div#time {
+		font-size:2em;
+		text-align:left;
+		margin-left:8.5%;
+		width: 50%;
+		display: block;
+	}
+}
