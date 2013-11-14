@@ -2,14 +2,7 @@ var Restaurant = {
 
   toggleLogin: function(e) {
     e.preventDefault()
-    if ( $(".restaurant-login").hasClass("hidden") ) {
-      $(".restaurant-login").slideDown()
-      $(".restaurant-login").removeClass("hidden")
-      $(".error").addClass("hidden")
-    } else {
-      $(".restaurant-login").slideUp()
-      $(".restaurant-login").addClass("hidden")
-    }
+    $(".restaurant-login").slideToggle("slideDown")
   },
 
   showRegister: function(e, registerPage) {
