@@ -16,10 +16,10 @@ input {
 }
 
 .submit_button {
-  background-color: #2EC6A4;
-  border-color: #2EC6A4;
+  background-color: #FF9900;
+  border: #142837;
   border-radius: 10px;
-  color: #142837;
+  color: white;
   font-style: helvetica;
   font-size:3em;
 }
