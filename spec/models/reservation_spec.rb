@@ -38,6 +38,16 @@ describe Reservation do
     expect(@reservation.invalid?).to be_true
   end 
 
+  it 'should not allow party sizes over 10' do 
+    @reservation.party_size = 11
+    expect(@reservation.invalid?).to be_true
+  end
+
+  it 'should not allow negative party sizes' do 
+    @reservation.party_size = -1
+    expect(@reservation.invalid?).to be_true
+  end
+
   describe "custom callback methods" do
     context "#add_plus_phone_number" do
       it "should add a plus to normalized phone numbers" do
