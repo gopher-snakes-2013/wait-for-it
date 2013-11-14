@@ -33,6 +33,10 @@ describe Reservation do
     @reservation.notified_table_ready.should be nil
   end
 
+  it 'should default to archived false' do 
+    @reservation.archived.should be false
+  end
+
   it 'should not allow non-integer party sizes' do 
     @reservation.party_size = 1.1
     expect(@reservation.invalid?).to be_true
@@ -45,6 +49,21 @@ describe Reservation do
 
   it 'should not allow negative party sizes' do 
     @reservation.party_size = -1
+    expect(@reservation.invalid?).to be_true
+  end
+
+  it 'should not allow non-integer wait times' do 
+    @reservation.wait_time = 1.1
+    expect(@reservation.invalid?).to be_true
+  end 
+
+  it 'should not allow wait times over 120' do 
+    @reservation.wait_time = 121
+    expect(@reservation.invalid?).to be_true
+  end
+
+  it 'should not allow negative wait times on update' do 
+    @reservation.wait_time = -1
     expect(@reservation.invalid?).to be_true
   end
 
@@ -62,19 +81,33 @@ describe Reservation do
     end
 
     context "#add_estimated_seat_time" do
-      xit "should update the estimated seat time in the db when wait time is changed" do
+      it "should update the estimated seat time in the db when wait time is changed" do
+        @time_now = Time.parse("Oct 31 2012")
+        Time.stub(:now).and_return(@time_now)
         @reservation.update_attributes(wait_time: 10)
-        expect(@reservation.estimated_seat_time).to eq((Time.now + 10*60).getutc)
+        expect(@reservation.estimated_seat_time.to_s).to eq((Time.now + 10*60).getutc.strftime('%F %T UTC'))
       end
     end
 
-    context "#send_test_table_ready" do
+    context "#send_text_table_ready" do
+        let(:table_ready) { double(:table_ready) }
       it "should change the reservation's notified_table_ready status to true" do
         @reservation.send_text_table_ready
         expect(@reservation.notified_table_ready).to be_true
       end
+      it "should call the Twilio helper to send a text" do 
+        TwilioHelper.should_receive(:table_ready)
+        @reservation.send_text_table_ready
+      end
     end
 
+  context "#send_text_upon_new_reservation" do 
+      let(:send_on_waitlist) { double(:send_on_waitlist) }
+    it "should send a message with the Twilio helper" do
+      @reservation.stub(:short_url).and_return("bit.ly")
+      TwilioHelper.should_receive(:send_on_waitlist)
+      @reservation.send_text_upon_new_reservation
+    end
   end
 
   context "#estimated_seat_time_display" do
@@ -83,6 +116,7 @@ describe Reservation do
       expect(@reservation_2.estimated_seat_time_display).to eq(time)
     end
   end
+end
 
   context "#wait_time_display" do
     it "should return a rounded up wait time" do
@@ -115,6 +149,14 @@ describe Reservation do
   context "#status" do
     it "should set to default of Waiting" do 
       expect(@reservation.status).to eq "Waiting"
+    end
+  end
+
+  context "#archive!" do 
+    it "should change status of reservation to archive" do 
+      expect {
+        @reservation.archive!
+      }.to change{@reservation.archived}.to true
     end
   end
 end
