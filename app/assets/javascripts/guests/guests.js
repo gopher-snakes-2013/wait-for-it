@@ -7,15 +7,22 @@ var GuestPage = {
     var restaurantId = $(this).closest(".restaurant").data("restaurant-id")
     var $requestForm = $(".request-form").clone()
     $requestForm = $requestForm.find("form").prop("action", "restaurants/"+restaurantId+"/reservations")
-    $(".form-area").html($requestForm)
+    $(".form-area").html($requestForm).slideToggle("slideDown")
   },
 
   sendRequest: function(e, data){
-    $(".confirmation-area").html(data.text)
+    $(".confirmation-text").html(data.text)
+    GuestPage.clearFields();
   },
 
   showErrorMessage: function(e, xhr) {
-    $(".confirmation-area").html(xhr.responseJSON.simple_error)
+    $(".confirmation-text").html(xhr.responseJSON.simple_error)
+  },
+
+  clearFields: function(){
+    $("#request-name").val("")
+    $("#request-party-size").val("")
+    $("#request-phone-number").val("")
   }
 }
 

@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
   $(".table-body").on("click", "div.message-ready", function(){
     var reservationId = $(this).closest(".reservation").data("id")
     var boundMessageGuestReady = message.GuestReady.bind(this)

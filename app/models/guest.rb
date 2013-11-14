@@ -1,5 +1,5 @@
 class Guest < ActiveRecord::Base
-  attr_accessible :name, :email, :password, :password_confirmation
+  attr_accessible :name, :email, :phone_number, :password, :password_confirmation
   has_many :reservations
 
   validates_presence_of :password, on: :create

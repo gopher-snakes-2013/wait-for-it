@@ -1,9 +1,10 @@
 <div class="guest-table">
   <div class="th headers">
-    <span class='td name-header'>My Reservations</span>
-    <span class='td time-header'>Wait Time</span>
+    <span class='td guest-name-header'>My Reservations</span>
+    <span class='td guest-status-header'>Status</span>
+    <span class='td guest-time-header'>Wait Time</span>
   </div>
   <% @guest.reservations.each do |reservation| %>
-    <%= render partial: 'guests/reservations' %>
+    <%= render partial: 'guests/reservations', locals: { reservation: reservation } %>
   <% end %>
 </div>

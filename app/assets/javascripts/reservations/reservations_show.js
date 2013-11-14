@@ -118,8 +118,10 @@ var reloadStatusId = function() {
       statusId = 'status-no-show';
     } else if (statusText == 'Seated') {
       statusId = 'status-seated';
+    } else {
+      statusId = 'status-pending';
     }
-  $($('span.status')[i]).removeAttr('id').attr('id', statusId);
+    $($('span.status')[i]).removeAttr('id').attr('id', statusId);
   }
 }
 
