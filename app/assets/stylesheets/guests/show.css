@@ -1,0 +1,40 @@
+.guest-reservations-table > .headers {
+  margin-bottom:2em;
+  font-size:1em;
+  width:50em;
+  text-align:left;
+}
+
+.guest-reservation {
+  text-align: left;
+}
+
+.guest-reservation > .td {
+  font-size:1.2em;
+}
+
+.guest-restaurant-name {
+  margin-right:3.6em;
+  display:inline-block;
+  width:4em;
+}
+
+.guest-status {
+  display:inline-block;
+  width:4em;
+  margin-right:1.7em;
+}
+
+.guest-wait-time {
+  display:inline-block;
+  width:.4em;
+  margin-right:2.5em;
+}
+
+.guest-cancel {
+  cursor: pointer;
+}
+
+.guest-archive {
+  cursor: pointer;
+}

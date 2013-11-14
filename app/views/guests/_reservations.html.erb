@@ -1,5 +1,7 @@
-<div class="th reservation" >
+<div class="th guest-reservation" data-restaurant-id="<%= reservation.restaurant.id %>" data-id="<%= reservation.id %>">
   <span class="td guest-restaurant-name"><%= reservation.restaurant.name %></span>
   <span class="td guest-status"><%= reservation.status %></span>
   <span class="td guest-wait-time"><%= reservation.wait_time %></span>
+  <span class="td guest-seat-time"><%= reservation.estimated_seat_time_display %></span>
+  <span class="td guest-cancel">cancel</span>
 </div>

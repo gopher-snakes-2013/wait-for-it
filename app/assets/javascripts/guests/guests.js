@@ -23,7 +23,24 @@ var GuestPage = {
     $("#request-name").val("")
     $("#request-party-size").val("")
     $("#request-phone-number").val("")
+  },
+
+  cancel: function(e){
+    e.preventDefault();
+    var restaurant_id = $(".guest-reservation").data("restaurant-id")
+    var id = $(".guest-reservation").data("id")
+
+    $.ajax({
+      url: "/restaurants/"+restaurant_id+"/reservations/"+id,
+      type: "put",
+      dataType: "json",
+      data: { restaurant_id: restaurant_id, id: id, reservation: { status: "Cancelled" } }
+    }).done(function(data){
+      console.log(data)
+    }).fail(function(){
+    })
   }
+
 }
 
 $(document).ready(function(){
@@ -31,4 +48,6 @@ $(document).ready(function(){
   $("#container").on("click", ".restaurant-request", GuestPage.showForm)
   $("#container").on("ajax:success", "form#new-request", GuestPage.sendRequest)
   $("#container").on("ajax:error", "form#new-request", GuestPage.showErrorMessage)
+
+  $("#container").on("click", "span.guest-cancel", GuestPage.cancel)
 })

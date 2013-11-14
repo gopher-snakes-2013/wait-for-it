@@ -1,5 +1,5 @@
 class Reservation < ActiveRecord::Base
-  attr_accessible :name, :party_size, :phone_number, :wait_time, :estimated_seat_time, :status, :restaurant_id
+  attr_accessible :name, :party_size, :phone_number, :wait_time, :estimated_seat_time, :status, :restaurant_id, :archived
   belongs_to :restaurant
   belongs_to :guest
 
@@ -51,11 +51,11 @@ class Reservation < ActiveRecord::Base
   end
 
   def send_text_to_accepted_reservation
-    if self.status == "Waiting" && self.guest && self.confirmed == false
+    if (self.guest && self.status == "Waiting") && self.confirmed == false
       TwilioHelper.send_on_waitlist(self.phone_number,
         "Hi #{self.name}, you've been added to #{self.restaurant.name}'s waitlist. Your wait is approximately #{self.wait_time} minutes. #{self.short_url}")
+      self.confirmed = true
     end
-    self.confirmed = true
   end
 
   def send_text_table_ready
@@ -81,7 +81,9 @@ class Reservation < ActiveRecord::Base
       wait_time: self.wait_time_display,
       status: self.status,
       notified: self.notified_table_ready,
-      restaurant_id: self.restaurant_id
+      restaurant_id: self.restaurant_id,
+      archived: self.archived,
+      confirmed: self.confirmed
     }
   end
 
