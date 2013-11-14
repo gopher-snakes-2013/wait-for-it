@@ -33,17 +33,17 @@ describe Reservation do
     @reservation.notified_table_ready.should be nil
   end
 
-  it 'should not allow non-integer party sizes' do 
+  it 'should not allow non-integer party sizes' do
     @reservation.party_size = 1.1
     expect(@reservation.invalid?).to be_true
-  end 
+  end
 
-  it 'should not allow party sizes over 10' do 
+  it 'should not allow party sizes over 10' do
     @reservation.party_size = 11
     expect(@reservation.invalid?).to be_true
   end
 
-  it 'should not allow negative party sizes' do 
+  it 'should not allow negative party sizes' do
     @reservation.party_size = -1
     expect(@reservation.invalid?).to be_true
   end
@@ -93,17 +93,18 @@ describe Reservation do
 
   context "#time_range_display_start" do
     it "should return a start time with the hour:minute format" do
-      minutes = @reservation_2.estimated_seat_time.localtime.strftime("%M").to_i
+      minutes = @reservation_2.estimated_seat_time.localtime.strftime("%M").to_i - 10
       hour = @reservation_2.estimated_seat_time.localtime.strftime("%l")
       time = RounderHelper.round_up(hour, minutes)
 
-      expect(@reservation_2.time_range_display_start).to eq(time[:hour]+":"+time[:minutes])
+      expect(@reservation_2.time_range_display_start[:start_time]).to eq(time[:hour]+":"+time[:minutes])
+      expect(@reservation_2.time_range_display_start[:minutes]).to eq(time[:minutes].to_i)
     end
   end
 
   context "#time_range_display_end" do
     it "should return an end time with the hour:minute am/pm format" do
-      minutes = @reservation_2.estimated_seat_time.localtime.strftime("%M").to_i + 10
+      minutes = @reservation_2.time_range_display_start[:minutes].to_i + 10
       hour = @reservation_2.estimated_seat_time.localtime.strftime("%l")
       am_pm = @reservation_2.estimated_seat_time.localtime.strftime("%P")
       time = RounderHelper.round_up(hour, minutes.to_s)
@@ -113,7 +114,7 @@ describe Reservation do
   end
 
   context "#status" do
-    it "should set to default of Waiting" do 
+    it "should set to default of Waiting" do
       expect(@reservation.status).to eq "Waiting"
     end
   end

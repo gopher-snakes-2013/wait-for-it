@@ -94,16 +94,17 @@ class Reservation < ActiveRecord::Base
   end
 
   def time_range_display_start
-    minutes = self.estimated_seat_time.localtime.strftime("%M")
+    minutes = self.estimated_seat_time.localtime.strftime("%M").to_i - 8
     hour = self.estimated_seat_time.localtime.strftime("%l")
-    time = RounderHelper.round_up(hour, minutes)
+    time = RounderHelper.round_up(hour, minutes.to_s)
     start_mins = time[:minutes]
     start_hour = time[:hour]
     start_time = start_hour + ":" + start_mins
+    { start_time: start_time, minutes: start_mins.to_i }
   end
 
   def time_range_display_end
-    minutes = self.estimated_seat_time.localtime.strftime("%M").to_i + 10
+    minutes = self.time_range_display_start[:minutes] + 10
     hour = self.estimated_seat_time.localtime.strftime("%l")
     am_pm = self.estimated_seat_time.localtime.strftime("%P")
     time = RounderHelper.round_up(hour, minutes.to_s)
