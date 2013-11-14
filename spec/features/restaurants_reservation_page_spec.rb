@@ -10,7 +10,7 @@ feature "Restaurant's Reservation Page" do
     visit restaurant_reservations_path(@test_restaurant.id)
   end
 
-  xscenario "user visits home page" do
+  scenario "user visits home page" do
     expect(current_path).to eq(restaurant_reservations_path(@test_restaurant.id))
     expect(page).to have_content("What the Duck")
   end
@@ -53,15 +53,20 @@ feature 'Restaurant Page' do
       fill_in("restaurant[password_confirmation]", with: "password")
       click_on("Create Account")
       fill_in("reservation[name]", with: "Customer Joe")
-      fill_in("reservation[party_size]", with: "sour@kitchen.com")
+      fill_in("reservation[party_size]", with: "4")
       fill_in("reservation[phone_number]", with: "1111111111")
       fill_in("reservation[wait_time]", with: "10")
       click_on('Create Reservation')
     end
 
-    xscenario 'Registered Restaurant can see their name on their restaurant page' do
+    scenario 'Registered Restaurant can see their name on their restaurant page' do
       visit restaurant_reservations_path(1)
       expect(page).to have_content('Sourdough Kitchen')
+    end
+
+    scenario 'clicking on archive will archive the reservation' do 
+      page.find('div.delete-button').click_link('x')
+      expect(Reservation.last.archived).to be_true
     end
   end
 end

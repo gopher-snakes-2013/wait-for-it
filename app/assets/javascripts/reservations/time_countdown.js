@@ -1,9 +1,4 @@
-$(document).ready(function(){
-  if($(".reservation").length > 0) {
-    setInterval(function(){ updateReservations.updateCurrentTime()}, 60000)
-    }})
-
-var updateReservations = {
+var UpdateReservations = {
 getReservationsFromServer: function(){
   var current_restaurant = $('div.table').data("restaurant-id")
   $.ajax({
@@ -12,7 +7,7 @@ getReservationsFromServer: function(){
     data: {current_restaurant: current_restaurant},
     dataType: 'json'
   }).done(function(reservations){
-    updateReservations.addReservationsToPage(reservations)
+    UpdateReservations.addReservationsToPage(reservations)
   })
 },
 
@@ -37,32 +32,21 @@ addReservationsToPage: function(reservations){
     updatedReservationTemplate.find('div.delete-button').html('<a href="/restaurants/'+reservations.reservations[i].restaurant_id+'/reservations/'+reservations.reservations[i].id+'" action="archive" class="archive" data-method="post" rel="nofollow">x</a>')
     $('div.table-body').append(updatedReservationTemplate)
   }
-},
-
-calculateCurrentTime: function(){
-  var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
-  var currentTime = new Date(Date.now())
-  var currentMonth = months[currentTime.getMonth()]
-  var currentDate = currentTime.getDate()
-  var currentYear = currentTime.getFullYear()
-  var currentHour = currentTime.getHours()
-  var currentMinutes = currentTime.getMinutes()
-  if (currentMinutes.toString().length === 1){
-    currentMinutes = "0"+currentMinutes
-  }
-  var currentAMPM = ""
-  if(currentHour>=12){
-    currentAMPM = "pm"
-  } else {
-    currentAMPM = "am"
-  }
-  if (currentHour > 12) {
-    currentHour -= 12
-  }
-  return currentMonth+ " "+currentDate+", "+currentYear+" "+currentHour+":"+currentMinutes+currentAMPM
-
-},
+}
+}
+var NoReservationsTimer = {
 updateCurrentTime: function(){
-  $('div#time').html(this.calculateCurrentTime())
+  //utilizes date.js formatting
+  $('div#time').html(Date.now().toString("MMM d, yyyy h:mm tt"))
+},
+timeUpdateEveryMinute: function(){
+  var boundUpdateCurrentTime = this.updateCurrentTime.bind(this)
+  setInterval(function(){ boundUpdateCurrentTime() }, 1000)
 }
 }
+$(document).ready(function(){
+  if($(".reservation").length) {
+    NoReservationsTimer.timeUpdateEveryMinute()
+    }
+})
+

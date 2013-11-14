@@ -13,6 +13,7 @@ describe Restaurant do
 
   before(:each) do
     @restaurant = Restaurant.create(name: "Sourdough Kitchen", email: "sour@kitchen.com", password: "password", password_confirmation: "password")
+    @restaurant_2 = Restaurant.create(name: "Blue's Cafe", email: "blue@cafe.com", password: "password", password_confirmation: "password")
     @reservation = @restaurant.reservations.new
     @reservation.name = "Jeff"
     @reservation.party_size = 1
@@ -30,7 +31,10 @@ describe Restaurant do
 
   describe "#max_wait_time" do
     it "should return the max wait time for the restaurant" do
-      expect(@restaurant.max_wait_time).to eq(20)
+      expect(@restaurant.max_wait_time).to eq(((@reservation.estimated_seat_time - Time.now)/60).round)
+    end
+    it "should return 0 if there are no reservations" do
+      expect(@restaurant_2.max_wait_time).to eq(0)
     end
   end
 
