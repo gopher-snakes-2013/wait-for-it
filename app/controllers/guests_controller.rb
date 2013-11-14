@@ -29,6 +29,17 @@ class GuestsController < ApplicationController
     @guest = Guest.find(params[:id])
   end
 
+  def reservation_request
+    guest = Guest.find(params[:id])
+    restaurant = Restaurant.find(params[:restaurant_id])
+    reservation = restaurant.reservations.new(params[:reservation])
+    if reservation.save
+      render json: { text: "Your reservation request has been sent. You'll recieve a confirmation text shortly."}
+    else
+      render status: :unprocessable_entity, json: { simple_error: "Please try again" ,error_messages: reservation.errors.full_messages.join(", ") }.to_json
+    end
+  end
+
   private
 
   def redirect_to_reservation

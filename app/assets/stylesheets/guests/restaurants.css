@@ -1,7 +1,7 @@
-span.td > a.restaurant-link {
+span.td > a.restaurant-request {
   color:#F5F7F7;
 }
 
-span.td > a.restaurant-link:hover {
+span.td > a.restaurant-request:hover {
   color:#142837;
 }

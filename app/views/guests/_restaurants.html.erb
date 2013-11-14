@@ -1,5 +1,25 @@
 <div class="th restaurant" data-restaurant-id="<%= restaurant.id %>">
-  <span class="td restaurant-name"><a class="restaurant-link" href="#"><%= restaurant.name %></a></span>
+  <span class="td restaurant-name"><a class="restaurant-request" href="#"><%= restaurant.name %></a></span>
   <span class="td restaurant-max-wait-time"><%= restaurant.max_wait_time %></span>
 </div>
 
+<br/><div class="form-area"></div>
+
+<br/><div class="confirmation-area"></div>
+
+<div class="template hidden">
+  <div class="request-form">
+    <form accept-charset="UTF-8" action="/restaurants/:id/reservations" class="new-request" data-remote="true" id="new-request" method="post">
+      <div style="margin:0;padding:0;display:inline">
+        <input name="utf8" type="hidden" value="✓">
+        <input name="authenticity_token" type="hidden" value="ljg4mxg8O0vAqcPa9bWKVtgzFllBRS+hMpJR+s9I/rU=">
+      </div>
+      <input id="request-name" name="reservation[name]" placeholder="Name" size="30" type="text">
+      <input id="request-party-size" name="reservation[party_size]" placeholder="Party Size" size="30" type="text">
+      <input id="request-phone-number" name="reservation[phone_number]" placeholder="Phone Number" size="30" type="text">
+      <input id="request-wait-time" name="reservation[wait_time]" value="0" type="hidden">
+      <input id="request-status" name="reservation[status]" value="Pending" type="hidden">
+      <input class="request-button" name="commit" type="submit" value="send request">
+    </form>
+  </div>
+</div>
