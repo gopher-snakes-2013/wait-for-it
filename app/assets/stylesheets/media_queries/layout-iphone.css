@@ -1,4 +1,4 @@
-@media (max-width: 30em){
+@media (max-width: 47em){
 	html {
 		background-color: #F5F7F7;
 		font-size: 1em;
@@ -12,7 +12,7 @@
 
 	.navbar {
 		background-color: #2EC6A4;
-		height: 7.5em;
+		height: 7em;
 		position: fixed;
 		width: 100%;
 		z-index: 2;
@@ -29,23 +29,21 @@
 		color: #F5F7F7;
 		display: inline-block;
 		font-family: 'Lobster', cursive;
-		font-size: 1.5em;
+		font-size: 2em;
 		margin-left: 5%;
-		top: -0.4em;
-		width: 10%;
 	}
 
 	#title2 {
 		display: inline-block;
 		font-family: 'Crete Round', serif;
-		font-size: 2.1em;
+		font-size: 2.5em;
 		position: relative;
+		width: 45%;
 		z-index:3;
 	}
 
 	.complete-title {
 		display: inline-block;
-		padding-top: 2em;
 		width: 100%;
 	}
 
@@ -59,20 +57,13 @@
 		text-decoration: none;
 	}
 
-	#main-nav {
-		margin-left: 108em;
-	}
-
 	.restaurant-name {
-		font-size:2em;
+		font-size:1.5em;
 	}
 
 	.restaurant-menu {
 		font-family: 'Crete Round', serif;
-		display: inline-block;
-		padding-left: 20%;
-		margin-right: 10px;
-		margin-left: auto;
+		margin-left: 74%;
 		z-index: 3;
 	}
 
@@ -88,10 +79,19 @@
 	}
 
 	.restaurant-menu-name {
-		float: left;
+		display: none;
 	}
 
 	.restaurant-logout {
-		float: right;
+		display: inline-block;
+		margin-left: -13%;
+		float: left;
+	}
+
+	div#time {
+		font-size:1.5em;
+		text-align:left;
+		width: 100%;
+		display: block;
 	}
 }

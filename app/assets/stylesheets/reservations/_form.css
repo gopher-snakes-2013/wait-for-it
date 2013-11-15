@@ -6,11 +6,24 @@
   width: 88%;
 }
 
+form#new_reservation.new_reservation {
+ width: 90%;
+}
+
 input {
   border-radius: 5px;
   font-family:'Open Sans', helvetica-light, sans-serif;
-  font-size: .8em;
+  font-size: 1em;
   padding:4px;
+}
+
+.new_reservation > input {
+  border-radius: 5px;
+  font-family:'Open Sans', helvetica-light, sans-serif;
+  font-size: 1em;
+  padding:4px;
+  text-align: center;
+  width: 15em;
 }
 
 .submit_button {
@@ -20,4 +33,11 @@ input {
   color: white;
   font-style: helvetica;
   font-size:3em;
+}
+
+form#new_reservation.new_reservation > .submit_button {
+ font-size: 1.5em;
+ height: 2em;
+ position: relative;
+ width: 2em;
 }
