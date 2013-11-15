@@ -9,7 +9,7 @@ var update = {
     update.phoneNumber(reservation);
     update.waitTime(reservation);
     update.status(reservation);
-    $edit.closest(".update-button").html('<input class="save" name="commit" type="submit" value="save">');
+    $edit.closest(".update-button").html('<input class="giraffe save" name="commit" type="submit" value="save">');
     $(".edit").remove();
   },
 
@@ -61,7 +61,7 @@ var update = {
       $that.closest(".reservation").find("span.phone-number").html(data.phone_number);
       $that.closest(".reservation").find("span.wait-time").html(data.wait_time);
       $that.closest(".reservation").find("span.seat-time").html(data.estimated_seat_time);
-      $that.closest(".table").find(".update-button").html('<input class="edit" type="submit" value="edit">')
+      $that.closest(".table").find(".update-button").html('<input class="td edit" type="submit" value="edit">')
     })
   },
 

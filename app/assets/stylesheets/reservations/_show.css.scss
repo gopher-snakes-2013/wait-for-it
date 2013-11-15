@@ -177,9 +177,13 @@ div.table {
         margin: 40px;
       }
 
-      .td.edit {
+      .td.edit, .giraffe {
         display: inline-block;
         position: absolute;
+      }
+
+      .giraffe {
+        margin-left: 40px;
       }
     }
   }
