@@ -31,7 +31,6 @@ var ReservationsAutoUpdater = {
     },
   init: function(){
     var currentRestaurant = this.getRestaurant()
-    console.log
     this.requestReservations(currentRestaurant)
   }
 }
