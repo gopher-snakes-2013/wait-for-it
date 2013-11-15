@@ -63,10 +63,5 @@ feature 'Restaurant Page' do
       visit restaurant_reservations_path(1)
       expect(page).to have_content('Sourdough Kitchen')
     end
-
-    scenario 'clicking on archive will archive the reservation' do 
-      page.find('div.delete-button').click_link('x')
-      expect(Reservation.last.archived).to be_true
-    end
   end
 end
