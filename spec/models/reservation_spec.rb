@@ -127,7 +127,7 @@ end
 
   context "#time_range_display_start" do
     it "should return a start time with the hour:minute format" do
-      minutes = @reservation_2.estimated_seat_time.localtime.strftime("%M").to_i - 10
+      minutes = @reservation_2.estimated_seat_time.localtime.strftime("%M").to_i - 7
       hour = @reservation_2.estimated_seat_time.localtime.strftime("%l")
       time = RounderHelper.round_up(hour, minutes)
 

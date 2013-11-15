@@ -32,15 +32,6 @@ feature "Restaurant's Reservation Page" do
     end
   end
 
-  context "user submits an invalid reservation" do
-    before(:each) do
-      click_on("Create Reservation")
-    end
-
-    scenario "user sees an error message" do
-      expect(page).to have_content("Try Again.")
-    end
-  end
 end
 
 feature 'Restaurant Page' do
