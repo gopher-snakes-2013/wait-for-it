@@ -20,8 +20,8 @@
         <%= image_tag('sms.png') %>
       </div>
     <% end %>
-  </span>
   <div class="td delete-button">
     <%= link_to image_tag("archive.jpeg"), archive_path(current_restaurant.id, reservation.id), method:"post", action: 'archive', class: 'archive' %>
   </div>
+  </span>
 </form>
