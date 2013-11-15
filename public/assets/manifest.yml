@@ -1,17 +1,1 @@
----
-archive.jpeg: archive.jpeg
-archive/index.jpeg: archive.jpeg
-favicon.ico: favicon.ico
-favicon/index.ico: favicon.ico
-fork-and-knife.png: fork-and-knife.png
-fork-and-knife/index.png: fork-and-knife.png
-sms-sent.png: sms-sent.png
-sms-sent/index.png: sms-sent.png
-sms.png: sms.png
-sms/index.png: sms.png
-application.js: application.js
-application/index.js: application.js
-application.css: application.css
-application/index.css: application.css
-jquery.min.map: jquery.min.map
-jquery/index.min.map: jquery.min.map
+
