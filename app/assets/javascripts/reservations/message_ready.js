@@ -9,6 +9,7 @@ var Message = {
     }).done(function(){
       $(that).removeClass("message-ready")
       $(that).addClass("ready-message-sent")
+      $(that).find('img').attr("src","/assets/sms-sent.png")
       $("error-message").empty()
     }).error(function(){
       $("error-message").text("SMS failed :(")

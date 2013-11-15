@@ -1,6 +1,44 @@
+var superBadAssTimer;
+var ReservationsAutoUpdater = {
+  getRestaurant: function(){
+    return $('.table').data('restaurant-id')
+  },
+  requestReservations: function(rest_id){
+    var self = this
+    $.ajax({
+      url: '/reservations/currentreservations.json',
+      type: 'get',
+      data: {restaurant: rest_id},
+      dataType: 'json'
+    }).done(function(reservations){
+      self.reservationsInfoUpdate(reservations.reservations)
+    })
+  },
+    reservationsInfoUpdate: function(reservations){
+    $reservationRows = $('form.tr.reservation')
+      for(var i=0; i< reservations.length; i++){
+        var currentReservation = reservations[i]
+        for(var j=0; j< $reservationRows.length; j++){
+        var currentReservationRow = $reservationRows[j]
+        if($(currentReservationRow).data("id") == currentReservation.id){
+            $(currentReservationRow).find('span.seat-time').text(currentReservation.estimated_seating)
+            $(currentReservationRow).find('span.wait-time').text(currentReservation.wait_time)
+            $(currentReservationRow).find('span.status').text(currentReservation.status)
+            $(currentReservationRow).find('span.status').attr("id",'status-'+currentReservation.status.toLowerCase())
+        }
+      }
+      }
+    },
+  init: function(){
+    var currentRestaurant = this.getRestaurant()
+    console.log
+    this.requestReservations(currentRestaurant)
+  }
+}
 var update = {
 
   init: function() {
+    clearInterval(superBadAssTimer)
     var $edit = $(this)
     var reservation = $(this).closest(".reservation");
     var id = reservation.data("id");
@@ -62,13 +100,15 @@ var update = {
       $that.closest(".reservation").find("span.wait-time").html(data.wait_time);
       $that.closest(".reservation").find("span.seat-time").html(data.estimated_seat_time);
       $that.closest(".table").find(".update-button").html('<input class="td edit" type="submit" value="edit">')
+      superBadAssTimer = setInterval(function(){ReservationsAutoUpdater.init()},15000)
+
     })
   },
 
   initBang: function() {
     $(".add-reservation-form").on("ajax:success", "#new_reservation", this.addReservation);
     $(".add-reservation-form").on("ajax:error", "#new_reservation", this.errorMessage);
-
+    superBadAssTimer = setInterval(function(){ReservationsAutoUpdater.init()},15000)
     $("body").on("click", ".edit", update.init);
     $("body").on("click", ".save", update.save);
   },
@@ -104,6 +144,7 @@ var reloadStatusId = function() {
   $($('span.status')[i]).removeAttr('id').attr('id', statusId);
   }
 }
+
 
 $(document).ready(function(){
   update.initBang();
