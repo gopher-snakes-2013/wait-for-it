@@ -8,7 +8,6 @@ describe Reservation do
   it { should validate_presence_of :status }
 
   it { should validate_numericality_of :party_size }
-  it { should validate_numericality_of :wait_time }
 
   it { should belong_to(:restaurant) }
 

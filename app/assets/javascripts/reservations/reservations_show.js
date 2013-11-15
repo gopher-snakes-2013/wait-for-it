@@ -73,8 +73,8 @@ var update = {
     $(".add-reservation-form").on("ajax:success", "#new_reservation", this.addReservation);
     $(".add-reservation-form").on("ajax:error", "#new_reservation", this.errorMessage);
 
-    $(".table").on("click", ".edit", update.init);
-    $(".table").on("click", ".save", update.save);
+    $("body").on("click", ".edit", update.init);
+    $("body").on("click", ".save", update.save);
   },
 
   addReservation: function(e, reservationPartial) {

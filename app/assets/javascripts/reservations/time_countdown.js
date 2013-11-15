@@ -25,11 +25,13 @@ addReservationsToPage: function(reservations){
     updatedReservationTemplate.find('span.seat-time').html((reservations.reservations[i].estimated_seating))
     updatedReservationTemplate.find('span.wait-time').html((reservations.reservations[i].wait_time))
     if (reservations.reservations[i].notified){
-      updatedReservationTemplate.find('span.message-button').html('<div class="ready-message-sent">'<%= image_tag('sms-sent.png') %>'</div><div class="delete-button"></div>')
+      var image = $('.ready-message-sent').clone().html();
+      updatedReservationTemplate.find('span.message-button').html('<div class="ready-message-sent">'+image+'</div><div class="delete-button"></div>')
     } else {
-      updatedReservationTemplate.find('span.message-button').html('<div class="message-ready">'<%= image_tag('sms.png')%>'</div><div class="delete-button"></div>')
+      var image2 = $('.message-ready').clone().html();
+      updatedReservationTemplate.find('span.message-button').html('<div class="message-ready">'+image2+'</div><div class="delete-button"></div>')
     }
-    updatedReservationTemplate.find('div.delete-button').html('<a href="/restaurants/'+reservations.reservations[i].restaurant_id+'/reservations/'+reservations.reservations[i].id+'" action="archive" class="archive" data-method="post" rel="nofollow">x</a>')
+    updatedReservationTemplate.find('div.delete-button').html('<a href="/archive/'+reservations.reservations[i].restaurant_id+'/'+reservations.reservations[i].id+'" action="archive" class="archive" data-method="post" rel="nofollow"><img src="/assets/archive.jpeg"></a>')
     $('div.table-body').append(updatedReservationTemplate)
   }
 }

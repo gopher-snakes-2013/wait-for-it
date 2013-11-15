@@ -1,4 +1,4 @@
-@media (max-width: 50em){
+@media (min-width: 48em) and (max-width: 61em){
 
 	html {
 		background-color: #F5F7F7;
@@ -33,7 +33,7 @@
 		font-size: 2.5em;
 		margin-left: 5%;
 		top: -0.4em;
-		width: 10%;
+		width: 7%;
 	}
 
 	#title2 {
@@ -71,7 +71,7 @@
 	.restaurant-menu {
 		font-family: 'Crete Round', serif;
 		display: inline-block;
-		padding-left: 7%;
+		padding-left: 30%;
 		margin-right: 10px;
 		margin-left: auto;
 		z-index: 3;
@@ -86,5 +86,22 @@
 
 	.restaurant-menu a:hover {
 		color: #F5F7F7;
+	}
+
+	.restaurant-menu-name {
+		display: none;
+	}
+
+	.restaurant-logout {
+		display: inline-block;
+		margin-left: 7%;
+		float: left;
+	}
+
+	div#time {
+		font-size:1.5em;
+		text-align:left;
+		width: 100%;
+		display: block;
 	}
 }

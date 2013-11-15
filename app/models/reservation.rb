@@ -11,7 +11,6 @@ class Reservation < ActiveRecord::Base
 
   validates :name, :party_size, :wait_time, :status, :presence => true
   validates_numericality_of :party_size, { only_integer: true, less_than_or_equal_to: 10, greater_than: 0 }
-  validates_numericality_of :wait_time, { only_integer: true, less_than_or_equal_to: 120, greater_than: 0 }
 
   phony_normalize :phone_number, :default_country_code => 'US'
   validates_plausible_phone :phone_number, :presence => true, :country_code => '1'

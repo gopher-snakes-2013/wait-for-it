@@ -1,4 +1,4 @@
-@media (max-width: 64em) {
+@media (min-width: 62em) and (max-width: 75em){
 	html {
 		background-color: #F5F7F7;
 		font-size: 1em;
@@ -32,7 +32,7 @@
 		font-size: 2.5em;
 		margin-left: 5%;
 		top: -0.4em;
-		width: 10%;
+		width: 6%;
 	}
 
 	#title2 {
@@ -70,7 +70,7 @@
 	.restaurant-menu {
 		font-family: 'Crete Round', serif;
 		display: inline-block;
-		padding-left: 15%;
+		padding-left: 20%;
 		margin-left: auto;
 		z-index: 3;
 	}
@@ -84,6 +84,10 @@
 
 	.restaurant-menu a:hover {
 		color: #F5F7F7;
+	}
+
+	.restaurant-logout {
+		/*float: right;*/
 	}
 
 	div#time {
