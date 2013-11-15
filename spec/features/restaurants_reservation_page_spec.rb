@@ -37,7 +37,7 @@ feature "Restaurant's Reservation Page" do
       click_on("Create Reservation")
     end
 
-    xscenario "user sees an error message" do
+    scenario "user sees an error message" do
       expect(page).to have_content("Try Again.")
     end
   end
